@@ -293,6 +293,20 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\whiteboard.BusinessLogic\Whiteboard.BusinessLogic.csproj">
+      <Project>{b629831f-f402-43db-8c46-3112dc4ce16f}</Project>
+      <Name>Whiteboard.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Whiteboard.Common\Whiteboard.Common.csproj">
+      <Project>{d2f6004c-d767-4a4b-95fd-d15af8910cde}</Project>
+      <Name>Whiteboard.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Whiteboard.DataAccess\Whiteboard.DataAccess.csproj">
+      <Project>{a82edeae-e224-48c5-bb45-ee1e0dcebadc}</Project>
+      <Name>Whiteboard.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
