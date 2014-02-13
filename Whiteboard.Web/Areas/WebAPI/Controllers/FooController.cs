@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Whiteboard.Web.Areas.WebAPI.Controllers {
     public class FooController : Controller {
-        // GET: /WebAPI/Foo/
+        // GET: /api/Foo/
         public string Index() {
             return "Foo";
         }

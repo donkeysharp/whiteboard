@@ -11,7 +11,7 @@ namespace Whiteboard.Web.Areas.WebAPI {
         public override void RegisterArea(AreaRegistrationContext context) {
             context.MapRoute(
                 "WebAPI_default",
-                "WebAPI/{controller}/{action}/{id}",
+                "api/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
