@@ -1,4 +1,4 @@
 whiteboard
 ==========
 
-Whiteboard app
+Whiteboard app.
