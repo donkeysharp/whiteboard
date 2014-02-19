@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 namespace Whiteboard.DataAccess.Models {
     public class SchoolMember {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
 
-        public int ProfileId { get; set; }
-        [ForeignKey("ProfileId")]
-        public Profile Profile { get; set; }
+        public int MemberId { get; set; }
+        [ForeignKey("MemberId")]
+        public Member Member { get; set; }
+
+        public int SchoolId { get; set; }
+        [ForeignKey("SchoolId")]
+        public School School { get; set; }
     }
 }

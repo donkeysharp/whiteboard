@@ -13,8 +13,12 @@ namespace Whiteboard.DataAccess.Models {
         public bool OnAir { get; set; }
         public bool Public { get; set; }
 
-        public int SchoolId;
+        public int SchoolId { get; set; }
         [ForeignKey("SchoolId")]
         public virtual School School { get; set; }
+
+        public int TeacherId { get; set; }
+        [ForeignKey("TeacherId")]
+        public virtual Member Teacher { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Whiteboard.DataAccess.Repositories
+namespace Whiteboard.DataAccess
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {

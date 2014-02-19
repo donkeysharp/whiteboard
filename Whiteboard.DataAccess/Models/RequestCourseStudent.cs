@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Models {
-    public class StudentSchool {
+    public class RequestCourseStudent {
         public int Id { get; set; }
         public int StudentId { get; set; }
-        public int SchoolId { get; set; }
+        public int CourseId { get; set; }
     }
 }
