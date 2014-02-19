@@ -7,5 +7,6 @@ using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.DataAccess.Repositories {
     public interface IProfileRepository : IRepository<Profile> {
+        Profile GetByEmail(string username);
     }
 }

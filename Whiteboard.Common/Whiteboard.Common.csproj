@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,8 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ConfigurationUtil.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Cryptography\MD5Util.cs" />
+    <Compile Include="Cryptography\RSAUtil.cs" />
+    <Compile Include="Cryptography\SecurityTokenGenerator.cs" />
+    <Compile Include="Geo\GeoCodeCalc.cs" />
+    <Compile Include="Geo\Regions.cs" />
+    <Compile Include="Networking\EmailUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

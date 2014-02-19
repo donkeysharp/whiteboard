@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Models {
     public class Profile {
-        public const int ROLE_SCHOOL = 0;
-        public const int ROLE_TEACHER = 1;
-        public const int ROLE_STUDENT = 2;
+        public const string ROLE_SCHOOL = "Profile.SchoolRole";
+        public const string ROLE_TEACHER = "Profile.TeacherRole";
+        public const string ROLE_STUDENT = "Profile.StudentRole";
 
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Country { get; set; }
-        public int Role { get; set; }
+        public string Role { get; set; }
     }
 }
