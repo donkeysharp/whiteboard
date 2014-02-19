@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace whiteboard.BusinessLogic
-{
-    public class Class1
-    {
+namespace whiteboard.BusinessLogic.ProfileModule {
+    public interface IProfileService {
     }
 }
