@@ -172,7 +172,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\WebAPI\Controllers\FooController.cs" />
     <Compile Include="Areas\WebAPI\WebAPIAreaRegistration.cs" />
+    <Compile Include="Auth\AuthParser.cs" />
     <Compile Include="Auth\GeneralMembershipProvider.cs" />
+    <Compile Include="Auth\GeneralMembershipUser.cs" />
     <Compile Include="Auth\GeneralRoleProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

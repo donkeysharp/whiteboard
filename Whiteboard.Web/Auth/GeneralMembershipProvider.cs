@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using whiteboard.BusinessLogic.ProfileModule;
+using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 
 namespace Whiteboard.Web.Auth {
@@ -64,7 +65,10 @@ namespace Whiteboard.Web.Auth {
         }
 
         public override MembershipUser GetUser(string username, bool userIsOnline) {
-            throw new NotImplementedException();
+            IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+            Profile profile = service.Get(username);
+
+            return AuthParser.ProfileToUser(profile);
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline) {
