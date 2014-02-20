@@ -1,0 +1,17 @@
+﻿.navbar-login {
+    width: 300px;
+}
+.navbar-login .form-control {
+    margin-left: 5px;
+    width: 280px;
+}
+.navbar-login label {
+    margin-left: 5px;
+    margin-bottom: -5px;
+    margin-top: 5px;
+}
+.navbar-login .btn {
+    margin-left: 5px;
+    margin-top: 10px;
+    width: 100%;
+}

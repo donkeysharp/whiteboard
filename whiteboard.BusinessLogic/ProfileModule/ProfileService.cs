@@ -37,10 +37,13 @@ namespace whiteboard.BusinessLogic.ProfileModule {
 
         public bool Validate(string email, string password) {
             Profile profile = da.GetByEmail(email);
+            if (profile == null) {
+                return false;
+            }
             string inputHash = HashSumUtil.GetHashSum(password, HashSumType.SHA1);
-            string passwordHash = HashSumUtil.GetHashSum(profile.Password, HashSumType.SHA1);
 
-            return inputHash.Equals(passwordHash);
+            // Compare hashed password with current profile's hashed password
+            return inputHash.Equals(profile.Password);
         }
     }
 }
