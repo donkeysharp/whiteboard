@@ -22,10 +22,11 @@ namespace Whiteboard.DataAccess {
         public DbSet<RequestSchoolMember> SchoolMemberRequests { get; set; }
 
         public static DataBaseContext Context {
-            get { return context; }
+               get { return context; }
         }
 
-        private DataBaseContext() {
+        private DataBaseContext() 
+        {
 
         }
         static DataBaseContext() {

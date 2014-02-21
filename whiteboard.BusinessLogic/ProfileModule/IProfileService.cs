@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
 
 namespace whiteboard.BusinessLogic.ProfileModule {
-    public interface IProfileService {
+    public interface IProfileService:IService<Profile> {
         Profile Get(string email);
-        Profile Get(int id);
-        Profile Insert(Profile item);
-        int Update(Profile item);
         bool Validate(string email, string password);
     }
 }

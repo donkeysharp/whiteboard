@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.DataAccess.Repositories {
-    public class MemberRepository : GenericRepository<Member>, IMemberRepository {
+    public class MemberRepository : GenericRepository<Member>, IMemberRepository 
+    {
+
     }
 }

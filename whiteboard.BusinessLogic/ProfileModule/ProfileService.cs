@@ -8,35 +8,32 @@ using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 
 namespace whiteboard.BusinessLogic.ProfileModule {
-    public class ProfileService : IProfileService {
-        private IProfileRepository da;
+    public class ProfileService :GenericService<Profile>, IProfileService {
+        private IProfileRepository daProfile;
 
-        private ProfileService(IProfileRepository da) {
-            this.da = da;
+        private ProfileService(IProfileRepository da):base(da) {
+            this.daProfile = da;
         }
-        
+            
         public static IProfileService GetInstance<T>() where T : IProfileRepository {
             IProfileRepository da = (IProfileRepository)Activator.CreateInstance<T>();
             return new ProfileService(da);
         }
 
         public Profile Get(string email) {
-            return da.GetByEmail(email);
+            return daProfile.GetByEmail(email);
         }
 
-        public Profile Get(int id) {
-            return da.Get(id);
-        }
-
-        public Profile Insert(Profile item) {
+        public override Profile Insert(Profile item)
+        {
             // Replaces current password with a hashed password
             item.Password = HashSumUtil.GetHashSum(item.Password, HashSumType.SHA1);
 
-            return da.Insert(item);
+            return daProfile.Insert(item);
         }
 
         public bool Validate(string email, string password) {
-            Profile profile = da.GetByEmail(email);
+            Profile profile = daProfile.GetByEmail(email);
             if (profile == null) {
                 return false;
             }
@@ -44,10 +41,6 @@ namespace whiteboard.BusinessLogic.ProfileModule {
 
             // Compare hashed password with current profile's hashed password
             return inputHash.Equals(profile.Password);
-        }
-
-        public int Update(Profile item) {
-            return da.Update(item);
         }
     }
 }

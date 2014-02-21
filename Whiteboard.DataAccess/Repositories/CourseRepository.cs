@@ -7,5 +7,9 @@ using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.DataAccess.Repositories {
     public class CourseRepository : GenericRepository<Course>, ICourseRepository {
+        public IEnumerable<Course> Search(string parameter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
