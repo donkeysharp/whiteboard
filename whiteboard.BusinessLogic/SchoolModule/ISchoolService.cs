@@ -9,6 +9,8 @@ namespace whiteboard.BusinessLogic.SchoolModule
 {
     public interface ISchoolService : IService<School>
     {
-        bool Validate(int name);
+        IEnumerable<School> GetSortedBy(SchoolTypes type);
+        IEnumerable<School> Search(string data);        
+        //bool Validate(int name);
     }
 }

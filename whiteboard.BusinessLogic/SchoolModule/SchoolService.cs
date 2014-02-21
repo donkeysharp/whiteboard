@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public class SchoolService : ISchoolService
+    public class SchoolService :GenericService<School>, ISchoolService
     {
-        private ISchoolRepository da;
 
-        private SchoolService(ISchoolRepository da)
+        private SchoolService(ISchoolRepository da):base(da)
         {
-            this.da = da;
         }
 
         public static ISchoolService GetInstance<T>() where T : ISchoolRepository
@@ -21,25 +20,36 @@ namespace whiteboard.BusinessLogic.SchoolModule
             ISchoolRepository da = (ISchoolRepository)Activator.CreateInstance<T>();
             return new SchoolService(da);
         }
-
-        public bool Validate(int name)
+        public IEnumerable<School> GetSortedBy(SchoolTypes type)
         {
-            throw new NotImplementedException();
+            switch (type)
+            {
+                case SchoolTypes.Id:
+                    return da.Filter(null, (x) => x.OrderBy((y) => y.Id));
+                case SchoolTypes.Name:
+                    return da.Filter(null, (x) => x.OrderBy((y) => y.Profile.Name));
+                case SchoolTypes.Email:
+                    return da.Filter(null, (x) => x.OrderBy((y) => y.Profile.Email));
+                case SchoolTypes.Country:
+                    return da.Filter(null, (x) => x.OrderBy((y) => y.Profile.Country));
+                case SchoolTypes.Role:
+                    return da.Filter(null, (x) => x.OrderBy((y) => y.Profile.Role));
+                default:
+                    break;
+
+            }
+            return new List<School>();
         }
 
-        public Whiteboard.DataAccess.Models.School Get(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Whiteboard.DataAccess.Models.School Insert(Whiteboard.DataAccess.Models.School item)
+        public IEnumerable<School> Search(string data)
         {
-            throw new NotImplementedException();
+            return da.Filter((x) => (x.Profile.Name.Contains(data) || x.Profile.Email.Contains(data)),
+                (x) => x.OrderBy((y) => y.Id));
         }
-
-        public int Update(Whiteboard.DataAccess.Models.School item)
-        {
-            throw new NotImplementedException();
-        }
+    }
+    public enum SchoolTypes
+    {
+        Id, Name, Email, Country, Role
     }
 }

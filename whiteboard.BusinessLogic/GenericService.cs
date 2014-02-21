@@ -9,7 +9,7 @@ namespace whiteboard.BusinessLogic
 {
     public class GenericService<T> : IService<T> where T : class
     {
-        private IRepository<T> da;
+        protected IRepository<T> da;
 
         protected GenericService(IRepository<T> da)
         {
@@ -28,6 +28,11 @@ namespace whiteboard.BusinessLogic
         public virtual int Update(T item)
         {
             return da.Update(item);
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            return da.Filter(null, null);
         }
     }
 }

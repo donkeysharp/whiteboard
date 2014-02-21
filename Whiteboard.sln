@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whiteboard.BusinessLogic", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whiteboard.Common", "Whiteboard.Common\Whiteboard.Common.csproj", "{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteBoard.Test", "WhiteBoard.Test\WhiteBoard.Test.csproj", "{993CF3E1-3628-4044-9E31-FAF5A29249EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
