@@ -17,14 +17,13 @@ namespace Whiteboard.Web.Controllers {
 
         [HttpPost]
         [AllowAnonymous]
-        public string Login(LoginViewModel user) {
+        public ActionResult Login(LoginViewModel user) {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
-            string message = "nada";
             if (Membership.ValidateUser(user.Email, user.Password)) {
-                message = "ahora si";
                 FormsAuthentication.SetAuthCookie(user.Email, true);
+                return RedirectToAction("Index", "Home");
             }
-            return message;
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

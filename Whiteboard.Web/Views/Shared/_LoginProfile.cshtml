@@ -1,0 +1,47 @@
+﻿@if (!Request.IsAuthenticated) {
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Login <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post)) {
+        <div class="navbar-login">
+            <table>
+                <tr>
+                    <td>@Html.Label("Email:")</td>
+                </tr>
+                <tr><td>
+                @Html.TextBox("email", "", new { 
+                    placeholder="jhon@example.com", 
+                    autocomplete="off",
+                    @class="form-control"
+                })</td></tr>
+                <tr>
+                    <td>@Html.Label("Password:")</td>
+                </tr>
+                <tr><td>
+                @Html.Password("password", "", new { 
+                    placeholder="Type your password ...",
+                    autocomplete="off",
+                    @class="form-control"
+                })</td></tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Log In" class="btn btn-success" /></td>
+                </tr>
+            </table>
+        </div>
+        }
+        </li>
+    </ul>
+} else {
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        @User.Identity.Name <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="#">Profile</a></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
+        @using (Html.BeginForm("LogOut", "Auth", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+        }
+    </ul>
+}
