@@ -46,5 +46,40 @@ namespace Whiteboard.Web.Controllers {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Register() {
+            if (Request.IsAuthenticated) {
+                return RedirectToAction("Index", "Home");
+            }
+            var result = GetCountries();
+
+            ViewData["country"] = result;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterViewModel model) 
+            return RedirectToAction("Register", "Auth");
+        }
+
+        #region "Private Methods"
+
+        private static List<SelectListItem> GetCountries() {
+            var result = (from c in Whiteboard.Common.Geo.Regions.GetCountries()
+                          select new SelectListItem() {
+                              Text = c.Name, Value = c.Code
+                          }).ToList();
+
+            result.Insert(0, new SelectListItem() {
+                Text = "--- Select your country ---",
+                Value = ""
+            });
+            return result;
+        }
+        #endregion
     }
 }

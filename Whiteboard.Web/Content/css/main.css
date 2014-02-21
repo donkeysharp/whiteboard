@@ -1,4 +1,7 @@
-﻿.navbar-login {
+﻿body {
+    background-color: #2b8ed0;
+}
+.navbar-login {
     width: 300px;
 }
 .navbar-login .form-control {
@@ -19,7 +22,13 @@
     width: 320px;
     margin-left: auto;
     margin-right: auto;
-    padding: 7px;
+    padding: 25px;
+    padding-left: 10px;
+    background: #eee;
+    border-radius: 5px;
+   -webkit-box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
 }
 .login-container table {
     width: 300px;
@@ -33,4 +42,31 @@
     margin: 0 auto 0 auto;
     padding: 1px 15px 5px 15px;
     background-color: #b6ff00;
+}
+.register-container {
+    width: 500px;
+    margin: 0 auto 0 auto;
+    padding: 1px 15px 20px 15px;
+    background-color: #eee;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
+}
+.register-container .info tr td:nth-child(1) {
+    font-weight: bold;
+    width: 120px;
+}
+.register-container .info .form-control {
+    width: 300px;
+}
+.register-container .info td {
+    padding-top: 5px;
+}
+.register-container table b {
+    color: #f00;
+}
+.register-container .btn {
+    margin-top: 8px;
+    width: 100%;
 }

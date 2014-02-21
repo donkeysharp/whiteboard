@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Whiteboard.Web.Models.RegisterViewModel
+
+<div class="register-container">
+    @using (Html.BeginForm("Register", "Auth", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+    <h2>Create a Pizarrón account :)</h2>
+    <table>
+        <tr>
+            <td>
+                Are you a: <br />
+                <label>
+                    @Html.RadioButton("role", Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT, true)
+                    Student
+                </label>
+                &nbsp;&nbsp;&nbsp;
+                <label>
+                    @Html.RadioButton("role", Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)
+                    Teacher
+                </label>
+                &nbsp;&nbsp;&nbsp;
+                <label>
+                    @Html.RadioButton("role", Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)
+                    School
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table class="info">
+        <tr>
+            <td><span id="name-label">Student Name:</span><b>*</b></td>
+            <td>
+                <input type="text" name="name" autocomplete="off" 
+                    class="form-control" placeholder="Type your name ..." />
+            </td>
+        </tr>
+        <tr>
+            <td>Email: <b>*</b></td>
+            <td>
+                <input type="email" name="name" autocomplete="off" 
+                    class="form-control" placeholder="Type your email ..." />
+            </td>
+        </tr>
+        <tr>
+            <td>Country: <b>*</b></td>
+            <td>
+                @Html.DropDownList("country", (IEnumerable<SelectListItem>)ViewData["country"], new {
+                    @class="form-control"
+                })
+            </td>
+        </tr>
+        <tr>
+            <td>Password: <b>*</b></td>
+            <td>
+                <input type="password" name="password" autocomplete="off" 
+                    class="form-control" placeholder="Type your password ..." />
+            </td>
+        </tr>
+        <tr>
+            <td>Confirm Password: <b>*</b></td>
+            <td>
+                <input type="password" name="confirmPassword" autocomplete="off" 
+                    class="form-control" placeholder="Confirm your password ..." />
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input type="submit" class="btn btn-success" value="Register" />
+            </td>
+        </tr>
+    </table>
+    }
+</div>
+@section scripts {
+    <script src="@Url.Content("~/Content/js/register.js")"></script>
+}
