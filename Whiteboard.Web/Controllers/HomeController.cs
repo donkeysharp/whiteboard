@@ -8,6 +8,9 @@ using Whiteboard.Web.Models;
 namespace Whiteboard.Web.Controllers {
     public class HomeController : Controller {
         public ActionResult Index() {
+            if (Request.IsAuthenticated) {
+                return RedirectToAction("Index", "Dashboard");
+            }
             // Necessary because there is a RegisterWidget on Index view
             var result = GetCountries();
             ViewData["country"] = result;
