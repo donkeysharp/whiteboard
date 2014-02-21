@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #2b8ed0;
+    background-color: #3da6eb;
 }
 .navbar-login {
     width: 300px;
@@ -45,13 +45,20 @@
 }
 .register-container {
     width: 500px;
-    margin: 0 auto 0 auto;
+    margin: 80px auto 0 auto;
     padding: 1px 15px 20px 15px;
     background-color: #eee;
     border-radius: 5px;
     -webkit-box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
     box-shadow: 4px 4px 18px 0px rgba(0,0,0,0.75);
+}
+.register-container-home {
+    margin: 0 auto 0 auto;
+    right: 100px; 
+    top: 50px; 
+    position: absolute;
+    background-color: rgba(255,255,255, 0.85) 
 }
 .register-container .info tr td:nth-child(1) {
     font-weight: bold;

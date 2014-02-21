@@ -14,7 +14,7 @@ namespace whiteboard.BusinessLogic.ProfileModule {
         private ProfileService(IProfileRepository da) {
             this.da = da;
         }
-
+        
         public static IProfileService GetInstance<T>() where T : IProfileRepository {
             IProfileRepository da = (IProfileRepository)Activator.CreateInstance<T>();
             return new ProfileService(da);

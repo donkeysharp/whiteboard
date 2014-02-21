@@ -54,16 +54,35 @@ namespace Whiteboard.Web.Controllers {
                 return RedirectToAction("Index", "Home");
             }
             var result = GetCountries();
-
             ViewData["country"] = result;
+            ViewData["Errors"] = TempData["Errors"] ?? new List<ModelError>();
+            ViewData["RegisterModel"] = TempData["RegisterModel"] ?? new RegisterViewModel();
+
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model) 
-            return RedirectToAction("Register", "Auth");
+        public ActionResult Register(RegisterViewModel model) {
+            if (!ModelState.IsValid) {
+                TempData["RegisterModel"] = model;
+                TempData["Errors"] = ModelState.Values.SelectMany(v => v.Errors).ToList();
+                
+                return RedirectToAction("Register", "Auth");
+            }
+            IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+            Whiteboard.DataAccess.Models.Profile profile = service.Get(model.Email);
+            if (profile != null) {
+                ModelState.AddModelError("ModelExists", "Email already exists.");
+                TempData["RegisterModel"] = model;
+                TempData["Errors"] = ModelState.Values.SelectMany(v => v.Errors).ToList();
+
+                return RedirectToAction("Register", "Auth");
+            }
+            service.Insert(model.Profile);
+
+            return RedirectToAction("Login", "Auth");
         }
 
         #region "Private Methods"
