@@ -1,0 +1,30 @@
+﻿
+<div class="login-container">
+    @if (ViewBag.Errors != null) { 
+        <div class="alert alert-danger">@ViewBag.Errors</div>
+    }
+
+    @using (Html.BeginForm("Login", "Auth", FormMethod.Post)) {
+        <table>
+            <tr><td>@Html.Label("Email:")</td></tr>
+            <tr>
+                <td>
+                @Html.TextBox("email", (string)ViewBag.Email, new { autocomplete = "off", 
+                    placeholder = "john@example.com", @class="form-control"
+                })
+                </td>
+            </tr>
+            <tr><td>@Html.Label("Password:")</td></tr>
+            <tr>
+                <td>
+                @Html.Password("password", null, new { autocomplete = "off",
+                    placeholder="Type your password ...", @class="form-control"
+                })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Log In" class="btn btn-success" /></td>
+            </tr>
+        </table>
+    }
+</div>

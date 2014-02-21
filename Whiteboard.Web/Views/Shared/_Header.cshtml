@@ -8,18 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Whiteboard</a>
+      <a class="navbar-brand" href="#">Pizarrón</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Home", "Contact", "Home")</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a title="Start Course" href="#"><span class="glyphicon glyphicon-facetime-video"></span></a></li>
+        @*<li><a title="Start Course" href="#"><span class="glyphicon glyphicon-facetime-video"></span></a></li>*@
         <li class="dropdown">
             @Html.Partial("_LoginProfile")
         </li>

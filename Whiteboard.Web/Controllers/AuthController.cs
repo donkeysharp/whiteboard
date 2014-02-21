@@ -15,6 +15,16 @@ namespace Whiteboard.Web.Controllers {
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Login() {
+            if (Request.IsAuthenticated) {
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.Errors = TempData["Errors"];
+            ViewBag.Email = TempData["Email"];
+            return View();
+        }
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Login(LoginViewModel user) {
@@ -23,7 +33,9 @@ namespace Whiteboard.Web.Controllers {
                 FormsAuthentication.SetAuthCookie(user.Email, true);
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            TempData["Errors"] = "Invalid email or password, please verify they are correct.";
+            TempData["Email"] = user.Email; 
+            return RedirectToAction("Login", "Auth");
         }
 
         [HttpPost]
