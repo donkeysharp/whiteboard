@@ -10,6 +10,7 @@ namespace whiteboard.BusinessLogic.ProfileModule {
         Profile Get(string email);
         Profile Get(int id);
         Profile Insert(Profile item);
+        int Update(Profile item);
         bool Validate(string email, string password);
     }
 }

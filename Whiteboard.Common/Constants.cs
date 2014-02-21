@@ -16,6 +16,8 @@ namespace Whiteboard.Common {
         public const int HTTP_INTERNAL_ERRROR = 500;
 
         public const string SESSION_USER = "WhiteboardUser";
+
+        public const string UPLOADS_PATH = "~/App_Data/uploads";
     }
 
     public class Messages {

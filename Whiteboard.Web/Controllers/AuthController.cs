@@ -39,6 +39,7 @@ namespace Whiteboard.Web.Controllers {
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult LogOut() {
             FormsAuthentication.SignOut();

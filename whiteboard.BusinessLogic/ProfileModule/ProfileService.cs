@@ -45,5 +45,9 @@ namespace whiteboard.BusinessLogic.ProfileModule {
             // Compare hashed password with current profile's hashed password
             return inputHash.Equals(profile.Password);
         }
+
+        public int Update(Profile item) {
+            return da.Update(item);
+        }
     }
 }

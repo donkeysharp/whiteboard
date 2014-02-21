@@ -1,3 +1,10 @@
 ﻿<div class="profile-container">
     <h3>Update your Profile</h3>
+
+@using (Html.BeginForm("Index", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+    
+    
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
 </div>
