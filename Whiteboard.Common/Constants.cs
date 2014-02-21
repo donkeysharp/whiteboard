@@ -17,7 +17,7 @@ namespace Whiteboard.Common {
 
         public const string SESSION_USER = "WhiteboardUser";
 
-        public const string UPLOADS_PATH = "~/App_Data/uploads";
+        public const string UPLOADS_PATH = "~/Content/uploads";
     }
 
     public class Messages {

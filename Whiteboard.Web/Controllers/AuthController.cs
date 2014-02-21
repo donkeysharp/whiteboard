@@ -9,7 +9,7 @@ using Whiteboard.DataAccess.Repositories;
 using Whiteboard.Web.Models;
 
 namespace Whiteboard.Web.Controllers {
-    public class AuthController : Controller {
+    public class AuthController : BaseController {
         [HttpGet]
         public ActionResult Index() {
             return View();
@@ -72,6 +72,7 @@ namespace Whiteboard.Web.Controllers {
                 return RedirectToAction("Register", "Auth");
             }
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+            // Verifies if the emails is not being used
             Whiteboard.DataAccess.Models.Profile profile = service.Get(model.Email);
             if (profile != null) {
                 ModelState.AddModelError("ModelExists", "Email already exists.");
@@ -80,25 +81,13 @@ namespace Whiteboard.Web.Controllers {
 
                 return RedirectToAction("Register", "Auth");
             }
-            service.Insert(model.Profile);
+
+            // Sets the default image for profile
+            var profileInsert = model.Profile;
+            profileInsert.PictureUrl = "user.png";
+            service.Insert(profileInsert);
 
             return RedirectToAction("Login", "Auth");
         }
-
-        #region "Private Methods"
-
-        private static List<SelectListItem> GetCountries() {
-            var result = (from c in Whiteboard.Common.Geo.Regions.GetCountries()
-                          select new SelectListItem() {
-                              Text = c.Name, Value = c.Code
-                          }).ToList();
-
-            result.Insert(0, new SelectListItem() {
-                Text = "--- Select your country ---",
-                Value = ""
-            });
-            return result;
-        }
-        #endregion
     }
 }

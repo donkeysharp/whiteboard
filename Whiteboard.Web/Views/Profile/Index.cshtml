@@ -1,10 +1,91 @@
-﻿<div class="profile-container">
-    <h3>Update your Profile</h3>
-
-@using (Html.BeginForm("Index", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })) {
-    
-    
-    <input type="file" name="file" />
-    <input type="submit" value="OK" />
+﻿@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using Whiteboard.Common
+@using Whiteboard.DataAccess.Models
+@model Whiteboard.Web.Models.ProfileViewModel
+<div class="container profile-container">
+    <div class="title"><h3>Update your Profile</h3></div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <center><b>Profile Picture</b></center>
+            <div class="profile-picture">
+                <img src="@Url.Content(Path.Combine(Constants.UPLOADS_PATH, Model.PictureUrl))" />
+            </div>
+            @using (Html.BeginForm("Upload", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+                <input type="file" name="file" />
+                <input type="submit" class="btn btn-primary" value="Upload" />
+            }
+        </div>
+
+        <div class="col-md-8">
+            @using (Html.BeginForm("Save", "Profile", FormMethod.Post)) {
+            <table class="info">
+                <tr>
+                    <td>Email:</td>
+                    <td><span>@Model.Email</span></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input type="text" class="form-control" name="name" value="@Model.Name" />
+                    </td>
+                </tr>
+                @if (Model.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT) ||
+                    Model.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) 
+                {
+                    <tr>
+                        <td>Last Name:</td>
+                        <td>
+                            <input type="text" class="form-control" name="lastName" value="@Model.LastName" />
+                        </td>
+                    </tr>
+                } 
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        @Html.DropDownList("country", (IEnumerable<SelectListItem>)ViewData["country"], 
+                        new {
+                            @class="form-control"
+                        })
+                    </td>
+                </tr>
+                @if (Model.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)){
+                    <tr>
+                        <td>Description:</td>
+                        <td>
+                            <textarea cols="10" rows="3" name="description" class="form-control">@Model.Description</textarea>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>Current Password:</td>
+                    <td>
+                        <input type="password" name="currentPassword" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>New Password:</td>
+                    <td>
+                        <input type="password" name="newPassword" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td>
+                        <input type="password" name="confirmPassword" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" class="btn btn-success" value="Save Changes" />
+                    </td>
+                </tr>
+            </table>
+            }
+        </div>
+    </div>
 </div>

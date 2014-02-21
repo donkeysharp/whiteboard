@@ -39,7 +39,9 @@
         @User.Identity.Name <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a href="#">Profile</a></li>
+        <li>
+            @Html.ActionLink("Profile", "Index", "Profile")
+        </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
         @using (Html.BeginForm("LogOut", "Auth", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()

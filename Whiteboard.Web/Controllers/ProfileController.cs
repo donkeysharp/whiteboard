@@ -8,19 +8,30 @@ using whiteboard.BusinessLogic.ProfileModule;
 using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
+using Whiteboard.Web.Models;
 
-namespace Whiteboard.Web.Content {
+namespace Whiteboard.Web.Controllers {
     [Authorize]
-    public class ProfileController : Controller {
-        // GET: /Profile/
+    public class ProfileController : BaseController {
+        [HttpGet]
         public ActionResult Index() {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
             Profile profile = service.Get(User.Identity.Name);
-            return View();
+
+            ProfileViewModel model = new ProfileViewModel(profile);
+            ViewData["country"] = GetCountries();
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file) {
+        public ActionResult Save(ProfileViewModel profileVM) {
+
+            return RedirectToAction("Index", "Profile");
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file) {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
             Profile profile = service.Get(User.Identity.Name);
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Whiteboard.Web.Models;
 
 namespace Whiteboard.Web.Controllers {
-    public class HomeController : Controller {
+    public class HomeController : BaseController {
         public ActionResult Index() {
             if (Request.IsAuthenticated) {
                 return RedirectToAction("Index", "Dashboard");
@@ -31,22 +31,5 @@ namespace Whiteboard.Web.Controllers {
 
             return View();
         }
-
-
-        #region "Private Methods"
-
-        private static List<SelectListItem> GetCountries() {
-            var result = (from c in Whiteboard.Common.Geo.Regions.GetCountries()
-                          select new SelectListItem() {
-                              Text = c.Name, Value = c.Code
-                          }).ToList();
-
-            result.Insert(0, new SelectListItem() {
-                Text = "--- Select your country ---",
-                Value = ""
-            });
-            return result;
-        }
-        #endregion
     }
 }

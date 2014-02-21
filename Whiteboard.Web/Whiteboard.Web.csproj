@@ -176,7 +176,8 @@
     <Compile Include="Auth\GeneralMembershipProvider.cs" />
     <Compile Include="Auth\GeneralMembershipUser.cs" />
     <Compile Include="Auth\GeneralRoleProvider.cs" />
-    <Compile Include="Content\ProfileController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -237,6 +238,7 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Areas\WebAPI\Models\" />
     <Folder Include="Areas\WebAPI\Views\Shared\" />
+    <Folder Include="Content\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
