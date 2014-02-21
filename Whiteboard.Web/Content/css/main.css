@@ -18,10 +18,14 @@
     margin-top: 10px;
     width: 100%;
 }
+.main-container {
+    margin-top: 50px;
+}
 .login-container {
     width: 320px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 90px;
     padding: 25px;
     padding-left: 10px;
     background: #eee;
