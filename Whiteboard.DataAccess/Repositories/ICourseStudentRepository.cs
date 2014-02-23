@@ -7,7 +7,7 @@ using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.DataAccess.Repositories
 {
-    public interface ICourseStudentRepository:IRepository<Course>
+    public interface ICourseStudentRepository : IRepository<CourseStudent>
     {
 
     }
