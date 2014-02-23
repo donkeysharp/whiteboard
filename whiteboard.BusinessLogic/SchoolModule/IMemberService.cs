@@ -10,7 +10,7 @@ namespace whiteboard.BusinessLogic.SchoolModule
     public interface IMemberService:IService<Member>
     {
         IEnumerable<Member> GetSortedBy(MemberTypes type);
-        IEnumerable<Member> Search(string data); 
-
+        IEnumerable<Member> Search(string data);
+        Member GetByProfile(int profileId);
     }
 }
