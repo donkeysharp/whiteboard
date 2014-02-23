@@ -47,6 +47,15 @@ namespace whiteboard.BusinessLogic.SchoolModule
             return da.Filter((x) => (x.Profile.Name.Contains(data) || x.Profile.Email.Contains(data)),
                 (x) => x.OrderBy((y) => y.Id));
         }
+
+
+        public School GetByProfile(int profileId) {
+            List<School> schools = da.Filter(x => x.ProfileId == profileId).ToList();
+            if (schools.Count > 0) {
+                return schools[0];
+            }
+            return null;
+        }
     }
     public enum SchoolTypes
     {

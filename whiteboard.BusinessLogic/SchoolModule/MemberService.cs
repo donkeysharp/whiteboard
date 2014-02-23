@@ -57,6 +57,15 @@ namespace whiteboard.BusinessLogic.SchoolModule
             return da.Filter((x) => (x.Profile.Name.Contains(data) || x.Profile.Email.Contains(data)),
                 (x) => x.OrderBy((y) => y.Id));
         }
+
+
+        public Member GetByProfile(int profileId) {
+            List<Member> members = da.Filter(x => x.ProfileId == profileId).ToList();
+            if (members.Count > 0) {
+                return members[0];
+            }
+            return null;
+        }
     }
     public enum MemberTypes
     {

@@ -11,6 +11,6 @@ namespace whiteboard.BusinessLogic.SchoolModule
     {
         IEnumerable<Member> GetSortedBy(MemberTypes type);
         IEnumerable<Member> Search(string data);
-
+        Member GetByProfile(int profileId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Whiteboard.DataAccess.Models;
@@ -7,9 +8,10 @@ using Whiteboard.DataAccess.Models;
 namespace Whiteboard.Web.Models {
     public class ProfileViewModel {
         public int Id { get; set; }
+        [Required(ErrorMessage="Name is required.")]
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        [Required(ErrorMessage="Country is required.")]
         public string Country { get; set; }
         public string PictureUrl { get; set; }
         public string Role { get; set; }
