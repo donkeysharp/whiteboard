@@ -20,5 +20,7 @@ namespace Whiteboard.DataAccess.Models {
         public int TeacherId { get; set; }
         [ForeignKey("TeacherId")]
         public virtual Member Teacher { get; set; }
+
+        public virtual IEnumerable<Member> Students { get; set; }
     }
 }
