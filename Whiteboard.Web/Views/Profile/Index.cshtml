@@ -96,3 +96,15 @@
         </div>
     </div>
 </div>
+@section scripts {
+    <script>
+        var country = "@Model.Country";
+        var countryList = document.getElementById("country");
+        for (var i = 0; i < countryList.options.length; ++i) {
+            if (countryList.options[i].value === country) {
+                countryList.options[i].selected = true;
+                break;
+            }
+        }
+    </script>
+}
