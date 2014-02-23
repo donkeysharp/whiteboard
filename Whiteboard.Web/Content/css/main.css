@@ -117,3 +117,6 @@
 .profile-container .info .btn {
     margin-top: 5px;
 }
+.profile-container .row .col-md-4 input[type=file] {
+    width: 94px;
+}
