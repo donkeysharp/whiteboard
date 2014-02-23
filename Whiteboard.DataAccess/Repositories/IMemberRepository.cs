@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.DataAccess.Repositories {
-    public interface IMemberRepository : IRepository<Member> 
+    public interface IMemberRepository : IRepository<Member>
     {
 
     }

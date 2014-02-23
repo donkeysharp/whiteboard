@@ -65,12 +65,20 @@
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
+    <Compile Include="Repositories\CourseStudentRepository.cs" />
     <Compile Include="Repositories\ICourseRepository.cs" />
+    <Compile Include="Repositories\ICourseStudentRepository.cs" />
     <Compile Include="Repositories\IMemberRepository.cs" />
     <Compile Include="Repositories\IProfileRepository.cs" />
+    <Compile Include="Repositories\IRequestCourseStudentRepository.cs" />
+    <Compile Include="Repositories\IRequestSchoolMemberRepository.cs" />
+    <Compile Include="Repositories\ISchoolMemberRepository.cs" />
     <Compile Include="Repositories\ISchoolRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
+    <Compile Include="Repositories\RequestCourseStudentRepository.cs" />
+    <Compile Include="Repositories\RequestSchoolMemberRepository.cs" />
+    <Compile Include="Repositories\SchoolMemberRepository.cs" />
     <Compile Include="Repositories\SchoolRepository.cs" />
   </ItemGroup>
   <ItemGroup />

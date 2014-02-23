@@ -7,7 +7,7 @@ using Whiteboard.DataAccess.Models;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public interface IMemberService:IService<Member>
+    public interface IMemberService : IService<Member>
     {
         IEnumerable<Member> GetSortedBy(MemberTypes type);
         IEnumerable<Member> Search(string data);
