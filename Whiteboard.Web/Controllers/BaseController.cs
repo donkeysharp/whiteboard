@@ -11,10 +11,10 @@ namespace Whiteboard.Web.Controllers {
     public class BaseController : Controller {
 
         #region "Protected Methods"
-        protected List<SelectListItem> GetCountries() {
+        protected List<SelectListItem> GetCountries(string selectedCountry = null) {
             var result = (from c in Whiteboard.Common.Geo.Regions.GetCountries()
                           select new SelectListItem() {
-                              Text = c.Name, Value = c.Code
+                              Text = c.Name, Value = c.Code, Selected = c.Code.Equals(selectedCountry)
                           }).ToList();
 
             result.Insert(0, new SelectListItem() {
