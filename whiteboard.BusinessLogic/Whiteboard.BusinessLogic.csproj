@@ -40,7 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProfileModule\IProfileService.cs" />
+    <Compile Include="ProfileModule\IRoleProfileService.cs" />
+    <Compile Include="ProfileModule\IRoleService.cs" />
     <Compile Include="ProfileModule\ProfileService.cs" />
+    <Compile Include="ProfileModule\RoleProfileService.cs" />
+    <Compile Include="ProfileModule\RoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GenericService.cs" />
     <Compile Include="IService.cs" />

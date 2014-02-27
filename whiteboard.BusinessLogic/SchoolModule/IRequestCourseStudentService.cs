@@ -9,6 +9,7 @@ namespace whiteboard.BusinessLogic.SchoolModule
 {
     public interface IRequestCourseStudentService:IService<RequestCourseStudent>
     {
-
+        IEnumerable<RequestCourseStudent> GetByCourseId(int id);
+        IEnumerable<RequestCourseStudent> GetByTeacherId(int id);
     }
 }
