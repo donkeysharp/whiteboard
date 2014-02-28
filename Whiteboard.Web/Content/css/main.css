@@ -120,3 +120,8 @@
 .profile-container .row .col-md-4 input[type=file] {
     width: 94px;
 }
+.dashboard-container {
+    margin-top: 50px;
+    background-color: #fff;
+    width: 100%;
+}

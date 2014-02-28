@@ -1,7 +1,10 @@
 ﻿
 <div class="login-container">
     @if (ViewBag.Errors != null) { 
-        <div class="alert alert-danger">@ViewBag.Errors</div>
+        <div class="alert alert-danger alert-dismissable">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">x</button>
+            @ViewBag.Errors
+        </div>
     }
 
     @using (Html.BeginForm("Login", "Auth", FormMethod.Post)) {

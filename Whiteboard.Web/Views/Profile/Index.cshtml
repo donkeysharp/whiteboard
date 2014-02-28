@@ -22,7 +22,8 @@
 
         <div class="col-md-8">
             @if (ViewBag.Errors.Count > 0) {
-                <div class="alert alert-danger">
+                <div class="alert alert-danger alert-dismissable">
+                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">x</button>
                     @foreach(var error in ViewBag.Errors) {
                         <p>@error.ErrorMessage</p>   
                     } 

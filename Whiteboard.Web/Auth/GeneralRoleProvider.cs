@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using whiteboard.BusinessLogic.ProfileModule;
+using Whiteboard.DataAccess.Models;
+using Whiteboard.DataAccess.Repositories;
 
 namespace Whiteboard.Web.Auth {
     public class GeneralRoleProvider : RoleProvider {
@@ -38,7 +41,12 @@ namespace Whiteboard.Web.Auth {
         }
 
         public override string[] GetRolesForUser(string username) {
-            throw new NotImplementedException();
+            IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+            Profile profile = service.Get(username);
+            if (profile == null) {
+                return new string[0];
+            }
+            return new string[] { profile.Role };
         }
 
         public override string[] GetUsersInRole(string roleName) {
@@ -46,7 +54,12 @@ namespace Whiteboard.Web.Auth {
         }
 
         public override bool IsUserInRole(string username, string roleName) {
-            throw new NotImplementedException();
+            IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+            Profile profile = service.Get(username);
+            if (profile == null) {
+                return false;
+            }
+            return profile.Role.Equals(roleName);
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames) {

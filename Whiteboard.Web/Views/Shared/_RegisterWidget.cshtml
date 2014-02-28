@@ -2,7 +2,8 @@
     @Html.AntiForgeryToken()
     <h2>Create a Pizarrón account :)</h2>
     if (ViewBag.Errors.Count > 0) {
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissable">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">x</button>
             @foreach(var error in ViewBag.Errors) {
                 <p>@error.ErrorMessage</p>   
             } 
