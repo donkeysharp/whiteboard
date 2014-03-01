@@ -2,5 +2,39 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
-@section Scripts { <script>noSideBar();</script>}
-<h2>Index</h2>
+<div style="width:100%; height: 500px; background:#fff url(/Content/img/blackboard.jpg) no-repeat; 
+background-size: 100% 500px;
+margin-top: 51px;
+position: relative;
+">
+    @*<div style="color: #000; position: absolute; top: 0; left: 0;
+         background-color: rgba(255,255,255, 0); width: 100%; height: 100%;">
+    </div>*@
+
+    <div style="position:absolute;top: 50px; left: 100px; 
+          background: rgba(255, 255, 255, 0.9); 
+          width: 600px; height: 378px;
+          padding: 5px 30px 15px 30px;
+          border-radius: 5px;
+        ">
+        <h1>Pizarrón</h1>
+        <p style="font-family: bad script; font-size: 25px;">
+            "... don't get worried of teacher's notes again, we'll save them for you ..."
+        </p>
+        <br />   
+        <ul style="font-family: bad script,sans-serif; font-size: 20px">
+            <li>Attend your classes online</li>
+            <li>Access teacher's notes when you want</li>
+            <li>... listen the teacher and learn!!!</li>
+        </ul>
+    </div>
+
+    <div class="register-container register-container-home">
+        @Html.Partial("_RegisterWidget")
+    </div>
+</div>
+
+@section scripts {
+    <script>noSideBar();</script>
+    <script src="@Url.Content("~/Content/js/register.js")"></script>
+}
