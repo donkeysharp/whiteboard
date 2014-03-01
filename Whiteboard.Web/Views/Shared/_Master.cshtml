@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title - Whiteboard</title>
+    <!--
+    <link href="@Url.Content("~/Content/css/plugins/pace/pace.css")" rel="stylesheet">
+    <script src="@Url.Content("~/Content/js/plugins/pace/pace.js")"></script>
+        -->
+    <!-- GLOBAL STYLES - Include these on every page. -->
+    <link href="@Url.Content("~/Content/css/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/icons/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+
+    <!-- THEME STYLES - Include these on every page. -->
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/plugins.css")" rel="stylesheet">
+    <!-- THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted. -->
+    <link href="@Url.Content("~/Content/css/demo.css")" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="@Url.Content("~/Content/js/html5shiv.js")"></script>
+      <script src="@Url.Content("~/Content/js/respond.min.js")"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        @Html.Partial("_Header")
+        @RenderSection("SideBar", required: false)
+        <!-- begin MAIN PAGE CONTENT -->
+        <div id="page-wrapper">
+            <div class="page-content">
+                
+                @RenderBody()
+            </div>
+            <!-- /.page-content -->
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- end MAIN PAGE CONTENT -->
+    </div>
+
+     <!-- GLOBAL SCRIPTS -->
+    <script src="@Url.Content("~/Content/vendor/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/bootstrap/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/slimscroll/jquery.slimscroll.min.js")"></script>
+    @*<script src="@Url.Content("~/Content/js/plugins/popupoverlay/jquery.popupoverlay.js")"></script>*@
+    @*<script src="@Url.Content("~/Content/js/plugins/popupoverlay/defaults.js")"></script>*@
+    <!-- HISRC Retina Images -->
+    <script src="@Url.Content("~/Content/js/plugins/hisrc/hisrc.js")"></script>
+    <!-- Date Range Picker -->
+    <script src="@Url.Content("~/Content/js/plugins/daterangepicker/moment.js")"></script>
+    <!-- THEME SCRIPTS -->
+    <script src="@Url.Content("~/Content/js/flex.js")"></script>
+    <script src="@Url.Content("~/Content/js/demo/dashboard-demo.js")"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

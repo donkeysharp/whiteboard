@@ -1,52 +1,6 @@
 //Date Range Picker
 $(document).ready(function() {
-   
 });
-
-//Morris Area Chart
-var sales_data = [{
-    date: '2014-1-25',
-    productA: 80.26,
-    productB: 92.26,
-    productC: 79.91,
-    productD: 81.63
-}, {
-    date: '2014-1-26',
-    productA: 251.34,
-    productB: 115.62,
-    productC: 128.34,
-    productD: 92.35
-}, {
-    date: '2014-1-27',
-    productA: 90.91,
-    productB: 89.26,
-    productC: 124.48,
-    productD: 152.61
-}, {
-    date: '2014-1-28',
-    productA: 91.23,
-    productB: 87.94,
-    productC: 250.79,
-    productD: 352.24
-}, {
-    date: '2014-1-29',
-    productA: 148.26,
-    productB: 151.98,
-    productC: 164.33,
-    productD: 142.43
-}, {
-    date: '2014-1-30',
-    productA: 74.53,
-    productB: 71.26,
-    productC: 78.91,
-    productD: 76.32
-}, {
-    date: '2014-1-31',
-    productA: 84.26,
-    productB: 62.87,
-    productC: 156.72,
-    productD: 163.06
-}, ];
 
 
 //Flot Chart Dynamic Chart
@@ -57,47 +11,6 @@ var container = $("#flot-chart-moving-line");
 // this gives us a nice high-res plot while avoiding more than one point per pixel.
 
 var maximum = container.outerWidth() / 10 || 300;
-
-//
-
-var data = [];
-
-function getRandomData() {
-
-    if (data.length) {
-        data = data.slice(1);
-    }
-
-    while (data.length < maximum) {
-        var previous = data.length ? data[data.length - 1] : 50;
-        var y = previous + Math.random() * 10 - 5;
-        data.push(y < 0 ? 0 : y > 100 ? 100 : y);
-    }
-
-    // zip the generated y values with the x values
-
-    var res = [];
-    for (var i = 0; i < data.length; ++i) {
-        res.push([i, data[i]])
-    }
-
-    return res;
-}
-
-//
-
-series = [{
-    data: getRandomData(),
-    lines: {
-        fill: true,
-        fillColor: "rgba(255,255,255,0.4)",
-    },
-}];
-
-//
-
-
-// Update the random dataset at 25FPS for a smoothly-animating chart
 
 
 

@@ -1,5 +1,11 @@
 // Flex Admin Custom JavaScript Document
 
+function noSideBar() {
+    $(".navbar-side").toggleClass("collapsed");
+    $("#page-wrapper").toggleClass("collapsed");
+    $("#sidebar-toggle").hide();
+}
+
 //Sidebar Toggle
 $("#sidebar-toggle").click(function(e) {
     e.preventDefault();

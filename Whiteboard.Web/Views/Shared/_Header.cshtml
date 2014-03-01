@@ -1,29 +1,215 @@
-﻿<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+﻿<nav class="navbar-top" role="navigation">
+    <!-- begin BRAND HEADING -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Pizarrón</a>
+        <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".sidebar-collapse">
+            <i class="fa fa-bars"></i> Menu
+        </button>
+        <div class="navbar-brand">
+            <a href="/">
+                <img src="/content/img/flex-admin-logo.png" data-1x="/content/img/flex-admin-logo.png" 
+                    data-2x="/content/img/flex-admin-logo.png" class="hisrc img-responsive" alt="">
+            </a>
+        </div>
     </div>
+    <!-- end BRAND HEADING -->
+    <div class="nav-top">
+        <!-- begin LEFT SIDE WIDGETS -->
+        <ul class="nav navbar-left">
+            <li class="tooltip-sidebar-toggle">
+                <a href="index.html#" id="sidebar-toggle" data-toggle="tooltip" data-placement="right" title="Sidebar Toggle">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </li>
+            <!-- You may add more widgets here using <li> -->
+        </ul>
+        <!-- end LEFT SIDE WIDGETS -->
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        @*<li><a title="Start Course" href="#"><span class="glyphicon glyphicon-facetime-video"></span></a></li>*@
-        <li class="dropdown">
-            @Html.Partial("_LoginProfile")
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+        <!-- begin MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
+        <ul class="nav navbar-right">
+            <!-- begin ALERTS DROPDOWN -->
+            <li class="dropdown">
+                <a href="index.html#" class="alerts-link dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-bell"></i> 
+                    <span class="number">9</span><i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-scroll dropdown-alerts">
+
+                    <!-- Alerts Dropdown Heading -->
+                    <li class="dropdown-header">
+                        <i class="fa fa-bell"></i> 9 New Alerts
+                    </li>
+
+                    <!-- Alerts Dropdown Body - This is contained within a SlimScroll fixed height box. You can change the height using the SlimScroll jQuery features. -->
+                    <li id="alertScroll">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon green pull-left">
+                                        <i class="fa fa-money"></i>
+                                    </div>
+                                    Order #2931 Received
+                                    <span class="small pull-right">
+                                        <strong><em>3 minutes ago</em></strong>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon blue pull-left">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    New Comments
+                                    <span class="badge blue pull-right">15</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon orange pull-left">
+                                        <i class="fa fa-wrench"></i>
+                                    </div>
+                                    Crawl Errors Detected
+                                    <span class="badge orange pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon yellow pull-left">
+                                        <i class="fa fa-question-circle"></i>
+                                    </div>
+                                    Server #2 Not Responding
+                                    <span class="small pull-right">
+                                        <strong><em>5:25 PM</em></strong>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon red pull-left">
+                                        <i class="fa fa-bolt"></i>
+                                    </div>
+                                    Server #4 Crashed
+                                    <span class="small pull-right">
+                                        <strong>
+                                            <em>3:34 PM</em>
+                                        </strong>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon green pull-left">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </div>
+                                    New Users
+                                    <span class="badge green pull-right">5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon orange pull-left">
+                                        <i class="fa fa-download"></i>
+                                    </div>
+                                    Downloads
+                                    <span class="badge orange pull-right">16</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon purple pull-left">
+                                        <i class="fa fa-cloud-upload"></i>
+                                    </div>
+                                    Server #8 Rebooted
+                                    <span class="small pull-right">
+                                        <strong>
+                                            <em>12 hours ago</em>
+                                        </strong>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="alert-icon red pull-left">
+                                        <i class="fa fa-bolt"></i>
+                                    </div>
+                                    Server #8 Crashed
+                                    <span class="small pull-right">
+                                        <strong>
+                                            <em>12 hours ago</em>
+                                        </strong>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Alerts Dropdown Footer -->
+                    <li class="dropdown-footer">
+                        <a href="index.html#">View All Alerts</a>
+                    </li>
+
+                </ul>
+                <!-- /.dropdown-menu -->
+            </li>
+            <!-- /.dropdown -->
+            <!-- end ALERTS DROPDOWN -->
+
+
+            <!-- begin USER ACTIONS DROPDOWN -->
+            <li class="dropdown">
+                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="profile.html">
+                            <i class="fa fa-user"></i> My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailbox.html">
+                            <i class="fa fa-envelope"></i> My Messages
+                            <span class="badge green pull-right">4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#">
+                            <i class="fa fa-bell"></i> My Alerts
+                            <span class="badge orange pull-right">9</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#">
+                            <i class="fa fa-tasks"></i> My Tasks
+                            <span class="badge blue pull-right">10</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calendar.html">
+                            <i class="fa fa-calendar"></i> My Calendar
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="index.html#">
+                            <i class="fa fa-gear"></i> Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a class="logout_open" href="index.html#logout">
+                            <i class="fa fa-sign-out"></i> Logout
+                            <strong>John Smith</strong>
+                        </a>
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
+@using (Html.BeginForm("LogOut", "Auth", FormMethod.Post, new { id = "logoutForm" })) {
+    @Html.AntiForgeryToken()
+}
+                </ul>
+                <!-- /.dropdown-menu -->
+            </li>
+            <!-- /.dropdown -->
+            <!-- end USER ACTIONS DROPDOWN -->
+
+        </ul>
+    </div>
 </nav>
