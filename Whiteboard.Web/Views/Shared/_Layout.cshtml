@@ -1,5 +1,4 @@
 ﻿@{
-    ViewBag.Title = "_Layout";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 @section SideBar {
@@ -16,10 +15,12 @@
                 </li>
                 <li class="active">Blank Page</li>
             </ol>
+
+            @RenderBody()
         </div>
     </div>
     <!-- /.col-lg-12 -->
-    @RenderBody()
+    
 </div>
 <!-- /.row -->
 <!-- end PAGE TITLE ROW -->

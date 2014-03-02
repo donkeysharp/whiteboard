@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Whiteboard.Web.Controllers {
     [Authorize]
-    public class DashboardController : Controller {
+    public class DashboardController : BaseController {
         [HttpGet]
         public ActionResult Index() {
             return View();

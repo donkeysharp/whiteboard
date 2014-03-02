@@ -1,12 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Welcome";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
-<div style="width:100%; height: 500px; background:#fff url(/Content/img/blackboard.jpg) no-repeat; 
-background-size: 100% 500px;
-margin-top: 51px;
-position: relative;
-">
+<div class="cover">
 
     <div style="position:absolute;top: 50px; left: 100px; 
           background: rgba(255, 255, 255, 0.9); 
@@ -30,8 +26,10 @@ position: relative;
         @Html.Partial("_RegisterWidget")
     </div>
 </div>
-
-@section scripts {
+@section StyleSheets {
+     <link href="@Url.Content("~/Content/css/home.css")" rel="stylesheet">
+}
+@section Scripts {
     <script>noSideBar();</script>
     <script src="@Url.Content("~/Content/js/register.js")"></script>
 }

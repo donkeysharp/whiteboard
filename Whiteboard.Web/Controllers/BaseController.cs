@@ -9,7 +9,15 @@ using Whiteboard.DataAccess.Repositories;
 
 namespace Whiteboard.Web.Controllers {
     public class BaseController : Controller {
+        protected override void OnActionExecuted(ActionExecutedContext filterContext) {
 
+            if (Request.IsAuthenticated) {
+                IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+                Profile profile = service.Get(User.Identity.Name);
+                ViewBag.ProfileData = profile;    
+            }
+            base.OnActionExecuted(filterContext);
+        }
         #region "Protected Methods"
         protected List<SelectListItem> GetCountries(string selectedCountry = null) {
             var result = (from c in Whiteboard.Common.Geo.Regions.GetCountries()
