@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
 
-namespace Whiteboard.DataAccess.Repositories
+namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public interface IRequestCourseStudentRepository:IRepository<RequestCourseStudent>
+    public interface ICourseTeacherService:IService<CourseTeacher>
     {
-
     }
 }

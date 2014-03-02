@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Whiteboard.DataAccess.Models;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public interface IRequestSchoolMemberService:IService<RequestSchoolMember>
+    public interface IWhiteboardService:IService<Whiteboard.DataAccess.Models.Whiteboard>
     {
     }
 }

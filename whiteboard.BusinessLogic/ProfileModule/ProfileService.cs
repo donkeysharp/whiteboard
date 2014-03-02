@@ -28,7 +28,6 @@ namespace whiteboard.BusinessLogic.ProfileModule {
         {
             // Replaces current password with a hashed password
             item.Password = HashSumUtil.GetHashSum(item.Password, HashSumType.SHA1);
-
             return daProfile.Insert(item);
         }
 
