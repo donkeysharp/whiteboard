@@ -1,6 +1,9 @@
 ﻿@using (Html.BeginForm("Register", "Auth", FormMethod.Post)) {
     @Html.AntiForgeryToken()
-    <h2>Create a Pizarrón account :)</h2>
+    <div>
+    <span class="title title-big">Sign Up to Pizarrón</span>
+    <span class="title title-small">It's free!</span>
+        </div>
     if (ViewBag.Errors.Count > 0) {
         <div class="alert alert-danger alert-dismissable">
             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">x</button>
@@ -9,48 +12,25 @@
             } 
         </div>
     }
-    <table>
-        <tr>
-            <td>
-                Are you a: <br />
-                <label>
-                    @Html.RadioButton("role", Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT, true)
-                    Student
-                </label>
-                &nbsp;&nbsp;&nbsp;
-                <label>
-                    @Html.RadioButton("role", Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)
-                    Teacher
-                </label>
-                &nbsp;&nbsp;&nbsp;
-                <label>
-                    @Html.RadioButton("role", Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)
-                    School
-                </label>
-            </td>
-        </tr>
-    </table>
+    
     <table class="info">
         <tr>
-            <td><span id="name-label">Student Name:</span><b>*</b></td>
             <td>
                 <input type="text" name="name" autocomplete="off" 
-                    class="form-control" placeholder="Type your name ..."
+                    class="form-control" placeholder="Your Name"
                     value="@ViewBag.RegisterModel.Name"
                      />
             </td>
         </tr>
         <tr>
-            <td>Email: <b>*</b></td>
             <td>
                 <input type="email" name="email" autocomplete="off" 
-                    class="form-control" placeholder="Type your email ..." 
+                    class="form-control" placeholder="Your Email" 
                     value="@ViewBag.RegisterModel.Email"
                     />
             </td>
         </tr>
         <tr>
-            <td>Country: <b>*</b></td>
             <td>
                 @Html.DropDownList("country", (IEnumerable<SelectListItem>)ViewData["country"], new {
                     @class="form-control"
@@ -58,21 +38,18 @@
             </td>
         </tr>
         <tr>
-            <td>Password: <b>*</b></td>
             <td>
                 <input type="password" name="password" autocomplete="off" 
                     class="form-control" placeholder="Type your password ..." />
             </td>
         </tr>
         <tr>
-            <td>Confirm Password: <b>*</b></td>
             <td>
                 <input type="password" name="confirmPassword" autocomplete="off" 
                     class="form-control" placeholder="Confirm your password ..." />
             </td>
         </tr>
         <tr>
-            <td style="font-weight: normal"><b>*</b> Required</td>
             <td>
                 <input type="submit" class="btn btn-success" value="Register" />
             </td>
