@@ -39,33 +39,8 @@ namespace Whiteboard.DataAccess {
         }
 
         public void Seed() {
-            Role schoolRole = new Role();
-            schoolRole.Name = Role.ROLE_SCHOOL;
-            Role teacherRole = new Role();
-            teacherRole.Name = Role.ROLE_TEACHER;
-            Role studentRole = new Role();
-            studentRole.Name = Role.ROLE_STUDENT;
-
-            this.Roles.Add(schoolRole);
-            this.Roles.Add(teacherRole);
-            this.Roles.Add(studentRole);
-
-            Profile schoolProfile = new Profile();
-            schoolProfile.Name = "UMSA";
-            schoolProfile.Email = "pizarron@umsa.edu.bo";
-            schoolProfile.Password = "8cb2237d0679ca88db6464eac60da96345513964";
-            schoolProfile.Country = "BO";
-            schoolProfile.PictureUrl = "user.png";
-
-            this.Profiles.Add(schoolProfile);
-
-            RoleProfile roleProfileSchool = new RoleProfile();
-            roleProfileSchool.ProfileId = 1;
-            roleProfileSchool.RoleId = (int)Role.Roles.School;
-
-            this.RoleProfiles.Add(roleProfileSchool);
-
-            this.SaveChanges();
+            DbGenerator generator = new DbGenerator(this);
+            generator.GenerateSeedData();
         }
     }
 }
