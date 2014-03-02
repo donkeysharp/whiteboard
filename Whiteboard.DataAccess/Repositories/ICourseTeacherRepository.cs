@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
 
-namespace Whiteboard.DataAccess.Repositories {
-    public interface ISchoolRepository : IRepository<School> {
+namespace Whiteboard.DataAccess.Repositories
+{
+    public interface ICourseTeacherRepository:IRepository<CourseTeacher>
+    {
     }
 }

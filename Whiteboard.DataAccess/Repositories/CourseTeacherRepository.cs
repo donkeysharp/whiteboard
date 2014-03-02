@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
 
-namespace Whiteboard.DataAccess.Repositories {
-    public class SchoolRepository : GenericRepository<School>, ISchoolRepository {
+namespace Whiteboard.DataAccess.Repositories
+{
+    public class CourseTeacherRepository:GenericRepository<CourseTeacher>,ICourseTeacherRepository
+    {
     }
 }
