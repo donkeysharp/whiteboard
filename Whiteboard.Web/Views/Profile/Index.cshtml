@@ -41,16 +41,6 @@
                         <input type="text" class="form-control" name="name" value="@Model.Name" />
                     </td>
                 </tr>
-                @if (Model.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT) ||
-                    Model.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) 
-                {
-                    <tr>
-                        <td>Last Name:</td>
-                        <td>
-                            <input type="text" class="form-control" name="lastName" value="@Model.LastName" />
-                        </td>
-                    </tr>
-                } 
                 <tr>
                     <td>Country:</td>
                     <td>
@@ -60,14 +50,7 @@
                         })
                     </td>
                 </tr>
-                @if (Model.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)){
-                    <tr>
-                        <td>Description:</td>
-                        <td>
-                            <textarea cols="10" rows="3" name="description" class="form-control">@Model.Description</textarea>
-                        </td>
-                    </tr>
-                }
+                
                 <tr>
                     <td>Current Password:</td>
                     <td>

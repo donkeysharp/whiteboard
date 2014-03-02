@@ -59,36 +59,13 @@ namespace Whiteboard.DataAccess {
 
             this.Profiles.Add(schoolProfile);
 
-            RoleProfile roleProfileStudent = new RoleProfile();
-            roleProfileStudent.ProfileId = 1;
-            roleProfileStudent.RoleId = (int)Role.Roles.Student;
-
             RoleProfile roleProfileSchool = new RoleProfile();
             roleProfileSchool.ProfileId = 1;
             roleProfileSchool.RoleId = (int)Role.Roles.School;
 
-            this.RoleProfiles.Add(roleProfileStudent);
             this.RoleProfiles.Add(roleProfileSchool);
 
             this.SaveChanges();
         }
-
-        ///*
-        // * Seed data initializers
-        // */
-        //public class DropCreateIfChangeInitializer : DropCreateDatabaseIfModelChanges<DataBaseContext> {
-        //    protected override void Seed(DataBaseContext context) {
-        //        context.Seed(context);
-        //        base.Seed(context);
-        //    }
-        //}
-        //public class CreateInitializer : CreateDatabaseIfNotExists<DataBaseContext> {
-        //    protected override void Seed(DataBaseContext context) {
-        //        context.Seed(context);
-
-        //        base.Seed(context);
-        //    }
-        //}
-
     }
 }
