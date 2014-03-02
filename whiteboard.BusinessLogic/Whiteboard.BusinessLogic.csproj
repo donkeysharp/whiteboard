@@ -49,9 +49,11 @@
     <Compile Include="GenericService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="SchoolModule\CourseClassService.cs" />
+    <Compile Include="SchoolModule\CourseService.cs" />
     <Compile Include="SchoolModule\CourseStudentService.cs" />
     <Compile Include="SchoolModule\CourseTeacherService.cs" />
     <Compile Include="SchoolModule\ICourseClassService.cs" />
+    <Compile Include="SchoolModule\ICourseService.cs" />
     <Compile Include="SchoolModule\ICourseStudentService.cs" />
     <Compile Include="SchoolModule\ICourseTeacherService.cs" />
     <Compile Include="SchoolModule\IWhiteboardService.cs" />
