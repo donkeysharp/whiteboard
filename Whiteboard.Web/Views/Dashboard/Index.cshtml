@@ -2,7 +2,6 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using Whiteboard.DataAccess.Models
 @section SideBar {
 <nav class="navbar-side" role="navigation">
     <div class="navbar-collapse sidebar-collapse collapse">
@@ -95,11 +94,11 @@
 </nav>
 }
 <div class="dashboard-container">
-    @if (User.IsInRole(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)) {
+    @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
         @Html.Partial("_SchoolDashboard2")
-    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) {
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
         @Html.Partial("_TeacherDashboard")
-    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT)) {
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
         @Html.Partial("_StudentDashboard")
     }
 </div>

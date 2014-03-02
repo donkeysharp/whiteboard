@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using whiteboard.BusinessLogic.ProfileModule;
+using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 using Whiteboard.Web.Models;
 
@@ -71,6 +72,7 @@ namespace Whiteboard.Web.Controllers {
                 
                 return RedirectToAction("Register", "Auth");
             }
+
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
             // Verifies if the emails is not being used
             Whiteboard.DataAccess.Models.Profile profile = service.Get(model.Email);
@@ -81,11 +83,17 @@ namespace Whiteboard.Web.Controllers {
 
                 return RedirectToAction("Register", "Auth");
             }
-
+            IRoleProfileService roleProfileService = RoleProfileService.GetInstance<RoleProfileRepository>();
             // Sets the default image for profile
             var profileInsert = model.Profile;
             profileInsert.PictureUrl = "user.png";
-            service.Insert(profileInsert);
+            profile = service.Insert(profileInsert);
+
+            // Creates a default role for the new profile
+            RoleProfile roleProfile = new RoleProfile();
+            roleProfile.ProfileId = profile.Id;
+            roleProfile.RoleId = (int)Role.Roles.School;
+            roleProfileService.Insert(roleProfile);
 
             return RedirectToAction("Login", "Auth");
         }
