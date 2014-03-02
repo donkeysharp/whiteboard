@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Models {
-    public class Whiteboard {
+    public class WhiteboardNote {
         public int Id { get; set; }
         public string PictureUrl { get; set; }
 

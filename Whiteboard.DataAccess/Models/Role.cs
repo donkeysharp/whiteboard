@@ -8,9 +8,9 @@ namespace Whiteboard.DataAccess.Models {
     public class Role {
         // In order to access its id values in order
         public enum Roles {
-            School = 0,
-            Teacher = 1,
-            Student = 2
+            School = 1,
+            Teacher = 2,
+            Student = 3
         }
         public const string ROLE_SCHOOL = "Profile.SchoolRole";
         public const string ROLE_TEACHER = "Profile.TeacherRole";

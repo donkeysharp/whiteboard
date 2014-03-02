@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Repositories
 {
-    public class WhiteboardRepository:GenericRepository<Whiteboard.DataAccess.Models.Whiteboard>,IWhiteboardRepository
+    public class WhiteboardRepository:GenericRepository<Whiteboard.DataAccess.Models.WhiteboardNote>,IWhiteboardRepository
     {
     }
 }

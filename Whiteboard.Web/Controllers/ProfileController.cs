@@ -38,7 +38,7 @@ namespace Whiteboard.Web.Controllers {
                 return RedirectToAction("Index", "Profile");
             }
             Profile profile = GetProfile();
-            UpdateOrCreateMemberSchool(profile, profileVM);
+            //UpdateOrCreateMemberSchool(profile, profileVM);
 
             profile.Name = profileVM.Name;
             profile.Country = profile.Country;
@@ -88,54 +88,40 @@ namespace Whiteboard.Web.Controllers {
         }
 
         #region "Private Methods"
-        private void UpdateOrCreateMemberSchool(Profile profile, ProfileViewModel profileVM) {
-            if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT) || profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) {
-                IMemberService memberService = MemberService.GetInstance<MemberRepository>();
-                Member member = memberService.GetByProfile(profile.Id);
-                if (member == null) {
-                    member = new Member();
-                    member.ProfileId = profile.Id;
-                    member.LastName = profileVM.LastName;
+        //private void UpdateOrCreateMemberSchool(Profile profile, ProfileViewModel profileVM) {
+        //    if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT) || profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) {
+        //        IMemberService memberService = MemberService.GetInstance<MemberRepository>();
+        //        Member member = memberService.GetByProfile(profile.Id);
+        //        if (member == null) {
+        //            member = new Member();
+        //            member.ProfileId = profile.Id;
+        //            member.LastName = profileVM.LastName;
 
-                    memberService.Insert(member);
-                } else {
-                    member.LastName = profileVM.LastName;
+        //            memberService.Insert(member);
+        //        } else {
+        //            member.LastName = profileVM.LastName;
 
-                    memberService.Update(member);
-                }
-            } else if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)) {
-                ISchoolService schoolService = SchoolService.GetInstance<SchoolRepository>();
-                School school = schoolService.GetByProfile(profile.Id);
-                if (school == null) {
-                    school = new School();
-                    school.ProfileId = profile.Id;
-                    school.Description = profileVM.Description;
+        //            memberService.Update(member);
+        //        }
+        //    } else if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)) {
+        //        ISchoolService schoolService = SchoolService.GetInstance<SchoolRepository>();
+        //        School school = schoolService.GetByProfile(profile.Id);
+        //        if (school == null) {
+        //            school = new School();
+        //            school.ProfileId = profile.Id;
+        //            school.Description = profileVM.Description;
 
-                    schoolService.Insert(school);
-                } else {
-                    school.Description = profileVM.Description;
+        //            schoolService.Insert(school);
+        //        } else {
+        //            school.Description = profileVM.Description;
 
-                    schoolService.Update(school);
-                }
-            }
-        }
+        //            schoolService.Update(school);
+        //        }
+        //    }
+        //}
 
         private ProfileViewModel GetProfileViewModel(Profile profile) {
             ProfileViewModel model = new ProfileViewModel(profile);
-            if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT) || profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) {
-                IMemberService memberService = MemberService.GetInstance<MemberRepository>();
-                Member member = memberService.GetByProfile(profile.Id);
-                if (member != null) {
-                    model.LastName = member.LastName;
-                }
-            } else if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)) {
-                ISchoolService schoolService = SchoolService.GetInstance<SchoolRepository>();
-                School school = schoolService.GetByProfile(profile.Id);
-                if (school != null) {
-                    model.Description = school.Description;
-                }
-            }
-
             return model;
         }
         #endregion

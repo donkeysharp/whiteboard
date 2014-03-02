@@ -7,7 +7,7 @@ using Whiteboard.DataAccess.Repositories;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public class WhiteboardService:GenericService<Whiteboard.DataAccess.Models.Whiteboard>,IWhiteboardService
+    public class WhiteboardService:GenericService<Whiteboard.DataAccess.Models.WhiteboardNote>,IWhiteboardService
     {
         private WhiteboardService(IWhiteboardRepository da):base(da)
         {

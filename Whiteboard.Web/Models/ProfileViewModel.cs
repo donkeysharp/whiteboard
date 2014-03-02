@@ -32,29 +32,6 @@ namespace Whiteboard.Web.Models {
             this.Email = profile.Email;
             this.Country = profile.Country;
             this.PictureUrl = profile.PictureUrl;
-            this.Role = profile.Role;
-        }
-
-        public ProfileViewModel(Profile profile, Member member) {
-            this.Id = profile.Id;
-            this.Name = profile.Name;
-            this.Email = profile.Email;
-            this.Country = profile.Country;
-            this.PictureUrl = profile.PictureUrl;
-            this.Role = profile.Role;
-            // Information from member
-            this.LastName = member.LastName;
-        }
-
-        public ProfileViewModel(Profile profile, School school) {
-            this.Id = profile.Id;
-            this.Name = profile.Name;
-            this.Email = profile.Email;
-            this.Country = profile.Country;
-            this.PictureUrl = profile.PictureUrl;
-            this.Role = profile.Role;
-            // Information from school
-            this.Description= school.Description;
         }
     }
 }

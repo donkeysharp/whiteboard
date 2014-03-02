@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public interface IWhiteboardService:IService<Whiteboard.DataAccess.Models.Whiteboard>
+    public interface IWhiteboardService:IService<Whiteboard.DataAccess.Models.WhiteboardNote>
     {
     }
 }

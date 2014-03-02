@@ -9,5 +9,8 @@ namespace whiteboard.BusinessLogic.ProfileModule
 {
     public interface IRoleProfileService:IService<RoleProfile>
     {
+        IEnumerable<RoleProfile> GetRolesByProfile(int profileId);
+
+        bool IsUserInRole(int p1, int p2);
     }
 }
