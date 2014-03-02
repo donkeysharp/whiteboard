@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Models {
-    public class CourseStudent {
+    public class CourseTeacher {
         public int Id { get; set; }
         
+        public int TeacherId { get; set; }
+        [ForeignKey("TeacherId")]
+        public virtual Profile Teacher { get; set; }
+
         public int CourseId { get; set; }
         [ForeignKey("CourseId")]
         public virtual Course Course { get; set; }
-
-        public int StudentId { get; set; }
-        [ForeignKey("StudentId")]
-        public virtual Profile Student { get; set; }
     }
 }

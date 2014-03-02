@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Models {
-    public class School {
+    public class CourseClass {
         public int Id { get; set; }
         public string Description { get; set; }
+        public long BeginTime { get; set; }
+        public long EndTime { get; set; }
 
-        public int ProfileId { get; set; }
-        [ForeignKey("ProfileId")]
-        public virtual Profile Profile { get; set; }
-
-        public virtual IEnumerable<Course> Courses { get; set; }
+        public int CourseId { get; set; }
+        [ForeignKey("CourseId")]
+        public virtual Course Course { get; set; }
     }
 }

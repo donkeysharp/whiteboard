@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Models {
-    public class Member {
+    public class Whiteboard {
         public int Id { get; set; }
-        public string LastName { get; set; }
+        public string PictureUrl { get; set; }
 
-        public int ProfileId { get; set; }
-        [ForeignKey("ProfileId")]
-        public Profile Profile { get; set; }
+        public int CourseClassId { get; set; }
+        [ForeignKey("CourseClassId")]
+        public virtual CourseClass CourseClass { get; set; }
     }
 }

@@ -18,6 +18,5 @@ namespace Whiteboard.DataAccess.Models
         public string Password { get; set; }
         public string Country { get; set; }
         public string PictureUrl { get; set; }
-        public String Role { get; set; }
     }
 }
