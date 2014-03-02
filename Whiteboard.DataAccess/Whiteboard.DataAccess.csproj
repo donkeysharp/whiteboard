@@ -58,6 +58,8 @@
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\RequestCourseStudent.cs" />
     <Compile Include="Models\RequestSchoolMember.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RoleProfile.cs" />
     <Compile Include="Models\School.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\SchoolMember.cs" />
@@ -72,12 +74,16 @@
     <Compile Include="Repositories\IProfileRepository.cs" />
     <Compile Include="Repositories\IRequestCourseStudentRepository.cs" />
     <Compile Include="Repositories\IRequestSchoolMemberRepository.cs" />
+    <Compile Include="Repositories\IRoleProfileRepository.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\ISchoolMemberRepository.cs" />
     <Compile Include="Repositories\ISchoolRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\RequestCourseStudentRepository.cs" />
     <Compile Include="Repositories\RequestSchoolMemberRepository.cs" />
+    <Compile Include="Repositories\RoleProfileRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\SchoolMemberRepository.cs" />
     <Compile Include="Repositories\SchoolRepository.cs" />
   </ItemGroup>

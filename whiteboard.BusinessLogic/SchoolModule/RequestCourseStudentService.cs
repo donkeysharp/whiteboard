@@ -19,5 +19,16 @@ namespace whiteboard.BusinessLogic.SchoolModule
             IRequestCourseStudentRepository da = (IRequestCourseStudentRepository)Activator.CreateInstance<T>();
             return new RequestCourseStudentService(da);
         }
+
+        public IEnumerable<RequestCourseStudent> GetByCourseId(int id)
+        {
+            return da.Filter((x) => x.CourseId == id);
+        }
+
+        public IEnumerable<RequestCourseStudent> GetByTeacherId(int id)
+        {
+            //return da.Filter((x)=>)
+            return null;
+        }
     }
 }
