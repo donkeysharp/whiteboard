@@ -97,6 +97,7 @@ namespace Whiteboard.DataAccess {
             course1.Syllabus = "Syllabus";
             course1.Schedule = "8am to 10am";
             course1.Lectures = "empty";
+            course1.IsPublic = false;
             course1.Description = "Introduccion a las matematicas";
 
             Course course2 = new Course();
@@ -105,10 +106,51 @@ namespace Whiteboard.DataAccess {
             course2.Syllabus = "Syllabus 2";
             course2.Schedule = "9am to 11am";
             course2.Lectures = "empty";
+            course2.IsPublic = false;
             course2.Description = "COnocimiento literario basico";
+
+            Course course3 = new Course();
+            course3.Title = "Curso privado de quimica";
+            course3.SchoolId = 1;
+            course3.Syllabus = "Syllabus quimica";
+            course3.Schedule = "9am to 11am";
+            course3.Lectures = "empty";
+            course3.IsPublic = false;
+            course3.Description = "COnocimiento quimica basico";
+
+            Course course4 = new Course();
+            course4.Title = "Fisica mecanica";
+            course4.SchoolId = 1;
+            course4.Syllabus = "Syllabus fisica";
+            course4.Schedule = "9am to 11am";
+            course4.Lectures = "empty";
+            course4.IsPublic = true;
+            course4.Description = "COnocimiento fisica basico";
+
+            Course course5 = new Course();
+            course5.Title = "Curso publico 3";
+            course5.SchoolId = 1;
+            course5.Syllabus = "Syllabus 3";
+            course5.Schedule = "9am to 11am";
+            course5.Lectures = "empty";
+            course5.IsPublic = true;
+            course5.Description = "COnocimiento literario basico";
+
+            Course course6 = new Course();
+            course6.Title = "Curso publico 4";
+            course6.SchoolId = 1;
+            course6.Syllabus = "Syllabus 4";
+            course6.Schedule = "9am to 11am";
+            course6.Lectures = "empty";
+            course6.IsPublic = true;
+            course6.Description = "COnocimiento literario basico";
 
             context.Courses.Add(course1);
             context.Courses.Add(course2);
+            context.Courses.Add(course3);
+            context.Courses.Add(course4);
+            context.Courses.Add(course5);
+            context.Courses.Add(course6);
         }
 
         public void SaveChanges() {

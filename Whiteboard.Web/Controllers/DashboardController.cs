@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using whiteboard.BusinessLogic.ProfileModule;
 using whiteboard.BusinessLogic.SchoolModule;
+using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 using Whiteboard.Web.Models.DashboardModels;
 
@@ -26,6 +27,21 @@ namespace Whiteboard.Web.Controllers {
                     Title = c.Title,
                     PictureUrl = c.PictureUrl,
                     Description = c.Description
+                });
+            }
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListCourses() {
+            ICourseService courseService = CourseService.GetInstance<CourseRepository>();
+            IEnumerable<Course> courses = courseService.GetPublicCourses();
+            List<CourseItemViewModel> res = new List<CourseItemViewModel>();
+            foreach (Course course in courses) {
+                res.Add(new CourseItemViewModel() { 
+                    Title = course.Title,
+                    Description = course.Description,
+                    PictureUrl = course.PictureUrl
                 });
             }
             return Json(res, JsonRequestBehavior.AllowGet);

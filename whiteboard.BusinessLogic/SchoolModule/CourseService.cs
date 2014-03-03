@@ -30,5 +30,9 @@ namespace whiteboard.BusinessLogic.SchoolModule
                 x.Syllabus.Contains(data))
                 );
         }
+
+        public IEnumerable<Course> GetPublicCourses() {
+            return da.Filter(x => x.IsPublic == true);
+        }
     }
 }

@@ -6,18 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Whiteboard.DataAccess.Models {
-    public class Course {
+    public class SchoolStudent {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Syllabus { get; set; }
-        public string Lectures { get; set; }
-        public string Schedule { get; set; }
-        public string PictureUrl { get; set; }
-        public bool IsPublic { get; set; }
-
         public int SchoolId { get; set; }
         [ForeignKey("SchoolId")]
         public virtual Profile School { get; set; }
+        public int StudentId { get; set; }
+        [ForeignKey("StudentId")]
+        public virtual Profile Student { get; set; }
     }
 }

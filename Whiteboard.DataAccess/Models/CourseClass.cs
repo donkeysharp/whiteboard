@@ -11,6 +11,7 @@ namespace Whiteboard.DataAccess.Models {
         public string Description { get; set; }
         public long BeginTime { get; set; }
         public long EndTime { get; set; }
+        public bool Broadcasting { get; set; }
 
         public int CourseId { get; set; }
         [ForeignKey("CourseId")]

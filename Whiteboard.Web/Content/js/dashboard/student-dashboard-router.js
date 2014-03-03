@@ -25,7 +25,8 @@ DashboardRouter = Backbone.Router.extend({
 
     routeCourses: function() {
         var el = document.getElementById("dashboard-container");
-        var view = new CourseDashboard();
+        var view = new CourseDashboardView({ el: el });
+        view.render();
     }
 });
 

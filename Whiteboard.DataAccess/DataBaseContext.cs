@@ -15,6 +15,7 @@ namespace Whiteboard.DataAccess {
         public DbSet<Role> Roles { get; set; }
         public DbSet<RoleProfile> RoleProfiles { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<SchoolStudent> SchoolStudents { get; set; }
         public DbSet<CourseClass> CourseClasses { get; set; }
         public DbSet<CourseStudent> CourseStudents { get; set; }
         public DbSet<CourseTeacher> CourseTeachers { get; set; }

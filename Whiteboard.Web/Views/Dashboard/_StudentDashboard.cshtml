@@ -18,8 +18,17 @@
 
 <!-- Templates for courses -->
 <script type="text/template" id="tpl-course-search">
-    Course:&nbsp;
-    <input type="text" placeholder="Search ..." id="search-text" />
-    <p>Result(s) <span id="results-count"></span></p>
-    <ul id="search-results"></ul>
+    Courses:&nbsp;
+    <input type="text" class="form-control" placeholder="Search ..." id="search-text" />
+    <div id="result-container">
+        <p>Result(s) <span id="results-count"></span></p>
+        <ul id="search-results"></ul>
+    </div>
+</script>
+<script type="text/template" id="tpl-course-search-item">
+    <div>
+        <img src="" style="float: left; width: 100px; height: 60px;" />
+        <h3><%= Title %></h3>
+        <p><%= Description %></p>
+    </div>
 </script>
