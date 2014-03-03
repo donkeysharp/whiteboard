@@ -9,7 +9,8 @@ DashboardRouter = Backbone.Router.extend({
     routes: {
         "": "routeDashboard",
         "dashboard": "routeDashboard",
-        "profile": "routeProfile"
+        "profile": "routeProfile",
+        "courses": "routeCourses"
     },
 
     routeDashboard: function() {
@@ -20,6 +21,11 @@ DashboardRouter = Backbone.Router.extend({
     },
 
     routeProfile: function () {
+    },
+
+    routeCourses: function() {
+        var el = document.getElementById("dashboard-container");
+        var view = new CourseDashboard
     }
 });
 
