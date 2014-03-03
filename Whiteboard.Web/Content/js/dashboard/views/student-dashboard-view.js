@@ -20,6 +20,7 @@
         });
     }
 });
+
 CourseItemView = Backbone.View.extend({
     tagName: 'li',
     template: _.template($('#tpl-course-item').html()),
