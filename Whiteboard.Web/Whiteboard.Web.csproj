@@ -187,6 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DashboardModels\CourseItemViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -243,7 +244,9 @@
     <Content Include="Content\img\widget-bg-evening.jpg" />
     <Content Include="Content\img\widget-bg-midnight.jpg" />
     <Content Include="Content\img\widget-bg-morning.jpg" />
+    <Content Include="Content\js\dashboard\collections\student-dashboard-collections.js" />
     <Content Include="Content\js\dashboard\dashboard-router.js" />
+    <Content Include="Content\js\dashboard\models\student-dashboard-models.js" />
     <Content Include="Content\js\dashboard\views\student-dashboard-view.js" />
     <Content Include="Content\js\demo\advanced-form-demo.js" />
     <Content Include="Content\js\demo\advanced-tables-demo.js" />
@@ -338,8 +341,6 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Areas\WebAPI\Models\" />
     <Folder Include="Areas\WebAPI\Views\Shared\" />
-    <Folder Include="Content\js\dashboard\collections\" />
-    <Folder Include="Content\js\dashboard\models\" />
     <Folder Include="Content\uploads\" />
   </ItemGroup>
   <ItemGroup>

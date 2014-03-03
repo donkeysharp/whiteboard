@@ -11,7 +11,7 @@
         @Html.Partial("SideBars/Student")
     }
 }
-
+<div id="dashboard-container" >
 @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
     @Html.Partial("_SchoolDashboard")
 } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
@@ -19,6 +19,7 @@
 } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
     @Html.Partial("_StudentDashboard")
 }
+</div>
 
 @section Scripts {
     <script src="@Url.Content("~/Content/vendor/underscore-min.js")"></script>
@@ -28,6 +29,7 @@
     } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
         @*// TODO*@
     } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
+        <script src="@Url.Content("~/Content/js/dashboard/models/student-dashboard-models.js")"></script>
         <script src="@Url.Content("~/Content/js/dashboard/views/student-dashboard-view.js")"></script>
     }
     <script src="@Url.Content("~/Content/js/dashboard/dashboard-router.js")"></script>

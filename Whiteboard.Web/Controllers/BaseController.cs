@@ -9,11 +9,16 @@ using Whiteboard.DataAccess.Repositories;
 
 namespace Whiteboard.Web.Controllers {
     public class BaseController : Controller {
+        protected Profile CurrentProfile {
+            get {
+                IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+                return service.Get(User.Identity.Name);
+            }
+        }
         protected override void OnActionExecuted(ActionExecutedContext filterContext) {
 
             if (Request.IsAuthenticated) {
-                IProfileService service = ProfileService.GetInstance<ProfileRepository>();
-                Profile profile = service.Get(User.Identity.Name);
+                Profile profile = CurrentProfile;
                 ViewBag.ProfileData = profile;    
             }
             base.OnActionExecuted(filterContext);

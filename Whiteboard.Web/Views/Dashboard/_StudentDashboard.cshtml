@@ -1,6 +1,12 @@
 ﻿<script type="text/template" id="tpl-student-dashboard">
-    <p>Hello World</p>
-    <button id="clickme">Click me</button>
+    <h1><%= title %></h1>
+    <ul id="course-list">
+    </ul>
 </script>
-
-<div id="render-here" style="background-color: #0f0"></div>
+<script type="text/template" id="tpl-course-item">
+    <div>
+        <img src="<%= PictureUrl %>" />
+        <h2><%= Title %></h2>
+        <p><%= Description %></p>
+    </div>
+</script>

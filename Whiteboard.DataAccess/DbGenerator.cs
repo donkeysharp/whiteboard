@@ -16,8 +16,18 @@ namespace Whiteboard.DataAccess {
         public void GenerateSeedData() {
             RoleGenerator();
             ProfileGenerator();
-
             SaveChanges();
+            CourseGenerator();
+            CourseStudentGenerator();
+            SaveChanges();
+        }
+
+        private void CourseStudentGenerator() {
+            CourseStudent cs = new CourseStudent();
+            cs.CourseId = 1;
+            cs.StudentId = 3;
+
+            context.CourseStudents.Add(cs);
         }
 
         public void RoleGenerator() {
@@ -78,6 +88,27 @@ namespace Whiteboard.DataAccess {
             context.RoleProfiles.Add(roleProfileSchool);
             context.RoleProfiles.Add(roleProfileTeacher);
             context.RoleProfiles.Add(roleProfileStudent);
+        }
+
+        public void CourseGenerator() {
+            Course course1 = new Course();
+            course1.Title = "Matematicas con tom y jerry";
+            course1.SchoolId = 1;
+            course1.Syllabus = "Syllabus";
+            course1.Schedule = "8am to 10am";
+            course1.Lectures = "empty";
+            course1.Description = "Introduccion a las matematicas";
+
+            Course course2 = new Course();
+            course2.Title = "Literatura";
+            course2.SchoolId = 1;
+            course2.Syllabus = "Syllabus 2";
+            course2.Schedule = "9am to 11am";
+            course2.Lectures = "empty";
+            course2.Description = "COnocimiento literario basico";
+
+            context.Courses.Add(course1);
+            context.Courses.Add(course2);
         }
 
         public void SaveChanges() {

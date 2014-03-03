@@ -13,6 +13,7 @@ namespace Whiteboard.DataAccess.Models {
         public string Syllabus { get; set; }
         public string Lectures { get; set; }
         public string Schedule { get; set; }
+        public string PictureUrl { get; set; }
 
         public int SchoolId { get; set; }
         [ForeignKey("SchoolId")]

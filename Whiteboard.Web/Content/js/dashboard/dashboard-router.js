@@ -13,12 +13,13 @@ DashboardRouter = Backbone.Router.extend({
     },
 
     routeDashboard: function() {
-        var el1 = document.getElementById("render-here");
-        var view = new StudentDashboardView({ el: el1 });
-        view.render();
+        var el = document.getElementById("dashboard-container");
+        var view = new StudentDashboardView({ el: el });
+        view.title = 'My Courses';
+        view.fetchData();
     },
+
     routeProfile: function () {
-        alert("asd");
     }
 });
 

@@ -10,6 +10,5 @@ namespace whiteboard.BusinessLogic.SchoolModule
     public interface ICourseService:IService<Course>
     {
         IEnumerable<Course> Search(string data);
-
     }
 }

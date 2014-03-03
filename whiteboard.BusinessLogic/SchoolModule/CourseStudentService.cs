@@ -15,7 +15,7 @@ namespace whiteboard.BusinessLogic.SchoolModule
         {
 
         }
-        public ICourseStudentService GetInstance<T>() where T : ICourseStudentRepository
+        public static ICourseStudentService GetInstance<T>() where T : ICourseStudentRepository
         {
             ICourseStudentRepository da = (ICourseStudentRepository)Activator.CreateInstance<T>();
             return new CourseStudentService(da);
