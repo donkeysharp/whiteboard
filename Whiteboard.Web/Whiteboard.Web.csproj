@@ -244,8 +244,11 @@
     <Content Include="Content\img\widget-bg-evening.jpg" />
     <Content Include="Content\img\widget-bg-midnight.jpg" />
     <Content Include="Content\img\widget-bg-morning.jpg" />
+    <Content Include="Content\js\dashboard\models\course-dashboard-models.js" />
     <Content Include="Content\js\dashboard\models\dashboard-models.js" />
     <Content Include="Content\js\dashboard\models\student-dashboard-models.js" />
+    <Content Include="Content\js\dashboard\student-dashboard-router.js" />
+    <Content Include="Content\js\dashboard\views\course-dashboard-views.js" />
     <Content Include="Content\js\dashboard\views\student-dashboard-view.js" />
     <Content Include="Content\js\demo\advanced-form-demo.js" />
     <Content Include="Content\js\demo\advanced-tables-demo.js" />
@@ -431,16 +434,14 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>6223</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:4188/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://pizarron.test</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>True</UseCustomServer>
-          <CustomServerUrl>http://pizarron.test</CustomServerUrl>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://pizarrona.test</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
