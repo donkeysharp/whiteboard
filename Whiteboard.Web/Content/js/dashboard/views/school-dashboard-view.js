@@ -1,0 +1,3 @@
+﻿SchoolDashboardView = Backbone.View.Extend({
+
+});
