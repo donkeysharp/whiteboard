@@ -244,8 +244,8 @@
     <Content Include="Content\img\widget-bg-evening.jpg" />
     <Content Include="Content\img\widget-bg-midnight.jpg" />
     <Content Include="Content\img\widget-bg-morning.jpg" />
-    <Content Include="Content\js\dashboard\collections\student-dashboard-collections.js" />
     <Content Include="Content\js\dashboard\dashboard-router.js" />
+    <Content Include="Content\js\dashboard\models\dashboard-models.js" />
     <Content Include="Content\js\dashboard\models\student-dashboard-models.js" />
     <Content Include="Content\js\dashboard\views\student-dashboard-view.js" />
     <Content Include="Content\js\demo\advanced-form-demo.js" />
@@ -416,6 +416,7 @@
     <Content Include="Views\Dashboard\SideBars\School.cshtml" />
     <Content Include="Views\Dashboard\SideBars\Student.cshtml" />
     <Content Include="Views\Dashboard\SideBars\Teacher.cshtml" />
+    <Content Include="Views\Dashboard\_BaseDashboard.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
