@@ -19,8 +19,8 @@ namespace Whiteboard.DataAccess {
         public DbSet<CourseClass> CourseClasses { get; set; }
         public DbSet<CourseStudent> CourseStudents { get; set; }
         public DbSet<CourseTeacher> CourseTeachers { get; set; }
-        public DbSet<SchoolStudent> SchoolStudents { get; set; }
         public DbSet<SchoolTeacher> SchoolTeachers { get; set; }
+        public DbSet<SchoolCourse> SchoolCourses { get; set; }
         public DbSet<WhiteboardNote> Whiteboards { get; set; }
 
         // Request ... maybe should be done on a faster database, Redis ;)

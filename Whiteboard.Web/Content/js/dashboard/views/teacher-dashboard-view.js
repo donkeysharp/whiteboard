@@ -2,15 +2,15 @@
     template: _.template($('#tpl-teacher-dashboard').html()),
     title: undefined,
     initialize: function () {
-        this.collection = new CourseCollection();
+        this.collection = new CourseTeacherCollection();
         this.collection.bind('reset', this.render.bind(this));
     },
-    // Descarga los datos
     fetchData: function () {
         this.collection.fetch({ reset: true });
     },
     render: function () {
-        $(this.el).html(this.template({ title: this.title }));
+        var coursesInformation = this.collection.getGeneralInfo();
+        $(this.el).html(this.template({ title: this.title, courses: coursesInformation.courses, students: coursesInformation.students }));
         var courseList = $(this.el).find('#teacher-course-list');
         _.each(this.collection.models, function (courseItem) {
             courseList.append(new TeacherCourseItemView({ model: courseItem }).render().el);

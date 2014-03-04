@@ -19,5 +19,11 @@ namespace whiteboard.BusinessLogic.SchoolModule
             ISchoolStudentRepository da = (ISchoolStudentRepository)Activator.CreateInstance<T>();
             return new SchoolStudentService(da);
         }
+
+        public IEnumerable<Profile> getStudentsBySchoolID(int SchoolID)
+        {
+            var data = da.Filter(x => x.SchoolId == SchoolID);
+            return (from x in data select x.Student).ToList();
+        }
     }
 }

@@ -8,6 +8,7 @@
     }
 });
 TeacherItemView = Backbone.View.extend({
+
     tagName: 'li',
     template: _.template($('#tpl-teacher-item').html()),
     initialize: function () { },
@@ -16,7 +17,8 @@ TeacherItemView = Backbone.View.extend({
         return this;
     }
 });
-StudentItemView = Backbone.view.extends({
+
+StudentItemView = Backbone.View.extend({
     tagName: 'li',
     template: _.template($('#tpl-student-item').html()),
     initialize: function () { },

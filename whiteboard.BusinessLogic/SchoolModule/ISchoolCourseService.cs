@@ -7,8 +7,8 @@ using Whiteboard.DataAccess.Models;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public interface ISchoolTeacherService:IService<SchoolTeacher>
+    public interface ISchoolCourseService:IService<SchoolCourse>
     {
-        IEnumerable<Profile> GetStudentsBySchoolId(int SchoolID);
+        IEnumerable<Course> getCoursesBySchoolId(int SchoolId);
     }
 }

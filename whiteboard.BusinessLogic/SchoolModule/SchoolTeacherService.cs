@@ -8,9 +8,10 @@ using Whiteboard.DataAccess.Repositories;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public class SchoolTeacherService:GenericService<SchoolTeacher>,ISchoolTeacherService
+    public class SchoolTeacherService : GenericService<SchoolTeacher>, ISchoolTeacherService
     {
-        private SchoolTeacherService(ISchoolTeacherRepository da):base(da)
+        private SchoolTeacherService(ISchoolTeacherRepository da)
+            : base(da)
         {
 
         }
@@ -18,6 +19,12 @@ namespace whiteboard.BusinessLogic.SchoolModule
         {
             ISchoolTeacherRepository da = (ISchoolTeacherRepository)Activator.CreateInstance<T>();
             return new SchoolTeacherService(da);
+        }
+
+        public IEnumerable<Profile> GetStudentsBySchoolId(int SchoolID)
+        {
+            var data = da.Filter(x => x.SchoolId == SchoolID);
+            return (from y in data.ToList() select y.Teacher).ToList();
         }
     }
 }

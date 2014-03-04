@@ -1,13 +1,13 @@
 ﻿@using Whiteboard.Common
 @model Whiteboard.Web.Models.RedirectViewModel
-<nav class="navbar-side" role="navigation">
+<nav class="navbar-side" role="navigation" id="student-sidebar">
     <div class="navbar-collapse sidebar-collapse collapse">
         <ul id="side" class="nav navbar-nav side-nav">
             <!-- begin SIDE NAV USER PANEL -->
             <li class="side-user hidden-xs">
                 <img class="img-circle" width="150px" height="150px"
-                    src="@Url.Content(Path.Combine(Constants.UPLOADS_PATH, (string)ViewBag.ProfileData.PictureUrl))"
-                    alt="">
+                     src="@Url.Content(Path.Combine(Constants.UPLOADS_PATH, (string)ViewBag.ProfileData.PictureUrl))"
+                     alt="">
                 <p class="welcome">
                     <i class="fa fa-key"></i> Logged in as
                 </p>
@@ -29,19 +29,25 @@
             <!-- end SIDE NAV SEARCH -->
             <li>
                 @if (Model.Redirect) {
-                <a class="active" href="@Model.RedirectTo">
+                <a class="active command single" href="@Model.RedirectTo" id="default-select">
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
                 } else {
-                    <a class="active" href="#dashboard">
+                <a class="active command single" href="#dashboard" id="default-select">
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
                 }
             </li>
             <li>
-                <a href="#courses">
+                @if (Model.Redirect) {
+                <a class="active command single" href="Dashboard#courses">
                     <i class="fa fa-globe"></i> Public Courses
                 </a>
+                } else {
+                <a class="active command single" href="#courses">
+                    <i class="fa fa-globe"></i> Public Courses
+                </a>
+                }
             </li>
             <!-- begin FORMS DROPDOWN -->
             <!--<li class="panel">

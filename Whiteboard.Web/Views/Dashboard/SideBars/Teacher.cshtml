@@ -1,4 +1,4 @@
-﻿<nav class="navbar-side" role="navigation">
+﻿<nav class="navbar-side" role="navigation" id="teacher-sidebar">
     <div class="navbar-collapse sidebar-collapse collapse">
         <ul id="side" class="nav navbar-nav side-nav">
             <!-- begin SIDE NAV USER PANEL -->
@@ -26,24 +26,24 @@
             <!-- end SIDE NAV SEARCH -->
             <!-- begin DASHBOARD LINK -->
             <li>
-                <a class="active" href="#teacherdashboard">
+                <a id="default-select" class="active command single" href="#teacherdashboard" >
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
             </li>
             <!-- end DASHBOARD LINK -->
             <!-- begin CHARTS DROPDOWN -->
             <li class="panel">
-                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#charts">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle multiple" data-target="#charts">
                     <i class="fa fa-bar-chart-o"></i> Charts <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="collapse nav" id="charts">
                     <li>
-                        <a href="flot.html">
+                        <a href="#" class="command">
                             <i class="fa fa-angle-double-right"></i> Flot Charts
                         </a>
                     </li>
                     <li>
-                        <a href="morris.html">
+                        <a href="#" class="command">
                             <i class="fa fa-angle-double-right"></i> Morris.js
                         </a>
                     </li>
@@ -52,32 +52,32 @@
             <!-- end CHARTS DROPDOWN -->
             <!-- begin FORMS DROPDOWN -->
             <li class="panel">
-                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#forms">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle multiple" data-target="#forms">
                     <i class="fa fa-edit"></i> Forms <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="collapse nav" id="forms">
                     <li>
-                        <a href="basic-form-elements.html">
+                        <a href="#" class="command">
                             <i class="fa fa-angle-double-right"></i> Basic Elements
                         </a>
                     </li>
                     <li>
-                        <a href="advanced-form-elements.html">
+                        <a href="#" class="command">
                             <i class="fa fa-angle-double-right"></i> Advanced Elements
                         </a>
                     </li>
                     <li>
-                        <a href="validation.html">
+                        <a href="#" class="command">
                             <i class="fa fa-angle-double-right"></i> Validation
                         </a>
                     </li>
                     <li>
-                        <a href="wysiwyg-editor.html">
+                        <a href="#" class="command">
                             <i class="fa fa-angle-double-right"></i> WYSIWYG Editor
                         </a>
                     </li>
                     <li>
-                        <a href="dropzone-uploader.html">
+                        <a href="#" class="command">
                             <i class="fa fa-angle-double-right"></i> Dropzone Uploader
                         </a>
                     </li>

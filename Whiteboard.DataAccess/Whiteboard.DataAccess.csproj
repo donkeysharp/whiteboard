@@ -61,6 +61,7 @@
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RoleProfile.cs" />
+    <Compile Include="Models\SchoolCourse.cs" />
     <Compile Include="Models\SchoolStudent.cs" />
     <Compile Include="Models\SchoolTeacher.cs" />
     <Compile Include="Models\WhiteboardNote.cs" />
@@ -78,12 +79,14 @@
     <Compile Include="Repositories\IProfileRepository.cs" />
     <Compile Include="Repositories\IRoleProfileRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\ISchoolCourseRepository.cs" />
     <Compile Include="Repositories\ISchoolStudentRepository.cs" />
     <Compile Include="Repositories\ISchoolTeacherRepository.cs" />
     <Compile Include="Repositories\IWhiteboardRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\RoleProfileRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\SchoolCourseRepository.cs" />
     <Compile Include="Repositories\SchoolStudentRepository.cs" />
     <Compile Include="Repositories\SchoolTeacherRepository.cs" />
     <Compile Include="Repositories\WhiteboardRepository.cs" />
