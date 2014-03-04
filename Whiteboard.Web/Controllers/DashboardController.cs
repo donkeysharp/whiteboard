@@ -46,10 +46,44 @@ namespace Whiteboard.Web.Controllers {
             return Json(res, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public JsonResult GetStudents() {
+        public JsonResult GetCoursesInformation()
+        {
             ICourseTeacherService courseService = CourseTeacherService.GetInstance<CourseTeacherRepository>();
+            ICourseStudentService studentService = CourseStudentService.GetInstance<CourseStudentRepository>();
             var teacherCourses = courseService.GetCoursesByTeacherID(CurrentProfile.Id);
-            return Json(new object());
+            List<CourseItemViewModel> res = new List<CourseItemViewModel>();
+            foreach (var item in teacherCourses)
+            {
+                int nroStundents = studentService.GetStudentsByCourseId(item.Id).Count();
+                res.Add(new CourseItemViewModel()
+                {
+                    PictureUrl = item.PictureUrl,
+                    Description = item.Description,
+                    Title = item.Title,
+                    NumberStudents = nroStundents
+                });
+            }
+            //res.Add(new CourseItemViewModel() { 
+            //    Title = "title 1",
+            //    PictureUrl = "",
+            //    Description = "primer curso",
+            //    NumberStudents = 23
+            //});
+            //res.Add(new CourseItemViewModel()
+            //{
+            //    Title = "title 2",
+            //    PictureUrl = "",
+            //    Description = "segundo curso",
+            //    NumberStudents = 3
+            //});
+            //res.Add(new CourseItemViewModel()
+            //{
+            //    Title = "title 1",
+            //    PictureUrl = "",
+            //    Description = "primer curso",
+            //    NumberStudents = 5
+            //});
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

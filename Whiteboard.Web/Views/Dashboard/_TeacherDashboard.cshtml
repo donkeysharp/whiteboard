@@ -1,6 +1,10 @@
 ﻿<!-- Template dashboard teacher -->
 <script type="text/template" id="tpl-teacher-dashboard">
     <h1><%= title %></h1>
+    <div>
+        <h3><b>Courses: </b> <%= courses %> </h3>
+        <h3><b>Students: </b> <%= students %> </h3>
+    </div>
     <ul id="teacher-course-list"></ul>
 </script>
 
@@ -9,5 +13,6 @@
         <img src="<%= PictureUrl %>" />
         <h2><%= Title %></h2>
         <p><%= Description %></p>
+        <p><%= NumberStudents %> </p>
     </div>
 </script>
