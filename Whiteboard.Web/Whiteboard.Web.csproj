@@ -188,6 +188,8 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\DashboardModels\CourseItemViewModel.cs" />
+    <Compile Include="Models\DashboardModels\StudentItemViewModel.cs" />
+    <Compile Include="Models\DashboardModels\TeacherItemViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -246,8 +248,10 @@
     <Content Include="Content\img\widget-bg-morning.jpg" />
     <Content Include="Content\js\dashboard\models\course-dashboard-models.js" />
     <Content Include="Content\js\dashboard\models\dashboard-models.js" />
+    <Content Include="Content\js\dashboard\models\school-dashboard-models.js" />
     <Content Include="Content\js\dashboard\models\student-dashboard-models.js" />
     <Content Include="Content\js\dashboard\models\teacher-dashboard-models.js" />
+    <Content Include="Content\js\dashboard\school-dashboard-router.js" />
     <Content Include="Content\js\dashboard\student-dashboard-router.js" />
     <Content Include="Content\js\dashboard\teacher-dashboard-router.js" />
     <Content Include="Content\js\dashboard\views\course-dashboard-views.js" />

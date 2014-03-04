@@ -1,7 +1,7 @@
 ﻿CourseItemModel = Backbone.Model.extend({
     defaults: {
         "PictureUrl": "",
-        "CourseName": "",
+        "Title": "",
         "Description": ""
     }
 });

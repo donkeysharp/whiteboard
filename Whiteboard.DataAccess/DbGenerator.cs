@@ -23,6 +23,38 @@ namespace Whiteboard.DataAccess {
             CourseTeacherGenerator();
             SaveChanges();
             SchoolStudentGenerator();
+            SaveChanges();
+            SchoolTeacherGenerator();
+            SaveChanges();
+            SchoolCoursesGenerator();
+            SaveChanges();
+        }
+
+        private void SchoolCoursesGenerator()
+        {
+            SchoolCourse sc1 = new SchoolCourse();
+            sc1.CourseId = 1;
+            sc1.SchoolId = 1;
+
+            SchoolCourse sc2 = new SchoolCourse();
+            sc2.CourseId = 2;
+            sc2.SchoolId = 1;
+
+            SchoolCourse sc3 = new SchoolCourse();
+            sc3.CourseId = 3;
+            sc3.SchoolId = 1;
+
+            context.SchoolCourses.Add(sc1);
+            context.SchoolCourses.Add(sc2);
+            context.SchoolCourses.Add(sc3);
+        }
+
+        private void SchoolTeacherGenerator()
+        {
+            SchoolTeacher st1 = new SchoolTeacher();
+            st1.SchoolId = 1;
+            st1.TeacherId = 2;
+            context.SchoolTeachers.Add(st1);
         }
 
         private void SchoolStudentGenerator()
@@ -30,6 +62,7 @@ namespace Whiteboard.DataAccess {
             SchoolStudent ss1 = new SchoolStudent();
             ss1.SchoolId = 1;
             ss1.StudentId = 3;
+            context.SchoolStudents.Add(ss1);
         }
 
         private void CourseTeacherGenerator()

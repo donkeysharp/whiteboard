@@ -51,5 +51,67 @@ namespace Whiteboard.Web.Controllers {
             var teacherCourses = courseService.GetCoursesByTeacherID(CurrentProfile.Id);
             return Json(new object());
         }
+
+        /// <summary>
+        /// Return school courses
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult Courses()
+        {
+            ISchoolCourseService scService = SchoolCourseService.GetInstance<SchoolCourseRepository>();
+            var courses = scService.getCoursesBySchoolId(CurrentProfile.Id);
+            var res = new List<CourseItemViewModel>();
+            foreach (var item in courses)
+            {
+                res.Add(new CourseItemViewModel()
+                    {
+                        Description = item.Description,
+                        PictureUrl = item.PictureUrl,
+                        Title = item.Title
+                    });
+            }
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+        /// <summary>
+        /// Return school teachers
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult Teachers()
+        {
+            ISchoolTeacherService stService = SchoolTeacherService.GetInstance<SchoolTeacherRepository>();
+            var schoolTeachers = stService.GetStudentsBySchoolId(CurrentProfile.Id);
+            List<TeacherItemViewModel> res = new List<TeacherItemViewModel>();
+            foreach (var item in schoolTeachers)
+            {
+                res.Add(new TeacherItemViewModel()
+                {
+                    Name=item.Name,
+                    PictureUrl=item.PictureUrl
+                });
+            }
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Return school students
+        /// </summary>
+        [HttpGet]
+        public JsonResult Students()
+        {
+            ISchoolStudentService ssService = SchoolStudentService.GetInstance<SchoolStudentRepository>();
+            var schoolStudents = ssService.getStudentsBySchoolID(CurrentProfile.Id);
+            var res = new List<StudentItemViewModel>();
+            foreach (var item in schoolStudents)
+            {
+                res.Add(new StudentItemViewModel()
+                {
+                    PictureUrl = item.PictureUrl,
+                    Name = item.Name
+                });
+            }
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
     }
 }

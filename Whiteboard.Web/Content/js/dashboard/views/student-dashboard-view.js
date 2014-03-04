@@ -15,7 +15,7 @@
 
         this.sugestedCoursesCollection = new CourseCollection();
         //change url
-        //this.sugestedCoursesCollection.url = '/dashboard/sugestedCourses';
+        //this.sugestedCoursesCollection.url = '/dashboard/sugestedCourses';    
         this.sugestedCoursesCollection.bind('reset', this.render.bind(this));
 
     },
