@@ -31,7 +31,6 @@ namespace Whiteboard.Web.Controllers {
             }
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
         [HttpGet]
         public JsonResult ListCourses() {
             ICourseService courseService = CourseService.GetInstance<CourseRepository>();
@@ -45,6 +44,12 @@ namespace Whiteboard.Web.Controllers {
                 });
             }
             return Json(res, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult GetStudents() {
+            ICourseTeacherService courseService = CourseTeacherService.GetInstance<CourseTeacherRepository>();
+            var teacherCourses = courseService.GetCoursesByTeacherID(CurrentProfile.Id);
+            return Json(new object());
         }
     }
 }
