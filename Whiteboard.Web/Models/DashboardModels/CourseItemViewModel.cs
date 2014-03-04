@@ -12,5 +12,7 @@ namespace Whiteboard.Web.Models.DashboardModels {
         public string Title { get; set; }
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+
+        public int NumberStudents { get; set; }
     }
 }

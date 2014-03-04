@@ -24,11 +24,12 @@
 @section Scripts {
     <script src="@Url.Content("~/Content/vendor/underscore-min.js")"></script>
     <script src="@Url.Content("~/Content/vendor/backbone-min.js")"></script>
-
+    <script src="@Url.Content("~/Content/js/dashboard/sidebar.js")"></script>
+    <script src="@Url.Content("~/Content/js/dashboard/views/sidebar-views.js")"></script>
     @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
         @*// TODO*@
     } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
-        <script src="@Url.Content("~/Content/js/dashboard/models/dashboard-models.js")" ></script>
+        <script src="@Url.Content("~/Content/js/dashboard/models/teacher-dashboard-models.js")" ></script>
         <script src="@Url.Content("~/Content/js/dashboard/views/teacher-dashboard-view.js")" ></script>
         <script src="@Url.Content("~/Content/js/dashboard/teacher-dashboard-router.js")" ></script>
     } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
