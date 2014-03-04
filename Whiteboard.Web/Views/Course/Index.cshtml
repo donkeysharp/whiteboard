@@ -1,25 +1,18 @@
 ﻿@{
-    ViewBag.Title = "Dashboard";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Course";
 }
+
 @section SideBar {
     @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
-        @Html.Partial("SideBars/School", new Whiteboard.Web.Models.RedirectViewModel())
+        @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
     } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
-        @Html.Partial("SideBars/Teacher", new Whiteboard.Web.Models.RedirectViewModel())
+        @Html.Partial("../Dashboard/SideBars/Teacher", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
     } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
-        @Html.Partial("SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel())
+        @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
     }
 }
-<div id="dashboard-container" >
-@if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
-    @Html.Partial("_SchoolDashboard")
-} else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
-    @Html.Partial("_TeacherDashboard")
-} else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
-    @Html.Partial("_StudentDashboard")
-}
-</div>
+
+<h1>asassad</h1>
 
 @section Scripts {
     <script src="@Url.Content("~/Content/vendor/underscore-min.js")"></script>

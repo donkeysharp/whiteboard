@@ -15,6 +15,9 @@ namespace Whiteboard.Web.Controllers {
                 return service.Get(User.Identity.Name);
             }
         }
+        protected ActionResult RedirectToHash(string controllerName, string action, string hash) {
+            return Redirect(Url.RouteUrl(new { controller = controllerName, action = action }) + "#" + hash);
+        }
         protected override void OnActionExecuted(ActionExecutedContext filterContext) {
 
             if (Request.IsAuthenticated) {

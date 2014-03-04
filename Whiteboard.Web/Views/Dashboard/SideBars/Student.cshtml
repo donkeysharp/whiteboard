@@ -1,4 +1,5 @@
 ﻿@using Whiteboard.Common
+@model Whiteboard.Web.Models.RedirectViewModel
 <nav class="navbar-side" role="navigation">
     <div class="navbar-collapse sidebar-collapse collapse">
         <ul id="side" class="nav navbar-nav side-nav">
@@ -27,9 +28,15 @@
             </li>-->
             <!-- end SIDE NAV SEARCH -->
             <li>
-                <a class="active" href="#dashboard">
+                @if (Model.Redirect) {
+                <a class="active" href="@Model.RedirectTo">
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
+                } else {
+                    <a class="active" href="#dashboard">
+                    <i class="fa fa-dashboard"></i> Dashboard
+                </a>
+                }
             </li>
             <li>
                 <a href="#courses">

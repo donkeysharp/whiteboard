@@ -14,6 +14,7 @@ namespace Whiteboard.DataAccess.Models {
         public string Lectures { get; set; }
         public string Schedule { get; set; }
         public string PictureUrl { get; set; }
+        public string VideoUrl { get; set; }
         public bool IsPublic { get; set; }
 
         public int SchoolId { get; set; }

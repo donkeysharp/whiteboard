@@ -177,6 +177,7 @@
     <Compile Include="Auth\GeneralMembershipUser.cs" />
     <Compile Include="Auth\GeneralRoleProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Models\DashboardModels\CourseItemViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\RedirectViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -423,6 +425,7 @@
     <Content Include="Views\Dashboard\SideBars\Student.cshtml" />
     <Content Include="Views\Dashboard\SideBars\Teacher.cshtml" />
     <Content Include="Views\Dashboard\_BaseDashboard.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
