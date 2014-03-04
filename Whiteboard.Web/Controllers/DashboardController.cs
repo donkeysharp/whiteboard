@@ -11,6 +11,7 @@ using Whiteboard.Web.Models.DashboardModels;
 
 namespace Whiteboard.Web.Controllers {
     [Authorize]
+    [RouteMap(Title = "Dashboard", Description = "Dashboard Information", Route = "Dashboard, Foo")]
     public class DashboardController : BaseController {
         [HttpGet]
         public ActionResult Index() {

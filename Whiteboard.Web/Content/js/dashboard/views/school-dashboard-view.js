@@ -14,7 +14,7 @@
         this.studentsCollection = new StudentCollection();
         this.studentsCollection.bind('reset', this.render.bind(this));
     },
-
+    // Hacky solution
     render1: function() {
         this.teachersCollection.fetch({ 'reset': true });
     },

@@ -14,6 +14,7 @@ using Whiteboard.Web.Models;
 
 namespace Whiteboard.Web.Controllers {
     [Authorize]
+    [RouteMap(Title = "Profile", Description = "Profile Information", Route = "Profile, Edit")]
     public class ProfileController : BaseController {
         [HttpGet]
         public ActionResult Index() {
