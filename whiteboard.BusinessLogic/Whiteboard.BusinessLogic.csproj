@@ -56,7 +56,11 @@
     <Compile Include="SchoolModule\ICourseService.cs" />
     <Compile Include="SchoolModule\ICourseStudentService.cs" />
     <Compile Include="SchoolModule\ICourseTeacherService.cs" />
+    <Compile Include="SchoolModule\ISchoolStudentService.cs" />
+    <Compile Include="SchoolModule\ISchoolTeacherService.cs" />
     <Compile Include="SchoolModule\IWhiteboardService.cs" />
+    <Compile Include="SchoolModule\SchoolStudentService.cs" />
+    <Compile Include="SchoolModule\SchoolTeacherService.cs" />
     <Compile Include="SchoolModule\WhiteboardService.cs" />
   </ItemGroup>
   <ItemGroup>

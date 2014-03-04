@@ -32,14 +32,14 @@
             courseList.append(new CourseItemView({ model: courseItem }).render().el);
         });
 
-        var courseList = $(this.el).find('#friend-course-list');
+        var friendcourseList = $(this.el).find('#friend-course-list');
         _.each(this.friendsCoursesCollection.models, function (courseItem) {
-            courseList.append(new CourseItemView({ model: courseItem }).render().el);
+            friendcourseList.append(new CourseItemView({ model: courseItem }).render().el);
         });
 
-        var courseList = $(this.el).find('#sugested-course-list');
+        var sugestedcourseList = $(this.el).find('#sugested-course-list');
         _.each(this.sugestedCoursesCollection.models, function (courseItem) {
-            courseList.append(new CourseItemView({ model: courseItem }).render().el);
+            sugestedcourseList.append(new CourseItemView({ model: courseItem }).render().el);
         });
     }
 });
