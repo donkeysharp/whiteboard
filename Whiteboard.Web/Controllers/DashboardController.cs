@@ -46,7 +46,8 @@ namespace Whiteboard.Web.Controllers {
             return Json(res, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public JsonResult GetCoursesInformation() {
+        public JsonResult GetCoursesInformation()
+        {
             ICourseTeacherService courseService = CourseTeacherService.GetInstance<CourseTeacherRepository>();
             ICourseStudentService studentService = CourseStudentService.GetInstance<CourseStudentRepository>();
             var teacherCourses = courseService.GetCoursesByTeacherID(CurrentProfile.Id);
