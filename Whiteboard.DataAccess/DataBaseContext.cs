@@ -27,10 +27,13 @@ namespace Whiteboard.DataAccess {
         }
 
         private DataBaseContext() {
-
         }
         static DataBaseContext() {
             if (!context.Database.Exists()) {
+                context.Database.CreateIfNotExists();
+                context.Seed();
+            } else if (!context.Database.CompatibleWithModel(false)) {
+                context.Database.Delete();
                 context.Database.CreateIfNotExists();
                 context.Seed();
             }
