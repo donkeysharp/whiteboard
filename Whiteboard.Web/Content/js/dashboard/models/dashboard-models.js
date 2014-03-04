@@ -25,3 +25,7 @@ TeacherCollection = Backbone.Collection.extend({
     url: '/dashboard/teachers',
     model: TeacherItemModel,
 });
+StudentCollection = Backbone.Collection.extend({
+    url: '/dashboard/students',
+    model:StudentItemModel,
+});
