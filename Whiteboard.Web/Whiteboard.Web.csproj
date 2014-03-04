@@ -250,6 +250,7 @@
     <Content Include="Content\js\dashboard\models\teacher-dashboard-models.js" />
     <Content Include="Content\js\dashboard\student-dashboard-router.js" />
     <Content Include="Content\js\dashboard\views\course-dashboard-views.js" />
+    <Content Include="Content\js\dashboard\views\dashboard-view.js" />
     <Content Include="Content\js\dashboard\views\school-dashboard-view.js" />
     <Content Include="Content\js\dashboard\views\student-dashboard-view.js" />
     <Content Include="Content\js\demo\advanced-form-demo.js" />

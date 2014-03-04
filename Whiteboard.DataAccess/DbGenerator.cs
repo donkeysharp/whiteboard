@@ -20,21 +20,62 @@ namespace Whiteboard.DataAccess {
             CourseGenerator();
             CourseStudentGenerator();
             SaveChanges();
+            CourseTeacherGenerator();
+            SaveChanges();
+            SchoolStudentGenerator();
+        }
+
+        private void SchoolStudentGenerator()
+        {
+            SchoolStudent ss1 = new SchoolStudent();
+            ss1.SchoolId = 1;
+            ss1.StudentId = 3;
+        }
+
+        private void CourseTeacherGenerator()
+        {
+            CourseTeacher ct1 = new CourseTeacher();
+            ct1.CourseId = 1;
+            ct1.TeacherId = 2;
+
+            CourseTeacher ct2 = new CourseTeacher();
+            ct2.CourseId = 2;
+            ct2.TeacherId = 2;
+
+            CourseTeacher ct3 = new CourseTeacher();
+            ct3.CourseId = 2;
+            ct3.TeacherId = 2;
+
+            context.CourseTeachers.Add(ct1);
+            context.CourseTeachers.Add(ct2);
+            context.CourseTeachers.Add(ct3);
         }
 
         private void CourseStudentGenerator() {
             CourseStudent cs = new CourseStudent();
             cs.CourseId = 1;
-            cs.StudentId = 3;
+            cs.StudentId = 2;
+
+            CourseStudent cs2 = new CourseStudent();
+            cs2.CourseId = 2;
+            cs2.StudentId = 2;
+
+            CourseStudent cs3 = new CourseStudent();
+            cs3.CourseId = 3;
+            cs3.StudentId = 2;
 
             context.CourseStudents.Add(cs);
+            context.CourseStudents.Add(cs2);
+            context.CourseStudents.Add(cs3);
         }
 
         public void RoleGenerator() {
             Role schoolRole = new Role();
             schoolRole.Name = Role.ROLE_SCHOOL;
+
             Role teacherRole = new Role();
             teacherRole.Name = Role.ROLE_TEACHER;
+
             Role studentRole = new Role();
             studentRole.Name = Role.ROLE_STUDENT;
 
@@ -142,7 +183,7 @@ namespace Whiteboard.DataAccess {
             course6.Syllabus = "Syllabus 4";
             course6.Schedule = "9am to 11am";
             course6.Lectures = "empty";
-            course6.IsPublic = true;
+            course6.IsPublic = false;
             course6.Description = "COnocimiento literario basico";
 
             context.Courses.Add(course1);
