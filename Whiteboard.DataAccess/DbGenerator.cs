@@ -43,7 +43,7 @@ namespace Whiteboard.DataAccess {
             ct2.TeacherId = 2;
 
             CourseTeacher ct3 = new CourseTeacher();
-            ct3.CourseId = 2;
+            ct3.CourseId = 3;
             ct3.TeacherId = 2;
 
             context.CourseTeachers.Add(ct1);
