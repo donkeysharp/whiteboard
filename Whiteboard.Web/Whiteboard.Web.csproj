@@ -433,6 +433,7 @@
     <Content Include="Views\Dashboard\SideBars\Teacher.cshtml" />
     <Content Include="Views\Dashboard\_BaseDashboard.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutSingle.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

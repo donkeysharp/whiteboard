@@ -25,6 +25,7 @@ namespace Whiteboard.Web.Controllers {
             var res = new List<CourseItemViewModel>();
             foreach (var c in courses) {
                 res.Add(new CourseItemViewModel() { 
+                    Id = c.Id,
                     Title = c.Title,
                     PictureUrl = c.PictureUrl,
                     Description = c.Description
@@ -38,7 +39,8 @@ namespace Whiteboard.Web.Controllers {
             IEnumerable<Course> courses = courseService.GetPublicCourses();
             List<CourseItemViewModel> res = new List<CourseItemViewModel>();
             foreach (Course course in courses) {
-                res.Add(new CourseItemViewModel() { 
+                res.Add(new CourseItemViewModel() {
+                    Id = course.Id,
                     Title = course.Title,
                     Description = course.Description,
                     PictureUrl = course.PictureUrl
@@ -58,6 +60,7 @@ namespace Whiteboard.Web.Controllers {
                 int nroStundents = studentService.GetStudentsByCourseId(item.Id).Count();
                 res.Add(new CourseItemViewModel()
                 {
+                    Id = item.Id,
                     PictureUrl = item.PictureUrl,
                     Description = item.Description,
                     Title = item.Title,
@@ -102,6 +105,7 @@ namespace Whiteboard.Web.Controllers {
             {
                 res.Add(new CourseItemViewModel()
                     {
+                        Id = item.Id,
                         Description = item.Description,
                         PictureUrl = item.PictureUrl,
                         Title = item.Title

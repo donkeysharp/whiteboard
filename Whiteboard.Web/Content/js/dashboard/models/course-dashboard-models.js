@@ -1,5 +1,6 @@
 ﻿GeneralCourse = Backbone.Model.extend({
     defaults: {
+        "Id": 0,
         "Title": undefined,
         "Description": undefined,
         "PictureUrl": undefined,

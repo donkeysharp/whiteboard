@@ -1,5 +1,6 @@
 ﻿CourseItemModel = Backbone.Model.extend({
     defaults: {
+        "Id": 0,
         "PictureUrl": "",
         "Title": "",
         "Description": ""
@@ -7,12 +8,14 @@
 });
 TeacherItemModel = Backbone.Model.extend({
     defaults: {
+        "Id": 0,
         "PictureUrl": "",
         "Name":""
     }
 });
 StudentItemModel = Backbone.Model.extend({
     defaults: {
+        "Id": 0,
         "PictureUrl": "",
         "Name": ""
     }

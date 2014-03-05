@@ -18,7 +18,6 @@ namespace Whiteboard.Web.Controllers {
                 // If no id specified, redirect to profile's dashboard
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }
-                    
             return View();
         }
     }

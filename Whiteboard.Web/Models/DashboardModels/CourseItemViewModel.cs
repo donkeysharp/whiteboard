@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Whiteboard.Web.Models.DashboardModels {
     public class CourseItemViewModel {
+        public int Id { get; set; }
         [JsonProperty(PropertyName = "pictureUrl")]
         public string PictureUrl { get; set; }
         [JsonProperty(PropertyName = "title")]

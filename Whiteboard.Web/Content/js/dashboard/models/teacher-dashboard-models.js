@@ -1,5 +1,6 @@
 CourseTeacherItemModel = Backbone.Model.extend({
     defaults: {
+        "Id": 0,
         "PictureUrl": "",
         "CourseName": "",
         "Description": "",

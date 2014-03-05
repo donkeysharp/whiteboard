@@ -91,7 +91,9 @@
     <Compile Include="Repositories\SchoolTeacherRepository.cs" />
     <Compile Include="Repositories\WhiteboardRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Models\ClassNote.cs" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Whiteboard.Common\Whiteboard.Common.csproj">
       <Project>{d2f6004c-d767-4a4b-95fd-d15af8910cde}</Project>
