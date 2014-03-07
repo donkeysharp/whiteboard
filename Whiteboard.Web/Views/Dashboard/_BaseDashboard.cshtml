@@ -1,11 +1,11 @@
 ﻿<script type="text/template" id="tpl-dashboard">
     <h1><%= title %></h1>
-    <ul id="course-list"></ul>
+    <ul id="course-list" style="list-style: none"></ul>
 </script>
 <script type="text/template" id="tpl-course-item">
-    <div>
+    <div class="course-item">
         <img src="<%= PictureUrl %>" />
-        <h2><%= Title %></h2>
+        <h3><a href="/course/<%= Id %>"><%= Title %></a></h3>
         <p><%= Description %></p>
     </div>
 </script>

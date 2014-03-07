@@ -6,7 +6,7 @@
     teacherRouteDashboard: function () {
         var el = document.getElementById('dashboard-container');
         var view = new TeacherDashboardView({ el: el });
-        view.title = "Hola Mundo";
+        view.title = "Dashboard Teacher";
         view.fetchData();
     }
 });

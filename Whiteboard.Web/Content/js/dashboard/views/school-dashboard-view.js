@@ -26,7 +26,7 @@
     },
     render: function () {
         
-        $(this.el).html(this.template({ coursesTitle: 'Nuestros cursos', teachersTitle: 'Nuestros maestros', studentsTitle: 'Nuestros estudiantes' }));
+        $(this.el).html(this.template({ coursesTitle: 'Our Courses', teachersTitle: 'Our Teachers', studentsTitle: 'Our Students' }));
 
         var courseList = $(this.el).find('#course-list');
         _.each(this.coursesCollection.models, function (courseItem) {

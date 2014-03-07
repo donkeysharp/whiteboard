@@ -3,16 +3,14 @@
     <h1><%= title %></h1>
     <div>
         <h3><b>Courses: </b> <%= courses %> </h3>
-        <h3><b>Students: </b> <%= students %> </h3>
     </div>
-    <ul id="teacher-course-list"></ul>
+    <ul id="teacher-course-list" style="list-style: none"></ul>
 </script>
 
 <script type="text/template" id="tpl-teacher-course-item">
-    <div>
+    <div class="course-item">
         <img src="<%= PictureUrl %>" />
-        <h2><%= Title %></h2>
+        <h3><a href="/course/<%= Id %>"><%= Title %></a></h3>
         <p><%= Description %></p>
-        <p><%= NumberStudents %> </p>
     </div>
 </script>

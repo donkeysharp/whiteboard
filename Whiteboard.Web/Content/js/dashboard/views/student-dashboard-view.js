@@ -25,7 +25,7 @@
         this.sugestedCoursesCollection.fetch({ reset: true });
     },
     render: function () {
-        $(this.el).html(this.template({ coursesTitle: 'Mis cursos', friendsCourseTitle:'Los cursos de tus amigos', sugestedCoursesTitle :'Sugerencias'}));
+        $(this.el).html(this.template({ coursesTitle: 'Our Courses', friendsCourseTitle:'Your Friend\'s Courses', sugestedCoursesTitle :'Suggested Courses'}));
 
         var courseList = $(this.el).find('#course-list');
         _.each(this.myCoursesCollection.models, function (courseItem) {

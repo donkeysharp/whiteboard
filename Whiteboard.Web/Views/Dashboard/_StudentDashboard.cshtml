@@ -1,16 +1,16 @@
 ﻿<script type="text/template" id="tpl-student-dashboard">
     <h1><%= coursesTitle %></h1>
-    <ul id="course-list"></ul>
+    <ul id="course-list" style="list-style: none"></ul>
 
     <h1><%= friendsCourseTitle %></h1>
-    <ul id="friend-course-list"></ul>    
+    <ul id="friend-course-list" style="list-style: none"></ul>    
 
     <h1><%= sugestedCoursesTitle %></h1>
-    <ul id="sugested-course-list"></ul>
+    <ul id="sugested-course-list" style="list-style: none"></ul>
 </script>
 <script type="text/template" id="tpl-course-item">
-    <div>
-        <img src="" style="float: left; width: 100px; height: 60px;" />
+    <div class="course-item">
+        <img src="<%= PictureUrl %>" />
         <h3><a href="/course/<%= Id %>"><%= Title %></a></h3>
         <p><%= Description %></p>
     </div>
@@ -26,8 +26,8 @@
     </div>
 </script>
 <script type="text/template" id="tpl-course-search-item">
-    <div>
-        <img src="" style="float: left; width: 100px; height: 60px;" />
+    <div class="course-item">
+        <img src="<%= PictureUrl %>" />
         <h3><a href="/course/<%= Id %>"><%= Title %></a></h3>
         <p><%= Description %></p>
     </div>

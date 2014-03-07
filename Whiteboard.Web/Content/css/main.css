@@ -138,6 +138,10 @@
     width: 100%;
 }
 /* COURSE STYLES */
+.course-item img {
+    float: left; width: 100px; height: 60px;
+    margin-right: 10px;
+}
 .course-detail {
     margin: 15px auto 15px auto; 
     background-color: #fff; 
