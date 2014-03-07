@@ -164,13 +164,19 @@
                         <i class="fa fa-gear"></i> Settings
                     </a>
                 </li>
-                <li>
+                @*<li>
                     <a class="logout_open" href="index.html#logout">
                         <i class="fa fa-sign-out"></i> Logout
                         <strong>John Smith</strong>
                     </a>
+                </li>*@
+                <li>
+                    <a class="logout_open" href="javascript:document.getElementById('logoutForm').submit()">
+                        <i class="fa fa-sign-out"></i>
+                        Log Out &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
                 </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
     @using (Html.BeginForm("LogOut", "Auth", FormMethod.Post, new { id = "logoutForm" })) {
     @Html.AntiForgeryToken()
     }

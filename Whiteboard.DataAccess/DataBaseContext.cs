@@ -32,6 +32,9 @@ namespace Whiteboard.DataAccess {
         private DataBaseContext() {
         }
         static DataBaseContext() {
+            CheckDatabase();
+        }
+        public static void CheckDatabase() {
             if (!context.Database.Exists()) {
                 context.Database.CreateIfNotExists();
                 context.Seed();

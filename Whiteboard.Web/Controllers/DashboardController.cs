@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using whiteboard.BusinessLogic.ProfileModule;
 using whiteboard.BusinessLogic.SchoolModule;
+using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 using Whiteboard.Web.Models.DashboardModels;
@@ -27,7 +29,7 @@ namespace Whiteboard.Web.Controllers {
                 res.Add(new CourseItemViewModel() { 
                     Id = c.Id,
                     Title = c.Title,
-                    PictureUrl = c.PictureUrl,
+                    PictureUrl = Path.Combine(Constants.UPLOADS_PATH_RELATIVE, c.PictureUrl),
                     Description = c.Description
                 });
             }
@@ -43,7 +45,7 @@ namespace Whiteboard.Web.Controllers {
                     Id = course.Id,
                     Title = course.Title,
                     Description = course.Description,
-                    PictureUrl = course.PictureUrl
+                    PictureUrl = Path.Combine(Constants.UPLOADS_PATH_RELATIVE, course.PictureUrl),
                 });
             }
             return Json(res, JsonRequestBehavior.AllowGet);
@@ -61,7 +63,7 @@ namespace Whiteboard.Web.Controllers {
                 res.Add(new CourseItemViewModel()
                 {
                     Id = item.Id,
-                    PictureUrl = item.PictureUrl,
+                    PictureUrl = Path.Combine(Constants.UPLOADS_PATH_RELATIVE, item.PictureUrl),
                     Description = item.Description,
                     Title = item.Title,
                     NumberStudents = nroStundents
@@ -107,7 +109,7 @@ namespace Whiteboard.Web.Controllers {
                     {
                         Id = item.Id,
                         Description = item.Description,
-                        PictureUrl = item.PictureUrl,
+                        PictureUrl = Path.Combine(Constants.UPLOADS_PATH_RELATIVE, item.PictureUrl),
                         Title = item.Title
                     });
             }

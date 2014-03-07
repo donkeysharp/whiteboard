@@ -16,6 +16,7 @@ namespace Whiteboard.DataAccess
         public GenericRepository()
         {
             this.context = DataBaseContext.Context;
+            DataBaseContext.CheckDatabase();
             this.dbSet = context.Set<T>();
         }
 

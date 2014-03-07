@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_Master.cshtml";
 }
-
+@model Whiteboard.Web.Models.CourseViewModel
 @section SideBar {
     @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
         @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
@@ -12,7 +13,58 @@
     }
 }
 
-
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="course-detail">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>@Model.Title</h1>
+                @if (Model.IsPublic) {
+                    <span class="label label-success">Public Course</span>
+                }
+                <br>
+                <p>@Model.Description</p>
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content(Model.PictureUrl)" style="width: 100%; height: 200px" />
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>About this course</h3>
+                <div>
+                    @Html.Raw(Model.AboutCourse)
+                </div>
+                <h3>Course Syllabus</h3>
+                <div>
+                    @Html.Raw(Model.Syllabus)
+                </div>
+                <h3>Lectures</h3>
+                <div>
+                    @Html.Raw(Model.Lectures)
+                </div>
+            </div>
+            <div class="col-md-6">
+                @if (Model.IsPublic) {
+                    <a class="btn btn-success" id="join-course" href="invoice.html#">Join Course</a>
+                }
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Previous Classes</h3>
+                <ul>
+                    <li><a href="#">Class 1</a></li>
+                    <li><a href="#">Class 2</a></li>
+                    <li><a href="#">Class 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 @section Scripts {
     <script src="@Url.Content("~/Content/vendor/underscore-min.js")"></script>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using whiteboard.BusinessLogic.SchoolModule;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
+using Whiteboard.Web.Models;
 
 namespace Whiteboard.Web.Controllers {
     [Authorize]
@@ -18,7 +19,8 @@ namespace Whiteboard.Web.Controllers {
                 // If no id specified, redirect to profile's dashboard
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }
-            return View();
+            CourseViewModel model = new CourseViewModel(course);
+            return View(model);
         }
     }
 }

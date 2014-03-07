@@ -168,6 +168,9 @@ namespace Whiteboard.DataAccess {
             Course course1 = new Course();
             course1.Title = "Matematicas con tom y jerry";
             course1.SchoolId = 1;
+            course1.Description = "Little description";
+            course1.AboutCourse = "This is all about the <b>course</b>";
+            course1.PictureUrl = "class_default.jpg";
             course1.Syllabus = "Syllabus";
             course1.Schedule = "8am to 10am";
             course1.Lectures = "empty";
@@ -177,6 +180,9 @@ namespace Whiteboard.DataAccess {
             Course course2 = new Course();
             course2.Title = "Literatura";
             course2.SchoolId = 1;
+            course2.Description = "Little description";
+            course2.AboutCourse = "This is all about the <b>course</b>";
+            course2.PictureUrl = "class_default.jpg";
             course2.Syllabus = "Syllabus 2";
             course2.Schedule = "9am to 11am";
             course2.Lectures = "empty";
@@ -186,6 +192,9 @@ namespace Whiteboard.DataAccess {
             Course course3 = new Course();
             course3.Title = "Curso privado de quimica";
             course3.SchoolId = 1;
+            course3.Description = "Little description";
+            course3.AboutCourse = "This is all about the <b>course</b>";
+            course3.PictureUrl = "class_default.jpg";
             course3.Syllabus = "Syllabus quimica";
             course3.Schedule = "9am to 11am";
             course3.Lectures = "empty";
@@ -195,6 +204,9 @@ namespace Whiteboard.DataAccess {
             Course course4 = new Course();
             course4.Title = "Fisica mecanica";
             course4.SchoolId = 1;
+            course4.Description = "Little description";
+            course4.AboutCourse = "This is all about the <b>course</b>";
+            course4.PictureUrl = "class_default.jpg";
             course4.Syllabus = "Syllabus fisica";
             course4.Schedule = "9am to 11am";
             course4.Lectures = "empty";
@@ -204,6 +216,9 @@ namespace Whiteboard.DataAccess {
             Course course5 = new Course();
             course5.Title = "Curso publico 3";
             course5.SchoolId = 1;
+            course5.Description = "Little description";
+            course5.AboutCourse = "This is all about the <b>course</b>";
+            course5.PictureUrl = "class_default.jpg";
             course5.Syllabus = "Syllabus 3";
             course5.Schedule = "9am to 11am";
             course5.Lectures = "empty";
@@ -213,6 +228,9 @@ namespace Whiteboard.DataAccess {
             Course course6 = new Course();
             course6.Title = "Curso publico 4";
             course6.SchoolId = 1;
+            course6.Description = "Little description";
+            course6.AboutCourse = "This is all about the <b>course</b>";
+            course6.PictureUrl = "class_default.jpg";
             course6.Syllabus = "Syllabus 4";
             course6.Schedule = "9am to 11am";
             course6.Lectures = "empty";

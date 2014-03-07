@@ -10,6 +10,7 @@ namespace Whiteboard.DataAccess.Models {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string AboutCourse { get; set; }
         public string Syllabus { get; set; }
         public string Lectures { get; set; }
         public string Schedule { get; set; }

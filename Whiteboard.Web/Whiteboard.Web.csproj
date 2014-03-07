@@ -188,6 +188,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CourseViewModel.cs" />
     <Compile Include="Models\DashboardModels\CourseItemViewModel.cs" />
     <Compile Include="Models\DashboardModels\StudentItemViewModel.cs" />
     <Compile Include="Models\DashboardModels\TeacherItemViewModel.cs" />

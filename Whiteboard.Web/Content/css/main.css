@@ -137,3 +137,13 @@
     margin-top: 50px;
     width: 100%;
 }
+/* COURSE STYLES */
+.course-detail {
+    margin: 15px auto 15px auto; 
+    background-color: #fff; 
+    border: 1px solid #000;
+    padding: 10px;
+}
+#join-course {
+    width: 100%;
+}
