@@ -30,7 +30,10 @@ left join profile as t on (t.id = cs.TeacherId)
 where c.id = {0}", id);
 
             List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
-            return result[0];
+            if (result.Count > 0) {
+                return result[0];
+            }
+            return null;
         }
     }
 }

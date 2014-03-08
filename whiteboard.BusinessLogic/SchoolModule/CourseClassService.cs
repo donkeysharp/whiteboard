@@ -21,10 +21,9 @@ namespace whiteboard.BusinessLogic.SchoolModule
             return new CourseClassService(da);
         }
 
-        IEnumerable<Course> ICourseClassService.GetClassesByCourseId(int CourseId)
+        public IEnumerable<CourseClass> GetClassesByCourseId(int CourseId)
         {
-            var query = da.Filter(x => x.CourseId == CourseId);
-            return (from x in query select x.Course).ToList();
+            return da.Filter(x => x.CourseId == CourseId).ToList();
         }
     }
 }

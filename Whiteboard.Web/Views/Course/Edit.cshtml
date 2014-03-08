@@ -24,7 +24,7 @@
             <div class="clearfix"></div>
         </div>
         <div id="formControls" >
-                <a href="/course/list" style="float:right;">
+                <a href="/course/list" style="float:right; margin-right: 15px;">
                     <i class="fa fa-hand-o-left"></i> Return
                 </a>
             <div class="portlet-body">
@@ -39,7 +39,7 @@
                             } 
                         </div>
                     }
-                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="hidden" id="courseId" name="id" value="@Model.Id" />
                     <div class="form-group">
                         <label for="textInput" class="col-sm-2 control-label">Course Title</label>
                         <div class="col-sm-10">
@@ -109,6 +109,70 @@
                                 id="lectures" name="lectures" rows="18">@Model.Lectures</textarea>
                         </div>
                     </div>
+                    @if (Model.Id > 0) {
+                    <h3>Class information</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Description:<br />
+                            <input type="text" id="class-desc" class="form-control" />
+                        </div>
+                        <div class="col-xs-4">
+                            Date: <br />
+                            <div id="sandbox-container">
+                                <input id="class-date" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Begin Time: <br>
+                            <div class="input-append bootstrap-timepicker input-group">
+                                <input id="timepicker1" class="form-control" type="text" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default add-on" type="button"><i class="fa fa-clock-o"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            End Time: <br>
+                            <div class="input-append bootstrap-timepicker input-group">
+                                <input id="timepicker2" class="form-control" type="text" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default add-on" type="button"><i class="fa fa-clock-o"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-2"><br />
+                            <a href="#" id="add-class"><i class="fa fa-plus fa-2x"></i></a>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="table-responsive">
+                        <table class="table table-hover" id="classes">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Begin</th>
+                                    <th>End</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var cc in Model.CourseClasses) {
+                                    <tr>
+                                        <td>@cc.Description</td>
+                                        <td class="format-date">@cc.BeginTime</td>
+                                        <td class="format-date">@cc.EndTime</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    }
                     <div class="form-group">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-default">Save Changes</button>
@@ -134,11 +198,15 @@
 @section StyleSheets {
     <link href="/Content/css/plugins/summernote/summernote.css" rel="stylesheet">
     <link href="/Content/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="/Content/css/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="/Content/css/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
 }
 
 @section Scripts {
     <script src="@Url.Content("~/Content/vendor/jquery.autocomplete.js")"></script>
     <script src="@Url.Content("~/Content/js/plugins/summernote/summernote.min.js")"></script>
-    <script src="@Url.Content("~/Content/js/flex.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
     <script src="@Url.Content("~/Content/js/course-edit.js")"></script>
+    <script src="@Url.Content("~/Content/js/flex.js")"></script>
 }

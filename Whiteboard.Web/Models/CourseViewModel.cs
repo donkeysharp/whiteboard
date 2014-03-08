@@ -65,5 +65,7 @@ namespace Whiteboard.Web.Models {
             this.Teacher = course.TeacherName;
             this.TeacherId = course.TeacherId;
         }
+
+        public IEnumerable<CourseClassViewModel> CourseClasses { get; set; }
     }
 }

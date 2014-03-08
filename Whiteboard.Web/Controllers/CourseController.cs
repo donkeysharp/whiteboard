@@ -25,6 +25,7 @@ namespace Whiteboard.Web.Controllers {
             CourseViewModel model = new CourseViewModel(course);
             return View(model);
         }
+
         [HttpGet]
         [Authorize(Roles=Role.ROLE_SCHOOL)]
         public ActionResult List() {
@@ -33,6 +34,7 @@ namespace Whiteboard.Web.Controllers {
             ViewBag.Courses = courses;
             return View();
         }
+
         [HttpGet]
         [Authorize(Roles=Role.ROLE_SCHOOL + "," + Role.ROLE_TEACHER)]
         public ActionResult Edit(int id = 0) {
@@ -41,10 +43,25 @@ namespace Whiteboard.Web.Controllers {
             CourseViewModel model = TempData["CourseModel"] as CourseViewModel ?? new CourseViewModel();
             if (course != null) {
                 model = new CourseViewModel(course);
+                ICourseClassService courseClassService = CourseClassService.GetInstance<CourseClassRepository>();
+                IEnumerable<CourseClass> courseClasses = courseClassService.GetClassesByCourseId(course.Id);
+                List<CourseClassViewModel> courseClassModels = new List<CourseClassViewModel>();
+                foreach (CourseClass cc in courseClasses) {
+                    courseClassModels.Add(new CourseClassViewModel() {
+                        Id = cc.Id,
+                        Description = cc.Description,
+                        BeginTime = cc.BeginTime,
+                        EndTime = cc.EndTime,
+                        Finished = cc.Finished,
+                        Broadcasting = cc.Broadcasting
+                    });
+                }
+                model.CourseClasses = courseClassModels;
             }
             ViewData["Errors"] = TempData["Errors"] ?? new List<ModelError>();
             return View(model);
         }
+
         [HttpPost]
         [Authorize(Roles=Role.ROLE_SCHOOL + "," + Role.ROLE_TEACHER)]
         [ValidateInput(false)]
@@ -62,14 +79,22 @@ namespace Whiteboard.Web.Controllers {
             course.Syllabus = model.Syllabus;
             course.Lectures = model.Lectures;
             course.IsPublic = model.IsPublic;
+            if (course.SchoolId == 0) {
+                course.SchoolId = CurrentProfile.Id;
+            }
 
+            string filename;
             if (file != null && file.ContentLength > 0) {
-                string filename = Guid.NewGuid().ToString() + "." + Path.GetExtension(file.FileName);
+                filename = Guid.NewGuid().ToString() + "." + Path.GetExtension(file.FileName);
                 string path = Path.Combine(Server.MapPath(Constants.UPLOADS_PATH), filename);
                 FileHelper.CreateFile(path, file.InputStream, true);
 
-                course.PictureUrl = filename;
+                
+            } else {
+                filename = "class_default.jpg";
             }
+
+            course.PictureUrl = filename;
 
             if (model.Id == 0) {
                 course = courseService.Insert(course);
@@ -99,6 +124,21 @@ namespace Whiteboard.Web.Controllers {
                 suggestions = res
             };
             return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult AddClass(int courseId, string description, long beginTime, long endTime) {
+            ICourseClassService courseClassService = CourseClassService.GetInstance<CourseClassRepository>();
+            CourseClass courseClass = new CourseClass();
+            courseClass.CourseId = courseId;
+            courseClass.Description = description;
+            courseClass.Finished = false;
+            courseClass.Broadcasting = false;
+            courseClass.BeginTime = beginTime;
+            courseClass.EndTime = endTime;
+
+            courseClass = courseClassService.Insert(courseClass);
+
+            return Json(new { status = "ok", courseId = courseClass.Id });
         }
     }
 }
