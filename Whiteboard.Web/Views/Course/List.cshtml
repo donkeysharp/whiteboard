@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Course Management";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+@using Whiteboard.Web.Models
+@section SideBar {
+    @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
+        @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
+        @Html.Partial("../Dashboard/SideBars/Teacher", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
+        @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    }
+}
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="course-manager">
+    <div class="portlet portlet-red">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h3 style="float:left">Course Manager</h3>
+            </div>
+            <div class="clearfix">
+                <div style="float: right; margin: 2px 5px 0 0">
+                    <a href="/course/edit" title="New Course">
+                        <span class="fa-stack fa-2x">
+                          <i class="fa fa-circle-o fa-stack-2x"></i>
+                          <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Teacher</th>
+                        <th>Public</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @for (var i = 0; i < ViewBag.Courses.Count; ++i) {
+                       <tr>
+                           <td>@(i+1)</td>
+                           <td>@ViewBag.Courses[i].Title</td>
+                           <td>@Html.Raw(ViewBag.Courses[i].Description)</td>
+                           <td>@ViewBag.Courses[i].TeacherName</td>
+                           <td>
+                               @if (ViewBag.Courses[i].IsPublic) {
+                                  <div class="green-circle" title="Public"></div>
+                               } else {
+                                   <div class="red-circle" title="No Public"></div>
+                               }
+                           </td>
+                           <td>
+                               <a href="edit/@ViewBag.Courses[i].Id">
+                                   <i class="fa fa-edit fa-lg" title="Edit"></i>
+                               </a>
+                           </td>
+                           <td>
+
+                           </td>
+                       </tr>
+                   }
+                </tbody>
+            </table>
+        </div>
+        </div>
+     </div>
+</div>
+</div>
+</div>

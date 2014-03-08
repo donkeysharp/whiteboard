@@ -23,7 +23,7 @@
                     <span class="label label-success">Public Course</span>
                 }
                 <br>
-                <p>@Model.Description</p>
+                @Html.Raw(Model.Description)
             </div>
             <div class="col-md-6">
                 <img src="@Url.Content(Model.PictureUrl)" style="width: 100%; height: 200px" />

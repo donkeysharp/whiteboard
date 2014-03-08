@@ -75,7 +75,6 @@ namespace Whiteboard.Web.Controllers {
         public ActionResult Upload(HttpPostedFileBase file) {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
             Profile profile = service.Get(User.Identity.Name);
-            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
             if (file != null && file.ContentLength > 0) {
                 string filename = Path.GetFileName(file.FileName);

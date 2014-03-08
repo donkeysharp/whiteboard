@@ -11,7 +11,8 @@
         @Html.Partial("SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel())
     }
 }
-<div id="dashboard-container" >
+<div id="dashboard-container" class="row">
+    <div class="col-lg-8">
 @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
     @Html.Partial("_SchoolDashboard")
 } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
@@ -19,6 +20,7 @@
 } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
     @Html.Partial("_StudentDashboard")
 }
+</div>
 </div>
 
 @section Scripts {

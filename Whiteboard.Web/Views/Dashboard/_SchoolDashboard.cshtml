@@ -1,5 +1,8 @@
 ﻿<script type="text/template" id="tpl-school-dashboard">
-    <h1><%= coursesTitle %></h1>
+    <div style="position: relative; width: 330px;">
+        <h1 float: left;><%= coursesTitle %></h1>
+        <a href="/course/list" style="position: absolute; top:7px; right:0;">Manage Courses</a>
+    </div>
     <ul id="course-list" style="list-style: none"></ul>
 
     <h1><%= teachersTitle %></h1>

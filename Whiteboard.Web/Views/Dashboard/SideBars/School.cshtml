@@ -15,77 +15,22 @@
                 </p>
                 <div class="clearfix"></div>
             </li>
-            <!-- end SIDE NAV USER PANEL -->
-            <!-- begin SIDE NAV SEARCH -->
-            @*<li class="nav-search">
-                <form role="form">
-                    <input type="search" class="form-control" placeholder="Search...">
-                    <button class="btn">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-            </li>*@
-            <!-- end SIDE NAV SEARCH -->
-            <!-- begin DASHBOARD LINK -->
             <li>
+                @if (Model.Redirect) {
+                <a class="active command single" href="@Model.RedirectTo" id="default-select">
+                    <i class="fa fa-dashboard"></i> Dashboard
+                </a>
+                } else {
                 <a class="active command single" href="#dashboard" id="default-select">
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
+                }
             </li>
-            <!-- end DASHBOARD LINK -->
-            <!-- begin CHARTS DROPDOWN -->
-            @*<li class="panel">
-                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle multiple" data-target="#charts">
-                    <i class="fa fa-bar-chart-o"></i> Charts <i class="fa fa-caret-down"></i>
+            <li>
+                <a href="/course/list" id="default-select">
+                    <i class="fa fa-tasks"></i> Course Manager
                 </a>
-                <ul class="collapse nav" id="charts">
-                    <li>
-                        <a href="#" class="command">
-                            <i class="fa fa-angle-double-right"></i> Flot Charts
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="command">
-                            <i class="fa fa-angle-double-right"></i> Morris.js
-                        </a>
-                    </li>
-                </ul>
-            </li>*@
-            <!-- end CHARTS DROPDOWN -->
-            <!-- begin FORMS DROPDOWN -->
-            @*<li class="panel">
-                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle multiple" data-target="#forms">
-                    <i class="fa fa-edit"></i> Forms <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="collapse nav" id="forms">
-                    <li>
-                        <a href="#" class="command">
-                            <i class="fa fa-angle-double-right"></i> Basic Elements
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="command">
-                            <i class="fa fa-angle-double-right"></i> Advanced Elements
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="command">
-                            <i class="fa fa-angle-double-right"></i> Validation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="command">
-                            <i class="fa fa-angle-double-right"></i> WYSIWYG Editor
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="command">
-                            <i class="fa fa-angle-double-right"></i> Dropzone Uploader
-                        </a>
-                    </li>
-                </ul>
-            </li>*@
-            <!-- end FORMS DROPDOWN -->
+            </li>
         </ul>
     </div>
 </nav>

@@ -44,18 +44,18 @@ namespace Whiteboard.Web.Controllers {
                 Profile profile = CurrentProfile;
                 ViewBag.ProfileData = profile;
 
-                Type t = this.GetType();
-                object[] attributes = t.GetCustomAttributes(true);
+                //Type t = this.GetType();
+                //object[] attributes = t.GetCustomAttributes(true);
 
-                ViewBag.RouteMap = new RouteMapAttribute();
-                foreach (var o in attributes) {
-                    Trace.TraceInformation(o.GetType().Name);
-                    if (o is RouteMapAttribute) {
-                        var attrib = o as RouteMapAttribute;
-                        attrib.RouteList = attrib.Route.Split(new char[] { ',', ' ' });
-                        ViewBag.RouteMap = attrib;
-                    }
-                }
+                //ViewBag.RouteMap = new RouteMapAttribute();
+                //foreach (var o in attributes) {
+                //    Trace.TraceInformation(o.GetType().Name);
+                //    if (o is RouteMapAttribute) {
+                //        var attrib = o as RouteMapAttribute;
+                //        attrib.RouteList = attrib.Route.Split(new char[] { ',', ' ' });
+                //        ViewBag.RouteMap = attrib;
+                //    }
+                //}
             }
             base.OnActionExecuted(filterContext);
         }

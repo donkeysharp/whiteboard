@@ -9,5 +9,6 @@ namespace Whiteboard.DataAccess.Repositories
 {
     public interface ICourseTeacherRepository:IRepository<CourseTeacher>
     {
+        int DeleteAllTeachersForCourse(int courseId);
     }
 }

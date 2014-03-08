@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
+using Whiteboard.DataAccess.Reports;
 
 namespace Whiteboard.DataAccess.Repositories {
     public class ProfileRepository : GenericRepository<Profile>, IProfileRepository {

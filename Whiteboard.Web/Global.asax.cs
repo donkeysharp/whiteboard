@@ -17,6 +17,8 @@ namespace Whiteboard.Web {
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            // Enable application/json on controllers
+            ValueProviderFactories.Factories.Add(new JsonValueProviderFactory());
             // AuthConfig.RegisterAuth();
         }
     }

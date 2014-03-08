@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+@using Whiteboard.Web.Models
+@model CourseViewModel
+@section SideBar {
+    @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
+        @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
+        @Html.Partial("../Dashboard/SideBars/Teacher", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
+        @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    }
+}
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+<div class="course-manager">
+    <div class="portlet portlet-red">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h3>Course Information</h3>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="formControls" >
+                <a href="/course/list" style="float:right;">
+                    <i class="fa fa-hand-o-left"></i> Return
+                </a>
+            <div class="portlet-body">
+                <form class="form-horizontal" method="post"
+                     onsubmit="return postForm()" enctype = "multipart/form-data"
+                    >
+                    @if (ViewBag.Errors.Count > 0) {
+                        <div class="alert alert-danger alert-dismissable">
+                            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">x</button>
+                            @foreach(var error in ViewBag.Errors) {
+                                <p>@error.ErrorMessage</p>   
+                            } 
+                        </div>
+                    }
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="textInput" class="col-sm-2 control-label">Course Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="textInput" 
+                                name="title" placeholder="Title" value="@Model.Title">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textInput" class="col-sm-2 control-label">Teacher</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="teacher" 
+                                name="teacher" placeholder="Teacher" value="@Model.Teacher">
+                            <input type="hidden" id="teacherId" name="teacherId" value="@Model.TeacherId" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2"></label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(x => x.IsPublic) Public
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textInput" class="col-sm-2 control-label">Course Picture</label>
+                        <div class="col-sm-10">
+                            <img style="width: 100px;height: 60px;margin-right: 10px;" 
+                                src="@(Url.Content(Model.PictureUrl ?? "~/Content/uploads/class_default.jpg"))"/>
+                            <input type="file" name="file" id="file" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textArea" class="col-sm-2 control-label">
+                            Little Description
+                        </label>
+                        <div class="col-sm-10">
+                            <textarea class="input-block-level" 
+                                id="description" name="description" rows="18">@Model.Description</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textArea" class="col-sm-2 control-label">
+                            About Course
+                        </label>
+                        <div class="col-sm-10">
+                            <textarea class="input-block-level" 
+                                id="aboutCourse" name="aboutCourse" rows="18">@Model.AboutCourse</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textArea" class="col-sm-2 control-label">
+                            Syllabus
+                        </label>
+                        <div class="col-sm-10">
+                            <textarea class="input-block-level" 
+                                id="syllabus" name="syllabus" rows="18">@Model.Syllabus</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="textArea" class="col-sm-2 control-label">
+                            Lectures
+                        </label>
+                        <div class="col-sm-10">
+                            <textarea class="input-block-level" 
+                                id="lectures" name="lectures" rows="18">@Model.Lectures</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-default">Save Changes</button>
+                            @if (Model.Id != 0) {
+                                <a class="btn btn-danger" href="javascript:document.getElementById('deleteForm').submit()">
+                                    <i class="fa fa-trash-o fa-lg"></i> Delete Course
+                                </a>
+                                using (Html.BeginForm("Delete", "Course", FormMethod.Post, new { id = "deleteForm" })) {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("id", Model.Id)
+                                }
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.portlet -->
+    </div>
+</div>
+</div>
+@section StyleSheets {
+    <link href="/Content/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="/Content/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+}
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/vendor/jquery.autocomplete.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/summernote/summernote.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/flex.js")"></script>
+    <script src="@Url.Content("~/Content/js/course-edit.js")"></script>
+}

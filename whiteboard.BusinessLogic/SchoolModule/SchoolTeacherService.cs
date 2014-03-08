@@ -10,6 +10,12 @@ namespace whiteboard.BusinessLogic.SchoolModule
 {
     public class SchoolTeacherService : GenericService<SchoolTeacher>, ISchoolTeacherService
     {
+        private ISchoolTeacherRepository Da {
+            get {
+                return da as ISchoolTeacherRepository;
+            }
+        }
+
         private SchoolTeacherService(ISchoolTeacherRepository da)
             : base(da)
         {
@@ -25,6 +31,11 @@ namespace whiteboard.BusinessLogic.SchoolModule
         {
             var data = da.Filter(x => x.SchoolId == SchoolID);
             return (from y in data.ToList() select y.Teacher).ToList();
+        }
+
+
+        public IEnumerable<Profile> GetTeachersBySchoolId(int schoolId, string query) {
+            return Da.GetTeachersBySchoolId(schoolId, query);
         }
     }
 }

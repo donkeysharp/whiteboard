@@ -1,4 +1,9 @@
-﻿/* For login on the navbar*/
+﻿/* For autocomplete */
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+/* For login on the navbar*/
 .navbar-login {
     width: 300px;
     margin-top: -8px;
@@ -150,4 +155,18 @@
 }
 #join-course {
     width: 100%;
+}
+.course-manager {
+    margin: 15px auto 15px auto; 
+    padding: 10px;
+}
+.course-manager .table-hover tbody tr:hover {
+}
+.red-circle {
+    margin-left: 10px;
+    width:10px; height:10px; border-radius:15px; background: #f00
+}
+.green-circle {
+    margin-left: 10px;
+    width:10px; height:10px; border-radius:15px; background: #0f0
 }

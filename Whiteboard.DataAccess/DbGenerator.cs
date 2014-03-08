@@ -54,7 +54,13 @@ namespace Whiteboard.DataAccess {
             SchoolTeacher st1 = new SchoolTeacher();
             st1.SchoolId = 1;
             st1.TeacherId = 2;
+
+            SchoolTeacher st2 = new SchoolTeacher();
+            st2.SchoolId = 1;
+            st2.TeacherId = 4;
+
             context.SchoolTeachers.Add(st1);
+            context.SchoolTeachers.Add(st2);
         }
 
         private void SchoolStudentGenerator()
@@ -139,9 +145,17 @@ namespace Whiteboard.DataAccess {
             teacherProfile.Country = "BO";
             teacherProfile.PictureUrl = "user.png";
 
+            Profile teacherProfile2 = new Profile();
+            teacherProfile2.Name = "Rosa Flores";
+            teacherProfile2.Email = "rosa@gmail.com";
+            teacherProfile2.Password = "8cb2237d0679ca88db6464eac60da96345513964";
+            teacherProfile2.Country = "BO";
+            teacherProfile2.PictureUrl = "user.png";
+
             context.Profiles.Add(schoolProfile);
             context.Profiles.Add(teacherProfile);
             context.Profiles.Add(studentProfile);
+            context.Profiles.Add(teacherProfile2);
 
             RoleProfileGenerator();
         }

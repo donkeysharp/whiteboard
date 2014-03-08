@@ -4,12 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
+using Whiteboard.DataAccess.Reports;
 using Whiteboard.DataAccess.Repositories;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
     public class CourseService : GenericService<Course>, ICourseService
     {
+        private ICourseRepository Da {
+            get {
+                return (ICourseRepository)da;
+            }
+        }
+        
         private CourseService(ICourseRepository da)
             : base(da)
         {
@@ -33,6 +40,17 @@ namespace whiteboard.BusinessLogic.SchoolModule
 
         public IEnumerable<Course> GetPublicCourses() {
             return da.Filter(x => x.IsPublic == true);
+        }
+
+
+        public IEnumerable<CourseReport> GetCoursesBySchoolId(int schoolId) {
+            //return da.GetCoursesBySchoolId(schoolId);
+            return Da.GetCoursesBySchoolId(schoolId);
+        }
+
+
+        public CourseReport GetCourseReport(int id) {
+            return Da.GetCourseReport(id);
         }
     }
 }

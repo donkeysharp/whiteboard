@@ -274,7 +274,7 @@
     <Content Include="Content\js\demo\notifications-demo.js" />
     <Content Include="Content\js\demo\sliders-demo.js" />
     <Content Include="Content\js\demo\validation-demo.js" />
-    <Content Include="Content\js\demo\wysiwyg-demo.js" />
+    <Content Include="Content\js\course-edit.js" />
     <Content Include="Content\js\flex.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\plugins\bootstrap-datepicker\bootstrap-datepicker.js" />
@@ -322,6 +322,8 @@
     <Content Include="Content\vendor\backbone-min.js" />
     <Content Include="Content\vendor\bootstrap.js" />
     <Content Include="Content\vendor\bootstrap.min.js" />
+    <Content Include="Content\vendor\jquery.autocomplete.js" />
+    <Content Include="Content\vendor\jquery.autocomplete.min.js" />
     <Content Include="Content\vendor\jquery.js" />
     <Content Include="Content\vendor\jquery.min.js" />
     <Content Include="Content\vendor\underscore-min.js" />
@@ -434,6 +436,8 @@
     <Content Include="Views\Dashboard\SideBars\Teacher.cshtml" />
     <Content Include="Views\Dashboard\_BaseDashboard.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\List.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
