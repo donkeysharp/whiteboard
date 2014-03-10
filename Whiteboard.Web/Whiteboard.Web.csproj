@@ -320,6 +320,8 @@
     <Content Include="Content\js\plugins\summernote\summernote.min.js" />
     <Content Include="Content\js\plugins\validate\jquery.validate.min.js" />
     <Content Include="Content\js\register.js" />
+    <Content Include="Content\uploads\class_default.jpg" />
+    <Content Include="Content\uploads\user.png" />
     <Content Include="Content\vendor\backbone-min.js" />
     <Content Include="Content\vendor\bootstrap.js" />
     <Content Include="Content\vendor\bootstrap.min.js" />
@@ -360,7 +362,6 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Areas\WebAPI\Models\" />
     <Folder Include="Areas\WebAPI\Views\Shared\" />
-    <Folder Include="Content\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
