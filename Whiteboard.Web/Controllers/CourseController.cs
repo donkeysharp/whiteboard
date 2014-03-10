@@ -138,7 +138,7 @@ namespace Whiteboard.Web.Controllers {
 
             courseClass = courseClassService.Insert(courseClass);
 
-            return Json(new { status = "ok", courseId = courseClass.Id });
+            return Json(new { status = "ok", courseId = courseClass.Id, begin = beginTime, end = endTime, description = description });
         }
     }
 }

@@ -85,26 +85,48 @@ function addClass(e) {
     }
 
     $.post('/course/addclass/', data).done(function (data) {
-        console.log(data);
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+            theme: 'flat'
+        };
+        Messenger().post({
+            message: 'This is an example of a top right notification!',
+            id: "Only-one-message",
+            type: 'success',
+            showCloseButton: true
+        });
+        var row = "<tr>";
+        row += "<td>" + data.description + "</td>";
+        row += "<td>" + formatFromSpoch(data.begin) + "</td>";
+        row += "<td>" + formatFromSpoch(data.end) + "</td>";
+        row += "<td><a href=\"#\"><i class=\"fa fa-trash\"></i></a></td>";
+        row += "</tr>";
+
+        $('#classes-tbody').append(row);
     }, 'json');
 }
 function formatDates() {
     var items = document.getElementsByClassName('format-date');
     for (var i = 0; i < items.length; ++i) {
-        var date = new Date();
-        date.setTime(parseInt(items[i].innerHTML));
+        var format = formatFromSpoch(parseInt(items[i].innerHTML));
 
-        var month = date.getMonth() + 1;
-        var day = date.getDate();
-        var year = date.getFullYear();
-        var hour = date.getHours();
-        var minute = date.getMinutes();
-        hour = hour < 10 ? '0' + hour : hour;
-        minute = minute < 10 ? '0' + minute : minute;
-        month = month < 10 ? '0' + month : month;
-        day = day < 10 ? '0' + day : day;
-
-        var format = month + "/" + day + "/" + year + " " + hour + ":" + minute;
         items[i].innerHTML = format;
     }
+}
+function formatFromSpoch(time) {
+    var date = new Date();
+    date.setTime(time);
+
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var year = date.getFullYear();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    hour = hour < 10 ? '0' + hour : hour;
+    minute = minute < 10 ? '0' + minute : minute;
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+
+    var format = month + "/" + day + "/" + year + " - " + hour + ":" + minute;
+    return format;
 }

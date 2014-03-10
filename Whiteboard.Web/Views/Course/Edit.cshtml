@@ -160,7 +160,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="classes-tbody">
                                 @foreach (var cc in Model.CourseClasses) {
                                     <tr>
                                         <td>@cc.Description</td>
@@ -200,6 +200,8 @@
     <link href="/Content/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
     <link href="/Content/css/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="/Content/css/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
+    <link href="/Content/css/plugins/messenger/messenger.css" rel="stylesheet">
+    <link href="/Content/css/plugins/messenger/messenger-theme-flat.css" rel="stylesheet">
 }
 
 @section Scripts {
@@ -207,6 +209,8 @@
     <script src="@Url.Content("~/Content/js/plugins/summernote/summernote.min.js")"></script>
     <script src="@Url.Content("~/Content/js/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js")"></script>
     <script src="@Url.Content("~/Content/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/messenger/messenger.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/messenger/messenger-theme-flat.js")"></script>
     <script src="@Url.Content("~/Content/js/course-edit.js")"></script>
     <script src="@Url.Content("~/Content/js/flex.js")"></script>
 }
