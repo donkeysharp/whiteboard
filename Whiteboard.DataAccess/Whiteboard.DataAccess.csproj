@@ -58,6 +58,7 @@
     <Compile Include="Models\CourseClass.cs" />
     <Compile Include="Models\CourseStudent.cs" />
     <Compile Include="Models\CourseTeacher.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RoleProfile.cs" />
