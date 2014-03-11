@@ -11,6 +11,7 @@ namespace whiteboard.BusinessLogic
         T Get(int id);
         T Insert(T item);
         int Update(T item);
+        int Delete(T item);
         IEnumerable<T> GetAll();
     }
 }

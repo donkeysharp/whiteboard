@@ -27,6 +27,7 @@ $(document).ready(function () {
     initializeDateComponents();
     $('#add-class').on('click', addClass);
     formatDates();
+    registerDeleteClassEvents();
 });
 var postForm = function () {
     $('textarea[name="description"]').html($('#description').code());
@@ -87,19 +88,23 @@ function addClass(e) {
     $.post('/course/addclass/', data).done(function (data) {
         Messenger.options = {
             extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
-            theme: 'flat'
+            theme: 'flat',
+            hideAfter: 1
         };
-        Messenger().post({
-            message: 'This is an example of a top right notification!',
+        var msg = Messenger().post({
+            message: 'Class added successfully!',
             id: "Only-one-message",
             type: 'success',
             showCloseButton: true
         });
+        setTimeout(function () {
+            msg.hide();
+        }, 1700);
         var row = "<tr>";
         row += "<td>" + data.description + "</td>";
         row += "<td>" + formatFromSpoch(data.begin) + "</td>";
         row += "<td>" + formatFromSpoch(data.end) + "</td>";
-        row += "<td><a href=\"#\"><i class=\"fa fa-trash\"></i></a></td>";
+        row += "<td><a href=\"#\" data-class-id=\"" + data.id +"\"><i class=\"fa fa-trash-o fa-lg\"></i></a></td>";
         row += "</tr>";
 
         $('#classes-tbody').append(row);
@@ -129,4 +134,27 @@ function formatFromSpoch(time) {
 
     var format = month + "/" + day + "/" + year + " - " + hour + ":" + minute;
     return format;
+}
+function registerDeleteClassEvents() {
+    $('a[data-class-id]').on('click', function (e) {
+        e.preventDefault();
+        var classId = e.currentTarget.dataset.classId;
+        data = { classId: classId };
+        $.post('/course/class/delete', data).done(function (res) {
+            Messenger.options = {
+                extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+                theme: 'flat'
+            };
+            var msg = Messenger().post({
+                message: 'Class deleted successfully!',
+                id: "Only-one-message",
+                type: 'info',
+                showCloseButton: true
+            });
+            setTimeout(function () {
+                msg.hide();
+            }, 1700);
+        });
+        e.currentTarget.parentNode.parentNode.remove();
+    });
 }

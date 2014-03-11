@@ -27,7 +27,7 @@ namespace Whiteboard.Web.Controllers {
         }
 
         [HttpGet]
-        [Authorize(Roles=Role.ROLE_SCHOOL)]
+        [Authorize(Roles = Role.ROLE_SCHOOL)]
         public ActionResult List() {
             ICourseService service = CourseService.GetInstance<CourseRepository>();
             List<CourseReport> courses = service.GetCoursesBySchoolId(CurrentProfile.Id) as List<CourseReport>;
@@ -36,7 +36,7 @@ namespace Whiteboard.Web.Controllers {
         }
 
         [HttpGet]
-        [Authorize(Roles=Role.ROLE_SCHOOL + "," + Role.ROLE_TEACHER)]
+        [Authorize(Roles = Role.ROLE_SCHOOL + "," + Role.ROLE_TEACHER)]
         public ActionResult Edit(int id = 0) {
             ICourseService courseService = CourseService.GetInstance<CourseRepository>();
             CourseReport course = courseService.GetCourseReport(id);
@@ -63,12 +63,20 @@ namespace Whiteboard.Web.Controllers {
         }
 
         [HttpPost]
-        [Authorize(Roles=Role.ROLE_SCHOOL + "," + Role.ROLE_TEACHER)]
+        [Authorize(Roles = Role.ROLE_SCHOOL + "," + Role.ROLE_TEACHER)]
         [ValidateInput(false)]
         public ActionResult Edit(CourseViewModel model, HttpPostedFileBase file) {
-            if (!ModelState.IsValid || model.TeacherId < 1) {
+            if (!ModelState.IsValid || model.TeacherId == 0) {
                 TempData["CourseModel"] = model;
+                if (model.TeacherId == 0) {
+                    ModelState.AddModelError("NoTeacher", "You must specify a teacher.");
+                }
                 TempData["Errors"] = ModelState.Values.SelectMany(v => v.Errors).ToList();
+                if (model.Id > 0) {
+                    return RedirectToAction("Edit", "Course", new { id = model.Id });
+                } else {
+                    return RedirectToAction("Edit", "Course");
+                }
             }
             ICourseService courseService = CourseService.GetInstance<CourseRepository>();
             ICourseTeacherService courseTeacherService = CourseTeacherService.GetInstance<CourseTeacherRepository>();
@@ -89,7 +97,7 @@ namespace Whiteboard.Web.Controllers {
                 string path = Path.Combine(Server.MapPath(Constants.UPLOADS_PATH), filename);
                 FileHelper.CreateFile(path, file.InputStream, true);
 
-                
+
             } else {
                 filename = "class_default.jpg";
             }
@@ -138,7 +146,16 @@ namespace Whiteboard.Web.Controllers {
 
             courseClass = courseClassService.Insert(courseClass);
 
-            return Json(new { status = "ok", courseId = courseClass.Id, begin = beginTime, end = endTime, description = description });
+            return Json(new { status = "ok", id = courseClass.Id, begin = beginTime, end = endTime, description = description });
+        }
+        [HttpPost]
+        public ActionResult DeleteClass(int classId) {
+            ICourseClassService courseClassService = CourseClassService.GetInstance<CourseClassRepository>();
+            CourseClass courseClass = courseClassService.Get(classId);
+            if (courseClass != null) {
+                courseClassService.Delete(courseClass);   
+            }
+            return Json(new { status = "ok" });
         }
     }
 }

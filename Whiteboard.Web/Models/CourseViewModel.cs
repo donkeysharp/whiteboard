@@ -12,6 +12,7 @@ using Whiteboard.DataAccess.Reports;
 namespace Whiteboard.Web.Models {
     public class CourseViewModel {
         public int Id { get; set; }
+        [Required]
         public string Title { get; set; }
         public string Description { get; set; }
         [AllowHtml]
