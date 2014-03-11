@@ -10,6 +10,11 @@ namespace whiteboard.BusinessLogic.SchoolModule
 {
     public class SchoolStudentService:GenericService<SchoolStudent>,ISchoolStudentService
     {
+        private ISchoolStudentRepository Da {
+            get {
+                return da as ISchoolStudentRepository;
+            }
+        }
         private SchoolStudentService(ISchoolStudentRepository da):base(da)
         {
 
@@ -20,10 +25,9 @@ namespace whiteboard.BusinessLogic.SchoolModule
             return new SchoolStudentService(da);
         }
 
-        public IEnumerable<Profile> getStudentsBySchoolID(int SchoolID)
+        public IEnumerable<Profile> GetStudentsBySchoolID(int SchoolID)
         {
-            var data = da.Filter(x => x.SchoolId == SchoolID);
-            return (from x in data select x.Student).ToList();
+            return Da.GetStudentsBySchoolId(SchoolID);
         }
     }
 }

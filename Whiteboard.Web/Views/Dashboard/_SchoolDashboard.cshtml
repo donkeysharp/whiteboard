@@ -1,37 +1,71 @@
-﻿<script type="text/template" id="tpl-school-dashboard">
-    <div style="position: relative; width: 330px;">
-        <h1 float: left;><%= coursesTitle %></h1>
-        <a href="/course/list" style="position: absolute; top:7px; right:0;">Manage Courses</a>
+﻿ <div class="row">
+     <div style="margin-top: 10px;margin-left: auto; margin-right: auto">
+    <div class="col-lg-2 col-sm-6">
+        <div class="circle-tile">
+            <a href="index.html#">
+                <div class="circle-tile-heading green">
+                    <i class="fa fa-money fa-fw fa-3x"></i>
+                </div>
+            </a>
+            <div class="circle-tile-content green">
+                <div class="circle-tile-description text-faded">
+                    Revenue
+                </div>
+                <div class="circle-tile-number text-faded">
+                    $32,384
+                </div>
+                <a href="index.html#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div>
     </div>
-    <ul id="course-list" style="list-style: none"></ul>
-
-    <h1><%= teachersTitle %></h1>
-    <ul id="teacher-list" style="list-style: none"></ul>
-    
-    <h1><%= studentsTitle %></h1>
-    <ul id="student-list" style="list-style: none"></ul>
-</script>
-<script type="text/template" id="tpl-dashboard">
-    <h1><%= title %></h1>
-    <ul id="course-list" style="list-style: none"></ul>
-</script>
-<script type="text/template" id="tpl-course-item">
-    <div class="course-item">
-        <img src="<%= PictureUrl %>" />
-        <h3><a href="/course/<%= Id %>"><%= Title %></a></h3>
-        <p><%= Description %></p>
+    <div class="col-lg-2 col-sm-6">
+        <div class="circle-tile">
+            <a href="index.html#">
+                <div class="circle-tile-heading orange">
+                    <i class="fa fa-bell fa-fw fa-3x"></i>
+                </div>
+            </a>
+            <div class="circle-tile-content orange">
+                <div class="circle-tile-description text-faded">
+                    Alerts
+                </div>
+                <div class="circle-tile-number text-faded">
+                    9 New
+                </div>
+                <a href="index.html#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div>
     </div>
-</script>
-<script type="text/template" id="tpl-teacher-item">
-    <div>
-        <img src="<%= PictureUrl %>" />
-        <h2><%= Name %></h2>
+    <div class="col-lg-2 col-sm-6">
+        <div class="circle-tile">
+            <a href="index.html#">
+                <div class="circle-tile-heading blue">
+                    <i class="fa fa-tasks fa-fw fa-3x"></i>
+                </div>
+            </a>
+            <div class="circle-tile-content blue">
+                <div class="circle-tile-description text-faded">
+                    Tasks
+                </div>
+                <div class="circle-tile-number text-faded">
+                    10
+                    <span id="sparklineB"></span>
+                </div>
+                <a href="index.html#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+            </div>
+        </div>
     </div>
-</script>
-
-<script type="text/template" id="tpl-student-item">
-    <div>
-        <img src="<%= PictureUrl %>" />
-        <h2><%= Name %></h2>
-    </div>
-</script>
+         </div>
+</div>
+Our Courses<br />
+@foreach (var x in ViewBag.OurCourses) {
+    @x.Title <br />
+}
+Our Teachers <br />
+@foreach (var x in ViewBag.OurTeachers) {
+    @x.Name<br />
+}
+Our Students <br />
+@foreach (var x in ViewBag.OurStudents) {
+    @x.Name <br />
+}

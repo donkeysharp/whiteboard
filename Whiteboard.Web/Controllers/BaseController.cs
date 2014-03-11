@@ -4,25 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using whiteboard.BusinessLogic.ProfileModule;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 
 namespace Whiteboard.Web.Controllers {
-    public class RouteMapAttribute : Attribute {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Route { get; set; }
-        public string[] RouteList { get; set; }
-
-        public RouteMapAttribute() {
-            Title = "Blank Page";
-            Description = "For Customization";
-            Route = "Dashboard, BlankPage";
-            RouteList = new string[] { "Dashboard" };
-        }
-    }
-
     public class BaseController : Controller {
         private Profile currentProfile = null;
         protected Profile CurrentProfile {
@@ -43,21 +30,16 @@ namespace Whiteboard.Web.Controllers {
             if (Request.IsAuthenticated) {
                 Profile profile = CurrentProfile;
                 ViewBag.ProfileData = profile;
-
-                //Type t = this.GetType();
-                //object[] attributes = t.GetCustomAttributes(true);
-
-                //ViewBag.RouteMap = new RouteMapAttribute();
-                //foreach (var o in attributes) {
-                //    Trace.TraceInformation(o.GetType().Name);
-                //    if (o is RouteMapAttribute) {
-                //        var attrib = o as RouteMapAttribute;
-                //        attrib.RouteList = attrib.Route.Split(new char[] { ',', ' ' });
-                //        ViewBag.RouteMap = attrib;
-                //    }
-                //}
             }
             base.OnActionExecuted(filterContext);
+        }
+
+        private string[] userRoles = null;
+        protected bool IsInRole(string roleName) {
+            if (userRoles == null) {
+                userRoles = Roles.GetRolesForUser(User.Identity.Name);
+            }
+            return userRoles.Where(x => x.Equals(roleName)).Count() > 0;
         }
         #region "Protected Methods"
         protected List<SelectListItem> GetCountries(string selectedCountry = null) {

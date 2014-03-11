@@ -14,7 +14,6 @@ using Whiteboard.Web.Models;
 
 namespace Whiteboard.Web.Controllers {
     [Authorize]
-    [RouteMap(Title = "Profile", Description = "Profile Information", Route = "Profile, Edit")]
     public class ProfileController : BaseController {
         [HttpGet]
         public ActionResult Index() {
@@ -25,7 +24,7 @@ namespace Whiteboard.Web.Controllers {
             ViewData["Errors"] = TempData["Errors"] ?? new List<ModelError>();
 
             ProfileViewModel model = GetProfileViewModel(profile);
-
+            
             return View(model);
         }
 

@@ -143,10 +143,22 @@
     width: 100%;
 }
 /* COURSE STYLES */
+/*.course-item {
+    background-color: #fff;
+    padding: 5px 0 5px 5px;
+    margin-bottom: 20px;
+}
+.course-item:hover {
+    background-color: #f39c12;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
 .course-item img {
     float: left; width: 100px; height: 60px;
     margin-right: 10px;
-}
+}*/
 .course-detail {
     margin: 15px auto 15px auto; 
     background-color: #fff; 

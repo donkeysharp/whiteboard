@@ -1,0 +1,29 @@
+﻿.dashboard {
+    background-color: #fff;
+    margin: 15px auto 15px auto;
+}
+.course-item {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 0 10px 0;
+    background-color: #2980b9;
+    color: #fff;
+}
+.course-item:hover {
+    cursor: pointer;
+    background-color: #e43c2b;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+.course-item .course-body {
+}
+.course-item img {
+    float: left;
+    width: 100px;
+    height: 60px;
+    border: 1px #aaa solid;
+    margin: 0 10px 0 10px;
+}

@@ -4,20 +4,46 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using whiteboard.BusinessLogic.ProfileModule;
 using whiteboard.BusinessLogic.SchoolModule;
 using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
+using Whiteboard.DataAccess.Reports;
 using Whiteboard.DataAccess.Repositories;
 using Whiteboard.Web.Models.DashboardModels;
 
 namespace Whiteboard.Web.Controllers {
     [Authorize]
-    [RouteMap(Title = "Dashboard", Description = "Dashboard Information", Route = "Dashboard, Foo")]
     public class DashboardController : BaseController {
         [HttpGet]
         public ActionResult Index() {
+            if (IsInRole(Role.ROLE_SCHOOL)) {
+                // Profile will always have a school role, so no problem when calling this method
+                ViewBag.OurCourses = GetCoursesBySchool(CurrentProfile);
+                ViewBag.OurTeachers = GetTeachersBySchool(CurrentProfile);
+                ViewBag.OurStudents = GetStudentsBySchool(CurrentProfile);
+            } else if (IsInRole(Role.ROLE_TEACHER)) {
+                ViewBag.MyCourses = null;
+            } else if (IsInRole(Role.ROLE_STUDENT)) {
+                ViewBag.MyCourses = null;
+            }
             return View();
+        }
+
+        private IEnumerable<Profile> GetStudentsBySchool(Profile profile) {
+            ISchoolStudentService service = SchoolStudentService.GetInstance<SchoolStudentRepository>();
+            return service.GetStudentsBySchoolID(profile.Id);
+        }
+
+        private IEnumerable<Profile> GetTeachersBySchool(Profile profile) {
+            ISchoolTeacherService service = SchoolTeacherService.GetInstance<SchoolTeacherRepository>();
+            return service.GetTeachersBySchoolId(profile.Id, "");
+        }
+
+        private IEnumerable<CourseReport> GetCoursesBySchool(Profile profile) {
+            ICourseService courseService = CourseService.GetInstance<CourseRepository>();
+            return courseService.GetCoursesBySchoolId(profile.Id);
         }
 
         [HttpGet]
@@ -69,26 +95,6 @@ namespace Whiteboard.Web.Controllers {
                     NumberStudents = nroStundents
                 });
             }
-            //res.Add(new CourseItemViewModel() { 
-            //    Title = "title 1",
-            //    PictureUrl = "",
-            //    Description = "primer curso",
-            //    NumberStudents = 23
-            //});
-            //res.Add(new CourseItemViewModel()
-            //{
-            //    Title = "title 2",
-            //    PictureUrl = "",
-            //    Description = "segundo curso",
-            //    NumberStudents = 3
-            //});
-            //res.Add(new CourseItemViewModel()
-            //{
-            //    Title = "title 1",
-            //    PictureUrl = "",
-            //    Description = "primer curso",
-            //    NumberStudents = 5
-            //});
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
@@ -143,7 +149,7 @@ namespace Whiteboard.Web.Controllers {
         public JsonResult Students()
         {
             ISchoolStudentService ssService = SchoolStudentService.GetInstance<SchoolStudentRepository>();
-            var schoolStudents = ssService.getStudentsBySchoolID(CurrentProfile.Id);
+            var schoolStudents = ssService.GetStudentsBySchoolID(CurrentProfile.Id);
             var res = new List<StudentItemViewModel>();
             foreach (var item in schoolStudents)
             {
