@@ -441,6 +441,7 @@
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Course\List.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Dashboard\Public.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

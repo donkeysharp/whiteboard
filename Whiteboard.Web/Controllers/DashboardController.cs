@@ -32,6 +32,12 @@ namespace Whiteboard.Web.Controllers {
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Public() {
+            return View();
+        }
+
+        #region "Private methods for teacher and student dashboards"
         private IEnumerable<CourseViewModel> GetCoursesByStudent(Profile profile) {
             ICourseService service = CourseService.GetInstance<CourseRepository>();
             IEnumerable<CourseReport> res = service.GetCoursesByStudent(profile.Id);
@@ -53,6 +59,7 @@ namespace Whiteboard.Web.Controllers {
             }
             return models;
         }
+        #endregion
 
         #region "Private Methods for School Dashboard"
         private IEnumerable<ProfileViewModel> GetStudentsBySchool(Profile profile) {

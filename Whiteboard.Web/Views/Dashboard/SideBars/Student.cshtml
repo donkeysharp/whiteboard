@@ -17,26 +17,14 @@
                 <div class="clearfix"></div>
             </li>
             <li>
-                @if (Model.Redirect) {
-                <a class="active command single" href="@Model.RedirectTo" id="default-select">
+                <a class="active command single" href="/dashboard" id="default-select">
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
-                } else {
-                <a class="active command single" href="#dashboard" id="default-select">
-                    <i class="fa fa-dashboard"></i> Dashboard
-                </a>
-                }
             </li>
             <li>
-                @if (Model.Redirect) {
-                <a class="active command single" href="Dashboard#courses">
+                <a class="active command single" href="/dashboard/public">
                     <i class="fa fa-globe"></i> Public Courses
                 </a>
-                } else {
-                <a class="active command single" href="#courses">
-                    <i class="fa fa-globe"></i> Public Courses
-                </a>
-                }
             </li>
         </ul>
     </div>
