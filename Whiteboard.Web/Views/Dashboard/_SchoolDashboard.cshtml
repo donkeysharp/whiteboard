@@ -1,71 +1,161 @@
 ﻿ <div class="row">
-     <div style="margin-top: 10px;margin-left: auto; margin-right: auto">
+    <div class="col-lg-10 col-md-offset-2">
+    <div style="margin-top: 10px;margin-left: auto; margin-right: auto">
     <div class="col-lg-2 col-sm-6">
         <div class="circle-tile">
-            <a href="index.html#">
-                <div class="circle-tile-heading green">
-                    <i class="fa fa-money fa-fw fa-3x"></i>
-                </div>
-            </a>
+            <div class="circle-tile-heading green">
+                <i class="fa fa-comments fa-fw fa-3x"></i>
+            </div>
             <div class="circle-tile-content green">
                 <div class="circle-tile-description text-faded">
-                    Revenue
                 </div>
                 <div class="circle-tile-number text-faded">
-                    $32,384
+                    @ViewBag.OurCourses.Count Courses
                 </div>
-                <a href="index.html#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="#ourCourses" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div>
     </div>
     <div class="col-lg-2 col-sm-6">
         <div class="circle-tile">
-            <a href="index.html#">
-                <div class="circle-tile-heading orange">
-                    <i class="fa fa-bell fa-fw fa-3x"></i>
-                </div>
-            </a>
+            <div class="circle-tile-heading orange">
+                <i class="fa fa-pencil fa-fw fa-3x"></i>
+            </div>
             <div class="circle-tile-content orange">
                 <div class="circle-tile-description text-faded">
-                    Alerts
                 </div>
                 <div class="circle-tile-number text-faded">
-                    9 New
+                    @ViewBag.OurTeachers.Count Teachers
                 </div>
-                <a href="index.html#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="#ourTeachers" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div>
     </div>
     <div class="col-lg-2 col-sm-6">
         <div class="circle-tile">
-            <a href="index.html#">
-                <div class="circle-tile-heading blue">
-                    <i class="fa fa-tasks fa-fw fa-3x"></i>
-                </div>
-            </a>
+            <div class="circle-tile-heading blue">
+                <i class="fa fa-users fa-fw fa-3x"></i>
+            </div>
             <div class="circle-tile-content blue">
                 <div class="circle-tile-description text-faded">
-                    Tasks
                 </div>
                 <div class="circle-tile-number text-faded">
-                    10
+                    @ViewBag.OurStudents.Count Students
                     <span id="sparklineB"></span>
                 </div>
-                <a href="index.html#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                <a href="#ourStudents" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
             </div>
         </div>
     </div>
-         </div>
+    </div>
+    </div>
 </div>
-Our Courses<br />
-@foreach (var x in ViewBag.OurCourses) {
-    @x.Title <br />
-}
-Our Teachers <br />
-@foreach (var x in ViewBag.OurTeachers) {
-    @x.Name<br />
-}
-Our Students <br />
-@foreach (var x in ViewBag.OurStudents) {
-    @x.Name <br />
-}
+<!-- Our courses info -->
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="dashboard">
+        <div class="portlet portlet-green">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-comments fa-fw"></i> Our Courses</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#ourCourses"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="ourCourses" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <div class="row">
+                @foreach (var x in ViewBag.OurCourses) {
+                    <a href="/course/@x.Id">
+                    <div class="col-md-5 course-item">
+                        <img src="@Url.Content(x.PictureUrl)" />
+                        <div class="course-body">
+                            <h4>@x.Title</h4>
+                            <span>@x.TeacherName</span>
+                        </div>
+                    </div>
+                    </a>
+                }
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Our teachers info -->
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="dashboard">
+        <div class="portlet portlet-orange">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-pencil fa-fw"></i> Our Teachers</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#ourTeachers"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="ourTeachers" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <div class="row">
+                @foreach (var x in ViewBag.OurTeachers) {
+                    <a href="/profile/details/@x.Id">
+                    <div class="col-md-5 teacher-item">
+                        <div class="circular">
+                            <img class="img-circle" src="@Url.Content(x.PictureUrl)" />
+                        </div>
+                        <div class="teacher-body">
+                            <h4>@x.Name</h4>
+                            <span>@x.Email</span>
+                        </div>
+                    </div>
+                    </a>
+                }
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Our students info -->
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="dashboard">
+        <div class="portlet portlet-blue">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-users fa-fw"></i> Our Students</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#ourStudents"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="ourStudents" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <div class="row">
+                @foreach (var x in ViewBag.OurStudents) {
+                    <a href="/profile/details/@x.Id">
+                    <div class="col-md-5 student-item">
+                        <div class="circular">
+                            <img class="img-circle" src="@Url.Content(x.PictureUrl)" />
+                        </div>
+                        <div class="student-body">
+                            <h4>@x.Name</h4>
+                            <span>@x.Email</span>
+                        </div>
+                    </div>
+                    </a>
+                }
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

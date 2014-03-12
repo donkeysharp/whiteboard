@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Web;
+using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.Web.Models {
@@ -31,7 +33,7 @@ namespace Whiteboard.Web.Models {
             this.Name = profile.Name;
             this.Email = profile.Email;
             this.Country = profile.Country;
-            this.PictureUrl = profile.PictureUrl;
+            this.PictureUrl = Path.Combine(Constants.UPLOADS_PATH, profile.PictureUrl);
         }
     }
 }

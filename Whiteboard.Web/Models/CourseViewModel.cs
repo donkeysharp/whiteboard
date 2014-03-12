@@ -25,7 +25,7 @@ namespace Whiteboard.Web.Models {
         public string PictureUrl { get; set; }
         public string VideoUrl { get; set; }
         public bool IsPublic { get; set; }
-        public string Teacher { get; set; }
+        public string TeacherName { get; set; }
         [Required(ErrorMessage="Teacher must be filled")]
         public int TeacherId { get; set; }
 
@@ -63,7 +63,7 @@ namespace Whiteboard.Web.Models {
             this.PictureUrl = Path.Combine(Constants.UPLOADS_PATH, course.PictureUrl);
             this.VideoUrl = course.VideoUrl;
             this.IsPublic = course.IsPublic;
-            this.Teacher = course.TeacherName;
+            this.TeacherName = course.TeacherName;
             this.TeacherId = course.TeacherId;
         }
 

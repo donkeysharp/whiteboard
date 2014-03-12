@@ -9,6 +9,7 @@
     padding: 10px 0 10px 0;
     background-color: #2980b9;
     color: #fff;
+    height: 100px;
 }
 .course-item:hover {
     cursor: pointer;
@@ -19,10 +20,66 @@
     transition: 1s;
 }
 .course-item .course-body {
+    margin-right: 10px;
 }
 .course-item img {
     float: left;
     width: 100px;
+    height: 60px;
+    border: 1px #aaa solid;
+    margin: 0 10px 0 10px;
+}
+
+.teacher-item {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 0 10px 0;
+    background-color: #16A085;
+    color: #fff;
+    height: 100px;
+}
+.teacher-item:hover {
+    cursor: pointer;
+    background-color: #e43c2b;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+.teacher-item .course-body {
+    margin-right: 10px;
+}
+.teacher-item img {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border: 1px #aaa solid;
+    margin: 0 10px 0 10px;
+}
+.student-item {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 0 10px 0;
+    background-color: #F39C12;
+    color: #fff;
+    height: 100px;
+}
+.student-item:hover {
+    cursor: pointer;
+    background-color: #e43c2b;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+.student-item .course-body {
+    margin-right: 10px;
+}
+.student-item img {
+    float: left;
+    width: 60px;
     height: 60px;
     border: 1px #aaa solid;
     margin: 0 10px 0 10px;

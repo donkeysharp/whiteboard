@@ -11,6 +11,7 @@ using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Reports;
 using Whiteboard.DataAccess.Repositories;
+using Whiteboard.Web.Models;
 using Whiteboard.Web.Models.DashboardModels;
 
 namespace Whiteboard.Web.Controllers {
@@ -31,19 +32,37 @@ namespace Whiteboard.Web.Controllers {
             return View();
         }
 
-        private IEnumerable<Profile> GetStudentsBySchool(Profile profile) {
+        private IEnumerable<ProfileViewModel> GetStudentsBySchool(Profile profile) {
             ISchoolStudentService service = SchoolStudentService.GetInstance<SchoolStudentRepository>();
-            return service.GetStudentsBySchoolID(profile.Id);
+            IEnumerable<Profile> res = service.GetStudentsBySchoolID(profile.Id);
+
+            List<ProfileViewModel> models = new List<ProfileViewModel>();
+            foreach (Profile p in res) {
+                models.Add(new ProfileViewModel(p));
+            }
+            return models;
         }
 
-        private IEnumerable<Profile> GetTeachersBySchool(Profile profile) {
+        private IEnumerable<ProfileViewModel> GetTeachersBySchool(Profile profile) {
             ISchoolTeacherService service = SchoolTeacherService.GetInstance<SchoolTeacherRepository>();
-            return service.GetTeachersBySchoolId(profile.Id, "");
+            IEnumerable<Profile> res = service.GetTeachersBySchoolId(profile.Id, "");
+
+            List<ProfileViewModel> models = new List<ProfileViewModel>();
+            foreach (Profile p in res) {
+                models.Add(new ProfileViewModel(p));
+            }
+            return models;
         }
 
-        private IEnumerable<CourseReport> GetCoursesBySchool(Profile profile) {
+        private IEnumerable<CourseViewModel> GetCoursesBySchool(Profile profile) {
             ICourseService courseService = CourseService.GetInstance<CourseRepository>();
-            return courseService.GetCoursesBySchoolId(profile.Id);
+            IEnumerable<CourseReport> res = courseService.GetCoursesBySchoolId(profile.Id);
+
+            List<CourseViewModel> models = new List<CourseViewModel>();
+            foreach (CourseReport course in  res) {
+                models.Add(new CourseViewModel(course));
+            }
+            return models;
         }
 
         [HttpGet]
