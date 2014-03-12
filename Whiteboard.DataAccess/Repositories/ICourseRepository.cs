@@ -13,5 +13,9 @@ namespace Whiteboard.DataAccess.Repositories
         // search by date or get date when Course date updated
         IEnumerable<CourseReport> GetCoursesBySchoolId(int schoolId);
         CourseReport GetCourseReport(int id);
+
+        IEnumerable<CourseReport> GetCoursesByTeacherId(int id);
+
+        IEnumerable<CourseReport> GetCoursesByStudentId(int id);
     }
 }

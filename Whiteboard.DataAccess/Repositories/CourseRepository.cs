@@ -7,7 +7,7 @@ using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Reports;
 
 namespace Whiteboard.DataAccess.Repositories {
-    public class CourseRepository : GenericRepository<Course>, ICourseRepository 
+    public class CourseRepository : GenericRepository<Course>, ICourseRepository
     {
 
         public IEnumerable<CourseReport> GetCoursesBySchoolId(int schoolId) {
@@ -34,6 +34,32 @@ where c.id = {0}", id);
                 return result[0];
             }
             return null;
+        }
+
+
+        public IEnumerable<CourseReport> GetCoursesByTeacherId(int id) {
+            string sql = string.Format(@"select c.*, ifnull(t.Name,'No Teacher') as TeacherName
+from course as c
+left join courseteacher as ct on (ct.CourseId = c.Id)
+left join profile as t on (t.id = ct.TeacherId)
+where t.id = {0}", id);
+
+            List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
+            return result;
+        }
+
+
+        public IEnumerable<CourseReport> GetCoursesByStudentId(int id) {
+            string sql = string.Format(@"select c.*, ifnull(t.Name,'No Teacher') as TeacherName
+from course as c
+left join courseteacher as ct on (ct.CourseId = c.Id)
+left join profile as t on (t.id = ct.TeacherId)
+inner join coursestudent as cs on (cs.CourseId = c.Id)
+inner join profile as s on (s.id = cs.StudentId)
+where s.id = {0}", id);
+
+            List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
+            return result;
         }
     }
 }
