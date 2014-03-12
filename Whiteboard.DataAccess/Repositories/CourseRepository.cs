@@ -61,5 +61,29 @@ where s.id = {0}", id);
             List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
             return result;
         }
+
+
+        public IEnumerable<CourseReport> GetPublicCourses() {
+            string sql = string.Format(@"select c.*, ifnull(t.Name,'No Teacher') as TeacherName
+from course as c
+left join courseteacher as ct on (ct.CourseId = c.Id)
+left join profile as t on (t.id = ct.TeacherId)
+where c.ispublic = 1");
+
+            List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
+            return result;
+        }
+
+
+        public IEnumerable<CourseReport> SearchPublic(string keyword) {
+            string sql = string.Format(@"select c.*, ifnull(t.Name,'No Teacher') as TeacherName
+from course as c
+left join courseteacher as ct on (ct.CourseId = c.Id)
+left join profile as t on (t.id = ct.TeacherId)
+where c.ispublic = 1 and c.title like '%{0}%'", keyword);
+
+            List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
+            return result;
+        }
     }
 }

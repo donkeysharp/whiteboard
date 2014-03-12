@@ -52,7 +52,7 @@ namespace Whiteboard.Web.Models {
             this.IsPublic = course.IsPublic;
         }
 
-        public CourseViewModel(CourseReport course) {
+        public CourseViewModel(CourseReport course, bool relative = false) {
             this.Id = course.Id;
             this.Title = course.Title;
             this.Description = course.Description;
@@ -60,7 +60,11 @@ namespace Whiteboard.Web.Models {
             this.AboutCourse = course.AboutCourse;
             this.Lectures = course.Lectures;
             this.Schedule = course.Schedule;
-            this.PictureUrl = Path.Combine(Constants.UPLOADS_PATH, course.PictureUrl);
+            if (!relative) {
+                this.PictureUrl = Path.Combine(Constants.UPLOADS_PATH, course.PictureUrl);
+            } else {
+                this.PictureUrl = Path.Combine(Constants.UPLOADS_PATH_RELATIVE, course.PictureUrl);
+            }
             this.VideoUrl = course.VideoUrl;
             this.IsPublic = course.IsPublic;
             this.TeacherName = course.TeacherName;

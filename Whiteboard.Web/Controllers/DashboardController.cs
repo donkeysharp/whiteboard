@@ -34,7 +34,31 @@ namespace Whiteboard.Web.Controllers {
 
         [HttpGet]
         public ActionResult Public() {
+            ViewBag.PublicCourses = GetPublicCourses();
             return View();
+        }
+
+        [HttpGet]
+        public JsonResult PublicSearch(string keyword) {
+            ICourseService service = CourseService.GetInstance<CourseRepository>();
+            IEnumerable<CourseReport> res = service.SearchPublic(keyword);
+
+            List<CourseViewModel> models = new List<CourseViewModel>();
+            foreach (CourseReport course in res) {
+                models.Add(new CourseViewModel(course, true));
+            }
+            return Json(models, JsonRequestBehavior.AllowGet);
+        }
+
+        private IEnumerable<CourseViewModel> GetPublicCourses() {
+            ICourseService service = CourseService.GetInstance<CourseRepository>();
+            IEnumerable<CourseReport> res = service.GetPublicCourses();
+
+            List<CourseViewModel> models = new List<CourseViewModel>();
+            foreach (CourseReport course in res) {
+                models.Add(new CourseViewModel(course));
+            }
+            return models;
         }
 
         #region "Private methods for teacher and student dashboards"

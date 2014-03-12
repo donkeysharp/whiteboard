@@ -13,7 +13,7 @@
 }
 <div class="row">
 <div class="col-lg-8 col-md-offset-2">
-    <div class="dashboard" style="margin-top: 20px">
+    <div class="dashboard" style="margin-top: 30px">
         <div class="portlet portlet-red">
             <div class="portlet-heading">
                 <div class="portlet-title">
@@ -27,7 +27,26 @@
             <div id="ourCourses" class="panel-collapse collapse in">
             <div class="portlet-body">
                 <div class="row">
-                
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="keywords" placeholder="Search for Courses ..." />
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-blue" id="search">Search</button>
+                    </div>
+                </div>
+                <hr />
+                <div class="row" id="search-results">
+                @foreach (var x in ViewBag.PublicCourses) {
+                    <a href="/course/@x.Id">
+                    <div class="col-md-5 course-item">
+                        <img src="@Url.Content(x.PictureUrl)" />
+                        <div class="course-body">
+                            <h4>@x.Title</h4>
+                            <span>@x.TeacherName</span>
+                        </div>
+                    </div>
+                    </a>
+                }
                 </div>
             </div>
             </div>
@@ -35,3 +54,9 @@
     </div>
 </div>
 </div>
+@section StyleSheets {
+    <link href="/Content/css/dashboard.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script src="/Content/js/dashboard/dashboard.js"></script>
+}

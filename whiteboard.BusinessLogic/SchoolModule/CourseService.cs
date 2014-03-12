@@ -38,8 +38,8 @@ namespace whiteboard.BusinessLogic.SchoolModule
                 );
         }
 
-        public IEnumerable<Course> GetPublicCourses() {
-            return da.Filter(x => x.IsPublic == true);
+        public IEnumerable<CourseReport> GetPublicCourses() {
+            return Da.GetPublicCourses();
         }
 
 
@@ -61,6 +61,11 @@ namespace whiteboard.BusinessLogic.SchoolModule
 
         public IEnumerable<CourseReport> GetCoursesByStudent(int id) {
             return Da.GetCoursesByStudentId(id);
+        }
+
+
+        public IEnumerable<CourseReport> SearchPublic(string keyword) {
+            return Da.SearchPublic(keyword);
         }
     }
 }

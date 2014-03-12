@@ -17,5 +17,9 @@ namespace Whiteboard.DataAccess.Repositories
         IEnumerable<CourseReport> GetCoursesByTeacherId(int id);
 
         IEnumerable<CourseReport> GetCoursesByStudentId(int id);
+
+        IEnumerable<CourseReport> GetPublicCourses();
+
+        IEnumerable<CourseReport> SearchPublic(string keyword);
     }
 }

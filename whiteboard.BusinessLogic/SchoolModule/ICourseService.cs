@@ -12,7 +12,7 @@ namespace whiteboard.BusinessLogic.SchoolModule
     {
         IEnumerable<Course> Search(string data);
 
-        IEnumerable<Course> GetPublicCourses();
+        IEnumerable<CourseReport> GetPublicCourses();
 
         IEnumerable<CourseReport> GetCoursesBySchoolId(int schoolId);
 
@@ -21,5 +21,7 @@ namespace whiteboard.BusinessLogic.SchoolModule
         IEnumerable<CourseReport> GetCoursesByTeacherId(int id);
 
         IEnumerable<CourseReport> GetCoursesByStudent(int id);
+
+        IEnumerable<CourseReport> SearchPublic(string keyword);
     }
 }
