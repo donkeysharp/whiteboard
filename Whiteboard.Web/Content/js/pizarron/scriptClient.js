@@ -69,38 +69,10 @@
         } else {
             clickColor.push(selectedColor);
         }
-        //if (joined) {
-        //    sentData(x, y);
-        //}
     },
     // User events.
     createUserEvents = function () {
         var $canvas = $('#canvas');
-
-        //$canvas.mousedown(function (e) {
-        //    var mouseX = e.pageX - this.offsetLeft,
-		//    mouseY = e.pageY - this.offsetTop;
-
-        //    paint = true;
-        //    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-        //    redraw();
-        //});
-
-        //$canvas.mousemove(function (e) {
-        //    if (paint) {
-        //        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-        //        redraw();
-        //    }
-        //});
-
-        //$canvas.mouseup(function (e) {
-        //    paint = false;
-        //});
-
-        //$canvas.mouseleave(function (e) {
-        //    paint = false;
-        //});
-
         $('#toolsClearBtn').click(function () {
             clearCanvas();
         });
@@ -158,18 +130,6 @@
             joined = false;
         }
     },
-    //only teacher can send data
-    //sentData = function (x, y) {
-    //    socketBoard.emit('send_data', {
-    //        room: currentRoom,
-    //        data: {
-    //            x: x,
-    //            y: y,
-    //            radius: selectedRadius,
-    //            color: selectedColor,
-    //        }
-    //    });
-    //},
     //receiveData
     receiveData = function (data) {
         if (data != null) {
