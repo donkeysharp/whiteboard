@@ -10,7 +10,19 @@
             }
         });
         $(document.body).on('click', 'a[data-student-id]', deleteStudent);
+        $('#start-class').on('click', startClass);
     });
+    var startClass = function (e) {
+        if (confirm("Do you want to start a class?")) {
+            var courseId = $('#hiddenCourseId').val();
+            var data = {
+                courseId: courseId
+            };
+            $.post('/courseclass/start', data).done(function (res) {
+                window.location = "/course/courseclass/" + res.courseClassId;
+            });
+        }
+    };
     var deleteStudent = function(e) {
         e.preventDefault();
         var studentId = e.currentTarget.dataset.studentId;
