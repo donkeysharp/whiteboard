@@ -78,6 +78,7 @@
     <Compile Include="Repositories\ICourseRepository.cs" />
     <Compile Include="Repositories\ICourseStudentRepository.cs" />
     <Compile Include="Repositories\ICourseTeacherRepository.cs" />
+    <Compile Include="Repositories\IMessageRepository.cs" />
     <Compile Include="Repositories\IProfileRepository.cs" />
     <Compile Include="Repositories\IRoleProfileRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Repositories\ISchoolStudentRepository.cs" />
     <Compile Include="Repositories\ISchoolTeacherRepository.cs" />
     <Compile Include="Repositories\IWhiteboardRepository.cs" />
+    <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\RoleProfileRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />

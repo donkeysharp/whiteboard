@@ -11,13 +11,12 @@ namespace Whiteboard.DataAccess.Models
     {
         public int Id { get; set; }
 
-        public int SenderId { get; set; }
-        [ForeignKey("SenderId")]
-        public Profile Sender { get; set; }
+        public string Message { get; set; }
+        public string UserName { get; set; }
 
-        public int CourseId { get; set; }
-        [ForeignKey("CourseId")]
-        public Course Course { get; set; }
+        public int CourseClassId { get; set; }
+        [ForeignKey("CourseClassId")]
+        public CourseClass CourseClass { get; set; }
 
     }
 }

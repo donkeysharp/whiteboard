@@ -411,7 +411,7 @@
     <Content Include="Views\Shared\_RegisterWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\SideBars\_SchoolDashboard.cshtml" />
+    <Content Include="Views\Dashboard\_SchoolDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Dashboard\_TeacherDashboard.cshtml" />
