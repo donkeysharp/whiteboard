@@ -31,5 +31,10 @@ namespace whiteboard.BusinessLogic.SchoolModule
         {
             return Da.GetClassesByCourseId(CourseId);
         }
+
+
+        public CourseClass GetCommingSoonClassByCourseId(int courseId) {
+            return Da.GetCommingSoonClassByCourseId(courseId);
+        }
     }
 }
