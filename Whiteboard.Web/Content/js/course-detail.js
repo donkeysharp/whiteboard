@@ -9,14 +9,15 @@
                 $('#studentId').val(info.data);
             }
         });
-        $('a[data-student-id]').on('click', deleteStudent);
+        $(document.body).on('click', 'a[data-student-id]', deleteStudent);
     });
     var deleteStudent = function(e) {
         e.preventDefault();
-        //var studentId = e.currentTarget.dataset.studentId;
-        //data = { studentId: studentId };
-        //alert("delete : " + studentId);
-        alert("piii");
+        var studentId = e.currentTarget.dataset.studentId;
+        data = { courseStudentId: studentId };
+        $.post('/course/student/delete', data).done(function(res) {
+            e.currentTarget.parentNode.parentNode.remove();
+        });
     };
     var addStudent = function (e) {
         e.preventDefault();

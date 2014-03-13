@@ -136,7 +136,7 @@ function formatFromSpoch(time) {
     return format;
 }
 function registerDeleteClassEvents() {
-    $('a[data-class-id]').on('click', function (e) {
+    $(document.body).on('click', 'a[data-class-id]', function (e) {
         e.preventDefault();
         var classId = e.currentTarget.dataset.classId;
         data = { classId: classId };
