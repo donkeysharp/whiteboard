@@ -230,7 +230,7 @@ socketBoard.on('receive_datas', function (datas) {
 
 socketBoard.on('class_finish', function () {
     alert('Class has finished, redirecting ...');
-    windows.location = '/dashboard';
+    window.location = '/dashboard';
 });
 
 /* Call socket chat */

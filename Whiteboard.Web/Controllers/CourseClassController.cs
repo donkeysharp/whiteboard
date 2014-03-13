@@ -18,6 +18,8 @@ namespace Whiteboard.Web.Controllers {
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }
             ViewBag.CourseClassId = courseClass.Id;
+            ViewBag.ClassUserName = CurrentProfile.Name;
+
             if (IsInRole(Role.ROLE_STUDENT)) {
                 if (courseClass.Broadcasting) {
                     ICourseStudentService courseStudentService = CourseStudentService.GetInstance<CourseStudentRepository>();
