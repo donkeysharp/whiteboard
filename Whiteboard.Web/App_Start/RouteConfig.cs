@@ -11,6 +11,12 @@ namespace Whiteboard.Web {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "GoToClass",
+                url: "course/courseclass/{id}",
+                defaults: new { controller = "CourseClass", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "DeleteClass",
                 url: "course/class/delete",
                 defaults: new { controller = "Course", action = "DeleteClass", id = UrlParameter.Optional }

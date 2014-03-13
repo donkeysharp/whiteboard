@@ -10,6 +10,12 @@ namespace whiteboard.BusinessLogic.SchoolModule
 {
     public class CourseClassService:GenericService<CourseClass>,ICourseClassService
     {
+        private ICourseClassRepository Da {
+            get {
+                return da as ICourseClassRepository;
+            }
+        }
+
         private CourseClassService(ICourseClassRepository da):base(da)
         {
 
@@ -23,7 +29,7 @@ namespace whiteboard.BusinessLogic.SchoolModule
 
         public IEnumerable<CourseClass> GetClassesByCourseId(int CourseId)
         {
-            return da.Filter(x => x.CourseId == CourseId).ToList();
+            return Da.GetClassesByCourseId(CourseId);
         }
     }
 }

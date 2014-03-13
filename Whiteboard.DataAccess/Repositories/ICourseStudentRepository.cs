@@ -11,5 +11,7 @@ namespace Whiteboard.DataAccess.Repositories
     {
 
         IEnumerable<CourseStudent.Report> GetCourseStudentsByCourseId(int courseId);
+
+        bool IsStudentInCourse(int courseId, int studentId);
     }
 }

@@ -94,9 +94,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @*<div class="modal-footer">
-                                    <button type="button" class="btn btn-green" data-dismiss="modal">Done</button>
-                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -110,7 +107,18 @@
                 <ul class="fa-ul">
                     @foreach (var cc in ViewBag.Classes) {
                         if (!cc.Finished) {
-                            <li><i class="fa fa-video-camera"></i> <a href="#">@cc.Description</a></li>
+                            <li>
+                                
+                                @if (@cc.Broadcasting) {
+                                    <a href="/course/courseclass/@cc.Id">
+                                        <i style="color: #ff6a00;" 
+                                            class="fa fa-adjust fa-spin"></i> @cc.Description
+                                         (Broadcasting)
+                                    </a>
+                                } else {
+                                    <i class="fa fa-video-camera"></i> @cc.Description
+                                }
+                            </li>
                         }
                     }
                 </ul>
@@ -123,7 +131,8 @@
                 <ul class="fa-ul">
                     @foreach (var cc in ViewBag.Classes) {
                         if (cc.Finished) {
-                            <li><i class="fa fa-video-camera"></i> <a href="#">@cc.Description</a></li>
+                            <li><i class="fa fa-video-camera">
+                                </i> <a href="/course/courseclass/@cc.Id">@cc.Description</a></li>
                         }
                     }
                 </ul>

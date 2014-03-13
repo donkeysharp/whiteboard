@@ -9,5 +9,10 @@ namespace Whiteboard.DataAccess.Repositories
 {
     public class CourseClassRepository:GenericRepository<CourseClass>,ICourseClassRepository
     {
+        public IEnumerable<CourseClass> GetClassesByCourseId(int courseId) {
+            string sql = @"select * from courseclass where courseId = {0}";
+            sql = string.Format(sql, courseId);
+            return context.Database.SqlQuery<CourseClass>(sql).ToList();
+        }
     }
 }

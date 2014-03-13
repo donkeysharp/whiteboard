@@ -177,6 +177,7 @@
     <Compile Include="Auth\GeneralMembershipUser.cs" />
     <Compile Include="Auth\GeneralRoleProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CourseClassController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -206,6 +207,7 @@
     <Content Include="Content\css\demo.css" />
     <Content Include="Content\css\home.css" />
     <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\pizarron\style.css" />
     <Content Include="Content\css\plugins.css" />
     <Content Include="Content\css\plugins\bootstrap-datepicker\datepicker3.css" />
     <Content Include="Content\css\plugins\bootstrap-multiselect\bootstrap-multiselect.css" />
@@ -281,6 +283,13 @@
     <Content Include="Content\js\course-edit.js" />
     <Content Include="Content\js\flex.js" />
     <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\pizarron\chat.js" />
+    <Content Include="Content\js\pizarron\script.js" />
+    <Content Include="Content\js\pizarron\scriptClient.js" />
+    <Content Include="Content\js\pizarron\socket.io.js" />
+    <Content Include="Content\js\pizarron\socket.io.min.js" />
+    <Content Include="Content\js\pizarron\WebSocketMain.swf" />
+    <Content Include="Content\js\pizarron\WebSocketMainInsecure.swf" />
     <Content Include="Content\js\plugins\bootstrap-datepicker\bootstrap-datepicker.js" />
     <Content Include="Content\js\plugins\bootstrap-maxlength\bootstrap-maxlength.js" />
     <Content Include="Content\js\plugins\bootstrap-multiselect\bootstrap-multiselect.js" />
@@ -444,6 +453,9 @@
     <Content Include="Views\Course\List.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\Dashboard\Public.cshtml" />
+    <Content Include="Views\CourseClass\Index.cshtml" />
+    <Content Include="Views\CourseClass\TeacherWhiteboard.cshtml" />
+    <Content Include="Views\CourseClass\StudentWhiteboard.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

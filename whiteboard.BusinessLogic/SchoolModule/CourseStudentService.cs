@@ -51,5 +51,10 @@ namespace whiteboard.BusinessLogic.SchoolModule
         public IEnumerable<CourseStudent.Report> GetCourseStudentsByCourseId(int courseId) {
             return Da.GetCourseStudentsByCourseId(courseId);
         }
+
+
+        public bool IsStudentInCourse(int courseId, int studentId) {
+            return Da.IsStudentInCourse(courseId, studentId);
+        }
     }
 }

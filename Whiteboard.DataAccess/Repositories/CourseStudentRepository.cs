@@ -19,5 +19,15 @@ where cs.CourseId = {0}
             sql = string.Format(sql, courseId);
             return context.Database.SqlQuery<CourseStudent.Report>(sql).ToList();
         }
+
+        public bool IsStudentInCourse(int courseId, int studentId) {
+            string sql = @"select cs.*
+from coursestudent cs 
+where cs.StudentId = {1} and cs.CourseId = {0}";
+            sql = string.Format(sql, courseId, studentId);
+            List<CourseStudent> courseStudents = context.Database.SqlQuery<CourseStudent>(sql).ToList();
+
+            return courseStudents.Count > 0;
+        }
     }
 }
