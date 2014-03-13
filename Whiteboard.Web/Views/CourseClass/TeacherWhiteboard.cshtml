@@ -9,23 +9,21 @@
         <div id="canvasDiv"></div>
         <div id="whiteboardTools">
             <div class="whiteboard-tool">
-                <button id="toolsClearBtn" type="button" class="btn btn-default">
+                <button id="toolsClearBtn" type="button" class="btn btn-red">
                     Clear
+                </button>
+                <br />
+                <br /> 
+                <button id="endClass" type="button" class="btn btn-blue">
+                    End <br />Class
                 </button>
             </div>
 
             <div class="whiteboard-tool">
-                <button id="eraserTool" type="button" class="btn btn-default">
+                <button id="eraserTool" type="button" class="btn btn-red">
                     <i class="fa fa-eraser"></i>
                 </button>
-                <input type="text" id="room"/>
-                <button id="joinRoom" type="button" class="btn btn-default">
-                    Join room
-                </button>
-                <br/>
-                <button id="endClass" type="button" class="btn btn-default">
-                    End class
-                </button>
+                <input type="hidden" id="room" value="@ViewBag.CourseClassId"/>
             </div>
 
             <div class="whiteboard-tool">
@@ -119,4 +117,7 @@
     </script>
     <script src="/Content/js/pizarron/socket.io.js"></script>
     <script src="/Content/js/pizarron/script.js"></script>
+    <script>
+        pizarrita.joinRoom();
+    </script>
 }

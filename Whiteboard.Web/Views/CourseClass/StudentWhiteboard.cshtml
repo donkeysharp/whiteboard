@@ -7,11 +7,8 @@
     <div id="whiteboardTools">
 
         <div class="whiteboard-tool">
-            <input type="text" id="room" />
-            <button id="joinRoom" type="button" class="btn btn-default">
-                Join class
-            </button> 
-            <button id="leaveRoom" type="button" class="btn btn-default">
+            <input type="hidden" id="room" value="@ViewBag.CourseClassId" />
+            <button id="leaveRoom" type="button" class="btn btn-blue">
                 Leave class
             </button>
         </div>
@@ -62,4 +59,7 @@
     </script>
     <script src="/Content/js/pizarron/socket.io.js"></script>
     <script src="/Content/js/pizarron/scriptClient.js"></script>
+    <script>
+        pizarrita.joinRoom();
+    </script>
 }

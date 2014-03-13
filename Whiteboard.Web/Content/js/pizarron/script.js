@@ -150,7 +150,7 @@ var pizarrita = ( function () {
     joinRoom = function () {
         if (!joined) {
             currentRoom = $('#room').val();
-            alert(currentRoom);
+            //alert(currentRoom);
             socketBoard.emit('join_room', { room: currentRoom, role: 'teacher' });
             joined = true;
         }
@@ -158,8 +158,20 @@ var pizarrita = ( function () {
     endClass = function () {
         if(joined)
         {
-            socketBoard.emit('leave_room', currentRoom);
-            joined = false;
+            // Necessary to finish class on the server
+            var data = {
+                courseClassId: parseInt($('#room').val())
+            };
+            $.post('/courseclass/finish', data).done(function (res) {
+                alert('Class Finished');
+
+                // Say real-time server that class has finished
+                socketBoard.emit('leave_room', currentRoom);
+                joined = false;
+
+                // Go to teacher's dashboard
+                window.location = '/dashboard'
+            });
         }
     },
     //only teacher can send data
@@ -196,7 +208,8 @@ var pizarrita = ( function () {
 	createUserEvents();
     };
     return {
-	init: init
+        init: init,
+        joinRoom: joinRoom
     };
 }());
     

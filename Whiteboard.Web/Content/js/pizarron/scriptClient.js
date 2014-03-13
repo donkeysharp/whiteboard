@@ -172,7 +172,8 @@
     };
     return {
         init: init,
-        receiveData:receiveData
+        receiveData: receiveData,
+        joinRoom: joinRoom
     };
     
 }());
@@ -225,6 +226,11 @@ var socketBoard = io.connect(host+":9090/wboard");
 socketBoard.on('receive_datas', function (datas) {
 //    alert(JSON.stringify(datas)+"  recibidos");
     pizarrita.receiveData(datas);
+});
+
+socketBoard.on('class_finish', function () {
+    alert('Class has finished, redirecting ...');
+    windows.location = '/dashboard';
 });
 
 /* Call socket chat */
