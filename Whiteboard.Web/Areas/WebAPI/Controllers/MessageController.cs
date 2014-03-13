@@ -21,7 +21,7 @@ namespace Whiteboard.Web.Areas.WebAPI.Controllers {
                 data.Add(new TemporalMessage()
                 {
                     user = item.UserName,
-                    message = item.Message
+                    message = item.Content
                 });
             }
             return Json(data, JsonRequestBehavior.AllowGet);
@@ -30,7 +30,7 @@ namespace Whiteboard.Web.Areas.WebAPI.Controllers {
         public int Insert(int courseClassId, string username, string message)
         {
             IMessageService ms = MessageService.GetInstance<IMessageRepository>();
-            Message item = new Message() { Message = message, UserName = username, CourseClassId = courseClassId };
+            Message item = new Message() { Content = message, UserName = username, CourseClassId = courseClassId };
             return ms.Insert(item).Id;
         }
 
