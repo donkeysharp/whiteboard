@@ -23,6 +23,30 @@ namespace Whiteboard.Web.Controllers {
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }
             CourseViewModel model = new CourseViewModel(course);
+
+            Session["CurrentCourseId"] =  model.Id;
+
+            ICourseClassService ccService = CourseClassService.GetInstance<CourseClassRepository>();
+            IEnumerable<CourseClass> classes = ccService.GetClassesByCourseId(course.Id);
+            List<CourseClassViewModel> ccModels = new List<CourseClassViewModel>();
+            foreach (CourseClass cc in classes) {
+                ccModels.Add(new CourseClassViewModel(cc));
+            }
+            ViewBag.Classes = ccModels;
+
+            if (IsInRole(Role.ROLE_TEACHER)) {
+                bool res = courseService.IsTeacherOfCourse(model.Id, CurrentProfile.Id);
+                ViewBag.IsTeacherOfClass = res;
+                if (res) {
+                    // TODO:
+                    ICourseStudentService service = CourseStudentService.GetInstance<CourseStudentRepository>();
+                    IEnumerable<CourseStudent.Report> students = service.GetCourseStudentsByCourseId(model.Id);
+                    ViewBag.CourseStudents = students;
+                }
+            } else {
+                ViewBag.IsTeacherOfClass = false;
+            }
+
             return View(model);
         }
 
@@ -154,6 +178,51 @@ namespace Whiteboard.Web.Controllers {
             CourseClass courseClass = courseClassService.Get(classId);
             if (courseClass != null) {
                 courseClassService.Delete(courseClass);   
+            }
+            return Json(new { status = "ok" });
+        }
+
+        // Methods for add student to course
+        [HttpGet]
+        public ActionResult Students(string query) {
+            query = query.Trim();
+
+            ICourseService courseService = CourseService.GetInstance<CourseRepository>();
+            Course course = courseService.Get((int)Session["CurrentCourseId"]);
+
+            ISchoolStudentService service = SchoolStudentService.GetInstance<SchoolStudentRepository>();
+            IEnumerable<Profile> students = service.GetStudentsBySchoolIdNotInCourse(course.SchoolId, course.Id, query);
+
+            List<object> res = new List<object>();
+            foreach (Profile profile in students) {
+                res.Add(new {
+                    data = profile.Id,
+                    value = profile.Name
+                });
+            }
+            var obj = new {
+                suggestions = res
+            };
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult AddStudent(int studentId) {
+            ICourseStudentService service = CourseStudentService.GetInstance<CourseStudentRepository>();
+            CourseStudent item = new CourseStudent();
+            item.StudentId = studentId;
+            item.CourseId = (int)Session["CurrentCourseId"];
+            item = service.Insert(item);
+
+            return Json(new { status = "ok", id = item.Id, name = item.Student.Name });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteStudent(int courseStudentId) {
+            ICourseStudentService service = CourseStudentService.GetInstance<CourseStudentRepository>();
+            CourseStudent courseStudent = service.Get(courseStudentId);
+            if (courseStudent != null) {
+                service.Delete(courseStudent);
             }
             return Json(new { status = "ok" });
         }

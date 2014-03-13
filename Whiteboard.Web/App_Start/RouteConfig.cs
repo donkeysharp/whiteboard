@@ -15,11 +15,27 @@ namespace Whiteboard.Web {
                 url: "course/class/delete",
                 defaults: new { controller = "Course", action = "DeleteClass", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "DeleteStudent",
+                url: "course/student/delete",
+                defaults: new { controller = "Course", action = "DeleteStudent", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "CourseAddClass",
                 url: "course/addclass",
                 defaults: new { controller = "Course", action = "AddClass", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "CourseAddStudent",
+                url: "course/addstudent",
+                defaults: new { controller = "Course", action = "AddStudent", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "CoursesStudents",
+                url: "course/students",
+                defaults: new { controller = "Course", action = "Students", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

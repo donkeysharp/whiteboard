@@ -44,9 +44,24 @@ namespace Whiteboard.DataAccess {
             sc3.CourseId = 3;
             sc3.SchoolId = 1;
 
+            SchoolCourse sc4 = new SchoolCourse();
+            sc4.CourseId = 4;
+            sc4.SchoolId = 1;
+
+            SchoolCourse sc5 = new SchoolCourse();
+            sc5.CourseId = 5;
+            sc5.SchoolId = 1;
+
+            SchoolCourse sc6 = new SchoolCourse();
+            sc6.CourseId = 6;
+            sc6.SchoolId = 1;
+
             context.SchoolCourses.Add(sc1);
             context.SchoolCourses.Add(sc2);
             context.SchoolCourses.Add(sc3);
+            context.SchoolCourses.Add(sc4);
+            context.SchoolCourses.Add(sc5);
+            context.SchoolCourses.Add(sc6);
         }
 
         private void SchoolTeacherGenerator()
@@ -69,6 +84,13 @@ namespace Whiteboard.DataAccess {
             ss1.SchoolId = 1;
             ss1.StudentId = 3;
             context.SchoolStudents.Add(ss1);
+
+            SchoolStudent ss2 = new SchoolStudent();
+            ss2.SchoolId = 1;
+            ss2.StudentId = 5;
+
+            context.SchoolStudents.Add(ss1);
+            context.SchoolStudents.Add(ss2);
         }
 
         private void CourseTeacherGenerator()
@@ -85,9 +107,24 @@ namespace Whiteboard.DataAccess {
             ct3.CourseId = 3;
             ct3.TeacherId = 2;
 
+            CourseTeacher ct4 = new CourseTeacher();
+            ct4.CourseId = 4;
+            ct4.TeacherId = 4;
+
+            CourseTeacher ct5 = new CourseTeacher();
+            ct5.CourseId = 5;
+            ct5.TeacherId = 4;
+
+            CourseTeacher ct6 = new CourseTeacher();
+            ct6.CourseId = 6;
+            ct6.TeacherId = 4;
+
             context.CourseTeachers.Add(ct1);
             context.CourseTeachers.Add(ct2);
             context.CourseTeachers.Add(ct3);
+            context.CourseTeachers.Add(ct4);
+            context.CourseTeachers.Add(ct5);
+            context.CourseTeachers.Add(ct6);
         }
 
         private void CourseStudentGenerator() {
@@ -124,6 +161,7 @@ namespace Whiteboard.DataAccess {
         }
 
         public void ProfileGenerator() {
+            // id 1
             Profile schoolProfile = new Profile();
             schoolProfile.Name = "UMSA";
             schoolProfile.Email = "pizarron@umsa.edu.bo";
@@ -131,6 +169,7 @@ namespace Whiteboard.DataAccess {
             schoolProfile.Country = "BO";
             schoolProfile.PictureUrl = "user.png";
 
+            // id 2
             Profile studentProfile = new Profile();
             studentProfile.Name = "Juan Perez";
             studentProfile.Email = "juan@gmail.com";
@@ -138,6 +177,7 @@ namespace Whiteboard.DataAccess {
             studentProfile.Country = "BO";
             studentProfile.PictureUrl = "user.png";
 
+            // id 3
             Profile teacherProfile = new Profile();
             teacherProfile.Name = "Simon Cruz";
             teacherProfile.Email = "simon@gmail.com";
@@ -145,6 +185,7 @@ namespace Whiteboard.DataAccess {
             teacherProfile.Country = "BO";
             teacherProfile.PictureUrl = "user.png";
 
+            // id 4
             Profile teacherProfile2 = new Profile();
             teacherProfile2.Name = "Rosa Flores";
             teacherProfile2.Email = "rosa@gmail.com";
@@ -152,10 +193,37 @@ namespace Whiteboard.DataAccess {
             teacherProfile2.Country = "BO";
             teacherProfile2.PictureUrl = "user.png";
 
-            context.Profiles.Add(schoolProfile);
-            context.Profiles.Add(teacherProfile);
-            context.Profiles.Add(studentProfile);
-            context.Profiles.Add(teacherProfile2);
+            // id 5
+            Profile studentProfile2 = new Profile();
+            studentProfile2.Name = "Pepe";
+            studentProfile2.Email = "pepe@gmail.com";
+            studentProfile2.Password = "8cb2237d0679ca88db6464eac60da96345513964";
+            studentProfile2.Country = "BO";
+            studentProfile2.PictureUrl = "user.png";
+
+            // id 6
+            Profile schoolProfile2 = new Profile();
+            schoolProfile2.Name = "UMSS";
+            schoolProfile2.Email = "pizarron@umss.edu.bo";
+            schoolProfile2.Password = "8cb2237d0679ca88db6464eac60da96345513964";
+            schoolProfile2.Country = "BO";
+            schoolProfile2.PictureUrl = "user.png";
+
+            // id 7
+            Profile studentProfile3 = new Profile();
+            studentProfile3.Name = "Maria";
+            studentProfile3.Email = "maria@gmail.com";
+            studentProfile3.Password = "8cb2237d0679ca88db6464eac60da96345513964";
+            studentProfile3.Country = "BO";
+            studentProfile3.PictureUrl = "user.png";
+
+            context.Profiles.Add(schoolProfile); // 1
+            context.Profiles.Add(teacherProfile); // 2
+            context.Profiles.Add(studentProfile); // 3
+            context.Profiles.Add(teacherProfile2); // 4
+            context.Profiles.Add(studentProfile2); // 5
+            context.Profiles.Add(schoolProfile2); // 6
+            context.Profiles.Add(studentProfile3); // 7
 
             RoleProfileGenerator();
         }
@@ -173,9 +241,29 @@ namespace Whiteboard.DataAccess {
             roleProfileStudent.ProfileId = 3;
             roleProfileStudent.RoleId = (int)Role.Roles.Student;
 
+            RoleProfile rp4 = new RoleProfile();
+            rp4.ProfileId = 4;
+            rp4.RoleId = (int)Role.Roles.Teacher;
+
+            RoleProfile rp5 = new RoleProfile();
+            rp5.ProfileId = 5;
+            rp5.RoleId = (int)Role.Roles.Student;
+
+            RoleProfile rp6 = new RoleProfile();
+            rp6.ProfileId = 6;
+            rp6.RoleId = (int)Role.Roles.School;
+
+            RoleProfile rp7 = new RoleProfile();
+            rp7.ProfileId = 7;
+            rp7.RoleId = (int)Role.Roles.Student;
+
             context.RoleProfiles.Add(roleProfileSchool);
             context.RoleProfiles.Add(roleProfileTeacher);
             context.RoleProfiles.Add(roleProfileStudent);
+            context.RoleProfiles.Add(rp4);
+            context.RoleProfiles.Add(rp5);
+            context.RoleProfiles.Add(rp6);
+            context.RoleProfiles.Add(rp7);
         }
 
         public void CourseGenerator() {

@@ -1,4 +1,4 @@
-//Date Range Picker
+//Date Range Pickera
 $(document).ready(function() {
 });
 

@@ -16,5 +16,9 @@ namespace Whiteboard.DataAccess.Models {
         public int StudentId { get; set; }
         [ForeignKey("StudentId")]
         public virtual Profile Student { get; set; }
+
+        public class Report : CourseStudent {
+            public string StudentName { get; set; }
+        }
     }
 }

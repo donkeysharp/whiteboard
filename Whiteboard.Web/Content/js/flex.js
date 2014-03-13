@@ -1,5 +1,3 @@
-// Flex Admin Custom JavaScript Document
-
 function noSideBar() {
     $(".navbar-side").toggleClass("collapsed");
     $("#page-wrapper").toggleClass("collapsed");

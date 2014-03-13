@@ -67,5 +67,9 @@ namespace whiteboard.BusinessLogic.SchoolModule
         public IEnumerable<CourseReport> SearchPublic(string keyword) {
             return Da.SearchPublic(keyword);
         }
+
+        public bool IsTeacherOfCourse(int courseId, int teacherId) {
+            return Da.IsTeacherOfCourse(courseId, teacherId);
+        }
     }
 }

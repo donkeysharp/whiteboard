@@ -10,5 +10,7 @@ namespace Whiteboard.DataAccess.Repositories
     public interface ISchoolStudentRepository:IRepository<SchoolStudent>
     {
         IEnumerable<Profile> GetStudentsBySchoolId(int schoolId);
+
+        IEnumerable<Profile> GetStudentsBySchoolIdNotInCourse(int schoolId, int courseId, string query);
     }
 }

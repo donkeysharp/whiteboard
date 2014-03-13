@@ -21,5 +21,7 @@ namespace Whiteboard.DataAccess.Repositories
         IEnumerable<CourseReport> GetPublicCourses();
 
         IEnumerable<CourseReport> SearchPublic(string keyword);
+
+        bool IsTeacherOfCourse(int courseId, int teacherId);
     }
 }

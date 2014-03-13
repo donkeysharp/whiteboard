@@ -47,40 +47,94 @@
             </div>
             <div class="col-md-6">
                 @if (Model.IsPublic) {
-                    <a class="btn btn-success" id="join-course" href="invoice.html#">Join Course</a>
+                    <a class="btn btn-green" id="join-course" href="invoice.html#">Join Course</a>
+                }
+                @if (ViewBag.IsTeacherOfClass) {
+                    <button class="btn btn-green" style="width: 100%" id="manage-students"
+                        data-toggle="modal" data-target="#standardModal">Manage Students</button>
+                    <!-- Standard Modal -->
+                    <div class="modal fade" id="standardModal" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="standardModalLabel">Manage Students</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            Add Students:
+                                            <input class="form-control" type="text" 
+                                                id="student-name" placeholder="Type student name or email" />
+                                            <input type="hidden" id="studentId" name="studentId" value="" />
+                                        </div>
+                                        <div class="col-md-2">
+                                            <br />
+                                            <a href="." id="add-student"><i class="fa fa-plus fa-2x" style="margin-top: 6px"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                        <table class="table table-hover" id="classes">
+                                            <thead>
+                                                <tr>
+                                                    <th>Student Name</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="students-tbody">
+                                                @foreach (var s in ViewBag.CourseStudents) {
+                                                    <tr>
+                                                        <td>@s.StudentName</td>
+                                                        <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="modal-footer">
+                                    <button type="button" class="btn btn-green" data-dismiss="modal">Done</button>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
                 }
             </div>
         </div>
         <hr />
         <div class="row">
             <div class="col-md-12">
+                <h3>Comming Classes</h3>
+                <ul class="fa-ul">
+                    @foreach (var cc in ViewBag.Classes) {
+                        if (!cc.Finished) {
+                            <li><i class="fa fa-video-camera"></i> <a href="#">@cc.Description</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
                 <h3>Previous Classes</h3>
-                <ul>
-                    <li><a href="#">Class 1</a></li>
-                    <li><a href="#">Class 2</a></li>
-                    <li><a href="#">Class 3</a></li>
+                <ul class="fa-ul">
+                    @foreach (var cc in ViewBag.Classes) {
+                        if (cc.Finished) {
+                            <li><i class="fa fa-video-camera"></i> <a href="#">@cc.Description</a></li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
     </div>
 </div>
 </div>
-
 @section Scripts {
-    <script src="@Url.Content("~/Content/vendor/underscore-min.js")"></script>
-    <script src="@Url.Content("~/Content/vendor/backbone-min.js")"></script>
-
-    @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
-        @*// TODO*@
-    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
-        <script src="@Url.Content("~/Content/js/dashboard/models/dashboard-models.js")" ></script>
-        <script src="@Url.Content("~/Content/js/dashboard/views/teacher-dashboard-view.js")" ></script>
-        <script src="@Url.Content("~/Content/js/dashboard/teacher-dashboard-router.js")" ></script>
-    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
-        <script src="@Url.Content("~/Content/js/dashboard/models/dashboard-models.js")"></script>
-        <script src="@Url.Content("~/Content/js/dashboard/views/student-dashboard-view.js")"></script>
-        <script src="@Url.Content("~/Content/js/dashboard/models/course-dashboard-models.js")"></script>
-        <script src="@Url.Content("~/Content/js/dashboard/views/course-dashboard-views.js")"></script>
-        <script src="@Url.Content("~/Content/js/dashboard/student-dashboard-router.js")"></script>
-    }
+     @if (ViewBag.IsTeacherOfClass) {
+         <script src="@Url.Content("~/Content/vendor/jquery.autocomplete.js")"></script>
+         <script src="/Content/js/course-detail.js"></script>
+     }
 }

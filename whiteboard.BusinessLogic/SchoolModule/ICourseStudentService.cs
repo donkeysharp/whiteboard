@@ -11,5 +11,7 @@ namespace whiteboard.BusinessLogic.SchoolModule
     {
         IEnumerable<Profile> GetStudentsByCourseId(int Id);
         IEnumerable<Course> GetCoursesByStudentId(int Id);
+
+        IEnumerable<CourseStudent.Report> GetCourseStudentsByCourseId(int courseId);
     }
 }

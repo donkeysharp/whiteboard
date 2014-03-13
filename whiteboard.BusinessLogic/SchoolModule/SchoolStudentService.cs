@@ -29,5 +29,9 @@ namespace whiteboard.BusinessLogic.SchoolModule
         {
             return Da.GetStudentsBySchoolId(SchoolID);
         }
+
+        public IEnumerable<Profile> GetStudentsBySchoolIdNotInCourse(int schoolId, int courseId, string query) {
+            return Da.GetStudentsBySchoolIdNotInCourse(schoolId, courseId, query);
+        }
     }
 }

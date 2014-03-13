@@ -21,6 +21,7 @@ namespace Whiteboard.Web.Controllers {
                 return currentProfile;
             }
         }
+
         protected ActionResult RedirectToHash(string controllerName, string action, string hash) {
             return Redirect(Url.RouteUrl(new { controller = controllerName, action = action }) + "#" + hash);
         }

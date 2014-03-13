@@ -49,7 +49,7 @@
                    @for (var i = 0; i < ViewBag.Courses.Count; ++i) {
                        <tr>
                            <td>@(i+1)</td>
-                           <td>@ViewBag.Courses[i].Title</td>
+                           <td><a href="/Course/@ViewBag.Courses[i].Id">@ViewBag.Courses[i].Title</a></td>
                            <td>@Html.Raw(ViewBag.Courses[i].Description)</td>
                            <td>@ViewBag.Courses[i].TeacherName</td>
                            <td>

@@ -10,5 +10,6 @@ namespace Whiteboard.DataAccess.Repositories
     public interface ICourseStudentRepository : IRepository<CourseStudent>
     {
 
+        IEnumerable<CourseStudent.Report> GetCourseStudentsByCourseId(int courseId);
     }
 }

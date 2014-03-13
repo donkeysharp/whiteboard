@@ -9,6 +9,7 @@ namespace Whiteboard.DataAccess.Models {
     public class WhiteboardNote {
         public int Id { get; set; }
         public string PictureUrl { get; set; }
+        public string JsonData { get; set; }
 
         public int CourseClassId { get; set; }
         [ForeignKey("CourseClassId")]

@@ -85,5 +85,17 @@ where c.ispublic = 1 and c.title like '%{0}%'", keyword);
             List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
             return result;
         }
+
+
+        public bool IsTeacherOfCourse(int courseId, int teacherId) {
+            string sql = string.Format(@"select c.*, ifnull(t.Name,'No Teacher') as TeacherName
+from course as c
+left join courseteacher as ct on (ct.CourseId = c.Id)
+left join profile as t on (t.id = ct.TeacherId)
+where t.id = {0} and c.id = {1}", teacherId, courseId);
+
+            List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
+            return result.Count > 0;                
+        }
     }
 }

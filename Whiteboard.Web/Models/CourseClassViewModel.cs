@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.Web.Models {
     public class CourseClassViewModel {
@@ -11,5 +12,18 @@ namespace Whiteboard.Web.Models {
         public long EndTime { get; set; }
         public bool Broadcasting { get; set; }
         public bool Finished { get; set; }
+
+        public CourseClassViewModel() {
+
+        }
+
+        public CourseClassViewModel(CourseClass cc) {
+            Id = cc.Id;
+            Description = cc.Description;
+            BeginTime = cc.BeginTime;
+            EndTime = cc.EndTime;
+            Broadcasting = cc.Broadcasting;
+            Finished = cc.Finished;
+        }
     }
 }

@@ -251,6 +251,7 @@
     <Content Include="Content\img\widget-bg-evening.jpg" />
     <Content Include="Content\img\widget-bg-midnight.jpg" />
     <Content Include="Content\img\widget-bg-morning.jpg" />
+    <Content Include="Content\js\course-detail.js" />
     <Content Include="Content\js\dashboard\dashboard.js" />
     <Content Include="Content\js\dashboard\models\course-dashboard-models.js" />
     <Content Include="Content\js\dashboard\models\dashboard-models.js" />
