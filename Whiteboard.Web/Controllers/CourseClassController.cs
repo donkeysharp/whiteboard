@@ -17,6 +17,7 @@ namespace Whiteboard.Web.Controllers {
             if (courseClass == null || id == 0) {
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }
+            ViewBag.CourseClassId = courseClass.Id;
             if (IsInRole(Role.ROLE_STUDENT)) {
                 if (courseClass.Broadcasting) {
                     ICourseStudentService courseStudentService = CourseStudentService.GetInstance<CourseStudentRepository>();
@@ -54,6 +55,7 @@ namespace Whiteboard.Web.Controllers {
             ICourseClassService service = CourseClassService.GetInstance<CourseClassRepository>();
             CourseClass courseClass = service.Get(courseClassId);
             if (courseClass != null) {
+                courseClass.Broadcasting = false;
                 courseClass.Finished = true;
                 service.Update(courseClass);
             }
