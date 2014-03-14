@@ -33,10 +33,14 @@ namespace Whiteboard.Web.Controllers {
             } else if (IsInRole(Role.ROLE_TEACHER)) {
                 ICourseService courseService = CourseService.GetInstance<CourseRepository>();
                 bool isOwnerOfClass = courseService.IsTeacherOfCourse(courseClass.CourseId, CurrentProfile.Id);
-                if (isOwnerOfClass) {
+                if (isOwnerOfClass && courseClass.Broadcasting) {
                     return View("TeacherWhiteboard");
                 }
             }
+            IWhiteboardService whiteboardService = WhiteboardService.GetInstance<WhiteboardRepository>();
+            IEnumerable<WhiteboardNote> notes = whiteboardService.GetWhiteboardNotesByClassId(courseClass.Id);
+            ViewBag.WhiteboardNotes = notes;
+
             return View();
         }
 
@@ -68,15 +72,24 @@ namespace Whiteboard.Web.Controllers {
         }
 
         [HttpPost]
-        public ActionResult UploadImage(string data) {
+        public ActionResult UploadImage(string data, int courseClassId) {
             byte[] byteArray = System.Convert.FromBase64String(data);
+            string filename = Guid.NewGuid().ToString() + ".png";
 
             using(MemoryStream ms = new MemoryStream(byteArray)) {
-                string filename = Guid.NewGuid().ToString() + ".png";
                 string path = Path.Combine(Server.MapPath(Constants.UPLOADS_PATH), filename);
 
                 FileHelper.CreateFile(path, ms, true);
             }
+
+            IWhiteboardService service = WhiteboardService.GetInstance<WhiteboardRepository>();
+
+            WhiteboardNote whiteboardNote = new WhiteboardNote();
+            whiteboardNote.CourseClassId = courseClassId;
+            whiteboardNote.PictureUrl = filename;
+
+            service.Insert(whiteboardNote);
+
             return Json(new { status = "ok" });
         }
     }

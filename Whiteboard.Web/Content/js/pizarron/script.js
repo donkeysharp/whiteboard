@@ -37,7 +37,8 @@ var pizarrita = (function () {
         var image = context.canvas.toDataURL("image/png");
         image = image.replace('data:image/png;base64,', '');
         var data = {
-            data : image
+            data: image,
+            courseClassId: parseInt($('#room').val())
         };
         $.post('/courseclass/uploadimage', data).done(function(res){
             console.log("Image saved");
@@ -180,9 +181,20 @@ var pizarrita = (function () {
     },
     endClass = function () {
         if (joined) {
-            socketBoard.emit('leave_room', currentRoom);
-            socketChat.emit('leave_chat_room', currentRoom);
-            joined = false;
+            var data = {
+                courseClassId: parseInt($('#room').val())
+            };
+            $.post('/courseclass/finish', data).done(function (res) {
+                alert("Class Finished!");
+
+                // Say real-time server that class has finished
+                socketBoard.emit('leave_room', currentRoom);
+                socketChat.emit('leave_chat_room', currentRoom);
+                joined = false;
+
+                // Go to teacher's dashboard
+                window.location = '/dashboard';
+            });
         }
     },
     //only teacher can send data

@@ -19,7 +19,9 @@
                 courseId: courseId
             };
             $.post('/courseclass/start', data).done(function (res) {
-                window.location = "/course/courseclass/" + res.courseClassId;
+                if (res.status === 'ok') {
+                    window.location = "/course/courseclass/" + res.courseClassId;
+                }
             });
         }
     };

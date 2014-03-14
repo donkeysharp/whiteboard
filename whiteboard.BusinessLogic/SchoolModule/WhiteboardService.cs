@@ -18,5 +18,9 @@ namespace whiteboard.BusinessLogic.SchoolModule
             IWhiteboardRepository da = (IWhiteboardRepository)Activator.CreateInstance<T>();
             return new WhiteboardService(da);
         }
+
+        public IEnumerable<Whiteboard.DataAccess.Models.WhiteboardNote> GetWhiteboardNotesByClassId(int p) {
+            return da.Filter(x => x.CourseClassId == p);
+        }
     }
 }

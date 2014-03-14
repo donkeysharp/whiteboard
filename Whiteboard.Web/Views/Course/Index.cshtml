@@ -58,16 +58,19 @@
                         data-toggle="modal" data-target="#standardModalClasses">Manage Classes</button>
                     <br /><br />
                    
-                        bool isSomeClassBroadcasting = false;
-                        foreach (var cc in ViewBag.Classes) {
-                            if (cc.Broadcasting) {
-                                isSomeClassBroadcasting = true;
-                                break;
+                    bool isSomeClassBroadcasting = false;
+                    int count = 0;
+                    foreach (var cc in ViewBag.Classes) {
+                        if (cc.Broadcasting) {
+                            isSomeClassBroadcasting = true;
+                            break;
+                        } else {
+                            if (!cc.Finished) {
+                                count++;
                             }
                         }
-                   
-                    
-                    if (!isSomeClassBroadcasting ) {
+                    }
+                    if (!isSomeClassBroadcasting && count > 0) {
                         <button class="btn btn-blue" style="width: 100%" id="start-class">Start Class</button>
                     }
                 }
@@ -104,7 +107,7 @@
                     @foreach (var cc in ViewBag.Classes) {
                         if (cc.Finished) {
                             <li><i class="fa fa-video-camera">
-                                </i> <a href="/course/courseclass/@cc.Id">@cc.Description</a></li>
+                                </i> <a href="/course/courseclass/@cc.Id">@cc.Description (Check Notes)</a></li>
                         }
                     }
                 </ul>

@@ -8,5 +8,6 @@ namespace whiteboard.BusinessLogic.SchoolModule
 {
     public interface IWhiteboardService:IService<Whiteboard.DataAccess.Models.WhiteboardNote>
     {
+        IEnumerable<Whiteboard.DataAccess.Models.WhiteboardNote> GetWhiteboardNotesByClassId(int p);
     }
 }
