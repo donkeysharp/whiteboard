@@ -219,7 +219,8 @@ var pizarrita = (function () {
         createUserEvents();
     };
     return {
-        init: init
+        init: init,
+        joinRoom: joinRoom
     };
 }());
 

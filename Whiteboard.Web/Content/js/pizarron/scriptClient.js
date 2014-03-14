@@ -209,7 +209,8 @@
     };
     return {
         init: init,
-        receiveData: receiveData
+        receiveData: receiveData,
+        joinRoom: joinRoom
     };
 
 }());
