@@ -69,10 +69,38 @@
         } else {
             clickColor.push(selectedColor);
         }
+        //if (joined) {
+        //    sentData(x, y);
+        //}
     },
     // User events.
     createUserEvents = function () {
         var $canvas = $('#canvas');
+
+        //$canvas.mousedown(function (e) {
+        //    var mouseX = e.pageX - this.offsetLeft,
+        //    mouseY = e.pageY - this.offsetTop;
+
+        //    paint = true;
+        //    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+        //    redraw();
+        //});
+
+        //$canvas.mousemove(function (e) {
+        //    if (paint) {
+        //        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+        //        redraw();
+        //    }
+        //});
+
+        //$canvas.mouseup(function (e) {
+        //    paint = false;
+        //});
+
+        //$canvas.mouseleave(function (e) {
+        //    paint = false;
+        //});
+
         $('#toolsClearBtn').click(function () {
             clearCanvas();
         });
@@ -115,22 +143,32 @@
         $('#leaveRoom').click(function () {
             leaveRoom();
         });
+        // Send message to CourseClass chat.
+        $('#chat-textarea').keyup(function (e) {
+            if (e.keyCode == 13) {
+                var message = { room: currentRoom, user: $('#chatUserName').val(), message: $('#chat-textarea').val() };
+                socketChat.emit('send_message', message);
+                console.log(JSON.stringify(message));
+                $('.chat-section-messages').append('<div class="talk-bubble tri-left right-top response-bubble round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
+                $('#chat-textarea').val('');
+            }
+        });
     },
     joinRoom = function () {
         if (!joined) {
             currentRoom = $('#room').val();
             socketBoard.emit('join_room', { room: currentRoom, role: 'student' });
+            socketChat.emit('join_chat_room', currentRoom);
             joined = true;
         }
     },
     leaveRoom = function () {
-        if(joined)
-        {
+        if (joined) {
             socketBoard.emit('leave_room', currentRoom);
+            socketChat.emit('leave_chat_room', currentRoom);
             joined = false;
         }
     },
-    //receiveData
     receiveData = function (data) {
         if (data != null) {
             for (var i = 0; i < data.length; i++) {
@@ -151,8 +189,7 @@
                 redraw();
             }
         }
-        else
-        {
+        else {
             clearCanvas();
         }
     },
@@ -172,10 +209,9 @@
     };
     return {
         init: init,
-        receiveData: receiveData,
-        joinRoom: joinRoom
+        receiveData: receiveData
     };
-    
+
 }());
 
 pizarrita.init();
@@ -209,22 +245,13 @@ $('#professorNotesSelector').click(function () {
     $('#professorNotesSection').toggle();
 });
 
-// Send message to CourseClass chat.
-$('#chat-textarea').keyup(function (e) {
-    if (e.keyCode == 13) {
-        var message = { "message": $(this).val(), "user": "me" };
-        socketChat.emit("message_to_server", message);
-        $('#chat-textarea').val('');
-    }
-});
 //my IP
 var host = "http://192.168.137.1"
 
 //socket board
-var socketBoard = io.connect(host+":9090/wboard");
+var socketBoard = io.connect(host + ":9090/wboard");
 
 socketBoard.on('receive_datas', function (datas) {
-//    alert(JSON.stringify(datas)+"  recibidos");
     pizarrita.receiveData(datas);
 });
 
@@ -235,13 +262,15 @@ socketBoard.on('class_finish', function () {
 
 /* Call socket chat */
 var socketChat = io.connect(host + ":9090/chat"); // Socket Chat
-socketChat.on("message", function (message) {
+
+socketChat.on('send_message', function (message) {
     $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
     $('#chat-textarea').val('');
 });
 
-socketChat.on("message_to_client", function (message) {
-    $('.chat-section-messages').append('<div class="talk-bubble tri-left right-top response-bubble round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
+socketChat.on('receive_message', function (message) {
+    console.log(JSON.stringify(message));
+    $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
 });
 
 /* send pizarrita */

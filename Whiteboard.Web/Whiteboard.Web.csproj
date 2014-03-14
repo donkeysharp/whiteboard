@@ -170,7 +170,7 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\WebAPI\Controllers\FooController.cs" />
+    <Compile Include="Areas\WebAPI\Controllers\MessageController.cs" />
     <Compile Include="Areas\WebAPI\WebAPIAreaRegistration.cs" />
     <Compile Include="Auth\AuthParser.cs" />
     <Compile Include="Auth\GeneralMembershipProvider.cs" />
@@ -411,7 +411,7 @@
     <Content Include="Views\Shared\_RegisterWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\SideBars\_SchoolDashboard.cshtml" />
+    <Content Include="Views\Dashboard\_SchoolDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Dashboard\_TeacherDashboard.cshtml" />

@@ -56,10 +56,12 @@
     <Compile Include="SchoolModule\ICourseService.cs" />
     <Compile Include="SchoolModule\ICourseStudentService.cs" />
     <Compile Include="SchoolModule\ICourseTeacherService.cs" />
+    <Compile Include="SchoolModule\IMessageService.cs" />
     <Compile Include="SchoolModule\ISchoolCourseService.cs" />
     <Compile Include="SchoolModule\ISchoolStudentService.cs" />
     <Compile Include="SchoolModule\ISchoolTeacherService.cs" />
     <Compile Include="SchoolModule\IWhiteboardService.cs" />
+    <Compile Include="SchoolModule\MessageService.cs" />
     <Compile Include="SchoolModule\SchoolCourseService.cs" />
     <Compile Include="SchoolModule\SchoolStudentService.cs" />
     <Compile Include="SchoolModule\SchoolTeacherService.cs" />

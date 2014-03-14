@@ -1,5 +1,5 @@
-var pizarrita = ( function () {
-    
+var pizarrita = (function () {
+
     "use strict";
 
     var canvas,
@@ -78,7 +78,7 @@ var pizarrita = ( function () {
         clickDrag.push(dragging);
         clickRadius.push(selectedRadius);
         if (erasingOn) {
-            clickColor.push('background');   
+            clickColor.push('background');
         } else {
             clickColor.push(selectedColor);
         }
@@ -151,7 +151,7 @@ var pizarrita = ( function () {
             $(this).css('border', 'solid 3px black');
             sentData(-10, -10, false);
         });
-        
+
         //join current room
         $('#joinRoom').click(function () {
             joinRoom();
@@ -159,36 +159,34 @@ var pizarrita = ( function () {
         $('#endClass').click(function () {
             endClass();
         })
+        // Send message to CourseClass chat.
+        $('#chat-textarea').keyup(function (e) {
+            if (e.keyCode == 13) {
+                var message = { room: currentRoom, user: $('#chatUserName').val(), message: $('#chat-textarea').val() }
+                socketChat.emit('send_message', message);
+                console.log(JSON.stringify(message));
+                $('#chat-textarea').val('');
+                $('.chat-section-messages').append('<div class="talk-bubble tri-left right-top response-bubble round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
+            }
+        });
     },
     joinRoom = function () {
         if (!joined) {
             currentRoom = $('#room').val();
-            //alert(currentRoom);
             socketBoard.emit('join_room', { room: currentRoom, role: 'teacher' });
+            socketChat.emit('join_chat_room', currentRoom);
             joined = true;
         }
     },
     endClass = function () {
-        if(joined)
-        {
-            // Necessary to finish class on the server
-            var data = {
-                courseClassId: parseInt($('#room').val())
-            };
-            $.post('/courseclass/finish', data).done(function (res) {
-                alert('Class Finished');
-
-                // Say real-time server that class has finished
-                socketBoard.emit('leave_room', currentRoom);
-                joined = false;
-
-                // Go to teacher's dashboard
-                window.location = '/dashboard'
-            });
+        if (joined) {
+            socketBoard.emit('leave_room', currentRoom);
+            socketChat.emit('leave_chat_room', currentRoom);
+            joined = false;
         }
     },
     //only teacher can send data
-    sentData = function (x, y, dragging,clear) {
+    sentData = function (x, y, dragging, clear) {
         var color = selectedColor;
         if (erasingOn) {
             color = 'background';
@@ -208,75 +206,64 @@ var pizarrita = ( function () {
     },
     // Init.
     init = function () {
-	canvas = document.createElement('canvas');
-	canvas.setAttribute('width', canvasWidth);
-	canvas.setAttribute('height', canvasHeight);
-	canvas.setAttribute('id', 'canvas');
-	canvasDiv.appendChild(canvas);
-	if(typeof G_vmlCanvasManager != 'undefined') {
-	    canvas = G_vmlCanvasManager.initElement(canvas);
-	}
-	context = canvas.getContext("2d");
+        canvas = document.createElement('canvas');
+        canvas.setAttribute('width', canvasWidth);
+        canvas.setAttribute('height', canvasHeight);
+        canvas.setAttribute('id', 'canvas');
+        canvasDiv.appendChild(canvas);
+        if (typeof G_vmlCanvasManager != 'undefined') {
+            canvas = G_vmlCanvasManager.initElement(canvas);
+        }
+        context = canvas.getContext("2d");
 
-	createUserEvents();
+        createUserEvents();
     };
     return {
-        init: init,
-        joinRoom: joinRoom
+        init: init
     };
 }());
-    
+
 pizarrita.init();
 $('.section-container').hide();
 
-$('#chatSelector').click( function () {
-	$('#myNotesSection').hide();
-	$('#bestNotesSection').hide();
-	$('#professorNotesSection').hide();
-	$('#chatSection').toggle();
+$('#chatSelector').click(function () {
+    $('#myNotesSection').hide();
+    $('#bestNotesSection').hide();
+    $('#professorNotesSection').hide();
+    $('#chatSection').toggle();
 });
 
-$('#myNotesSelector').click( function () {
-	$('#chatSection').hide();
-	$('#bestNotesSection').hide();
-	$('#professorNotesSection').hide();
-	$('#myNotesSection').toggle();
+$('#myNotesSelector').click(function () {
+    $('#chatSection').hide();
+    $('#bestNotesSection').hide();
+    $('#professorNotesSection').hide();
+    $('#myNotesSection').toggle();
 });
 
-$('#bestNotesSelector').click( function () {
-	$('#chatSection').hide();
-	$('#myNotesSection').hide();
-	$('#professorNotesSection').hide();
-	$('#bestNotesSection').toggle();
+$('#bestNotesSelector').click(function () {
+    $('#chatSection').hide();
+    $('#myNotesSection').hide();
+    $('#professorNotesSection').hide();
+    $('#bestNotesSection').toggle();
 });
 
-$('#professorNotesSelector').click( function () {
-	$('#chatSection').hide();
-	$('#myNotesSection').hide();
-	$('#bestNotesSection').hide();
-	$('#professorNotesSection').toggle();
+$('#professorNotesSelector').click(function () {
+    $('#chatSection').hide();
+    $('#myNotesSection').hide();
+    $('#bestNotesSection').hide();
+    $('#professorNotesSection').toggle();
 });
 
-// Send message to CourseClass chat.
-$('#chat-textarea').keyup( function (e) {
-	if(e.keyCode == 13) {
-		var message = {"message": $(this).val(), "user": "me"};
-		socketChat.emit("message_to_server", message);
-		$('#chat-textarea').val('');
-	}
-});
+
 //my IP
-var host="http://192.168.137.1"
+var host = "http://192.168.137.1"
 
 /* Call socket chat */
-var socketChat = io.connect(host+":9090/chat"); // Socket Chat
-socketChat.on("message", function(message) {
-	$('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
-	$('#chat-textarea').val('');
-});
+var socketChat = io.connect(host + ":9090/chat"); // Socket Chat
 
-socketChat.on("message_to_client", function(message) {
-	$('.chat-section-messages').append('<div class="talk-bubble tri-left right-top response-bubble round"><span class="msg-sender">' + message.user +'</span><div class="talktext"><p>' + message.message + '</p></div></div>');
+socketChat.on('receive_message', function (message) {
+    console.log(message + " receive");
+    $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
 });
 
 /* send pizarrita */
