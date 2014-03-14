@@ -263,8 +263,10 @@ var host = "http://192.168.137.1"
 var socketChat = io.connect(host + ":9090/chat"); // Socket Chat
 
 socketChat.on('receive_message', function (message) {
-    console.log(message + " receive");
-    $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
+    for (var i = 0; i < message.length; i++) {
+        console.log(message[i] + " receive");
+        $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message[i].user + '</span><div class="talktext"><p>' + message[i].message + '</p></div></div>');
+    }
 });
 
 /* send pizarrita */
