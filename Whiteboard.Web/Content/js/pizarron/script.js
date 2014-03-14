@@ -22,6 +22,8 @@ var pizarrita = ( function () {
     joined = false,
     // Clears the Canvas.
     clearCanvas = function () {
+        saveImage();
+
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.lineJoin = "round";
         paint = false;
@@ -31,10 +33,21 @@ var pizarrita = ( function () {
         clickDrag = [];
         clickRadius = [];
     },
-
+    saveImage = function() {
+        var image = context.canvas.toDataURL("image/png");
+        image = image.replace('data:image/png;base64,', '');
+        var data = {
+            data : image
+        };
+        $.post('/courseclass/uploadimage', data).done(function(res){
+            console.log("Image saved");
+        });
+    },
     // Redraws the Canvas.
     redraw = function () {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        context.fillStyle = backgroundColor;
+        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
         context.lineJoin = "round";
 
         for (var i = 0; i < clickX.length; i++) {
