@@ -13,7 +13,7 @@ namespace Whiteboard.Web.Areas.WebAPI.Controllers {
         // GET: /api/Foo/
         [HttpGet]
         public JsonResult GetMessages(int courseClassId) {
-            IMessageService ms = MessageService.GetInstance<IMessageRepository>();
+            IMessageService ms = MessageService.GetInstance<MessageRepository>();
             var messages = ms.GetMessagesByClassId(courseClassId);
             var data = new List<TemporalMessage>();
             foreach (var item in messages)
@@ -29,7 +29,7 @@ namespace Whiteboard.Web.Areas.WebAPI.Controllers {
         [HttpPost]
         public int Insert(int courseClassId, string username, string message)
         {
-            IMessageService ms = MessageService.GetInstance<IMessageRepository>();
+            IMessageService ms = MessageService.GetInstance<MessageRepository>();
             Message item = new Message() { Content = message, UserName = username, CourseClassId = courseClassId };
             return ms.Insert(item).Id;
         }
