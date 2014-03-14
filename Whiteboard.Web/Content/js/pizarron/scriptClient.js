@@ -170,28 +170,24 @@
         }
     },
     receiveData = function (data) {
-        if (data != null) {
-            for (var i = 0; i < data.length; i++) {
-                console.log(JSON.stringify(data[i]));
-                clickX.push(data[i].x);
-                clickY.push(data[i].y);
-                clickDrag.push(data[i].dragging);
-                clickRadius.push(data[i].radius);
-                clickColor.push(data[i].color);
-                backgroundColor = data[i].background;
-                if (data[i].x < 0) {
-                    $('#canvasDiv').css('background-color', backgroundColor);
-                    //backgroundColor = $(this).data('blackboard-color');
-                    redraw();
-                    $('.changeBlackboardColor').css('border', '');
-                    $(this).css('border', 'solid 3px black');
-                }
+        for (var i = 0; i < data.length; i++) {
+            console.log(JSON.stringify(data[i]));
+            clickX.push(data[i].x);
+            clickY.push(data[i].y);
+            clickDrag.push(data[i].dragging);
+            clickRadius.push(data[i].radius);
+            clickColor.push(data[i].color);
+            backgroundColor = data[i].background;
+            if (data[i].x < 0) {
+                $('#canvasDiv').css('background-color', backgroundColor);
+                //backgroundColor = $(this).data('blackboard-color');
                 redraw();
+                $('.changeBlackboardColor').css('border', '');
+                $(this).css('border', 'solid 3px black');
             }
+            redraw();
         }
-        else {
-            clearCanvas();
-        }
+
     },
     // Init.
     init = function () {
@@ -210,7 +206,8 @@
     return {
         init: init,
         receiveData: receiveData,
-        joinRoom: joinRoom
+        joinRoom: joinRoom,
+        clearCanvas: clearCanvas
     };
 
 }());
@@ -260,7 +257,9 @@ socketBoard.on('class_finish', function () {
     alert('Class has finished, redirecting ...');
     window.location = '/dashboard';
 });
-
+socketBoard.on('clear_data', function () {
+    pizarrita.clearCanvas();
+});
 /* Call socket chat */
 var socketChat = io.connect(host + ":9090/chat"); // Socket Chat
 
@@ -270,8 +269,11 @@ socketChat.on('send_message', function (message) {
 });
 
 socketChat.on('receive_message', function (message) {
-    console.log(JSON.stringify(message));
-    $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
+    for (var i = 0; i < message.length; i++) {
+        console.log(JSON.stringify(message[i]));
+        $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message[i].user + '</span><div class="talktext"><p>' + message[i].message + '</p></div></div>');
+    }
+    
 });
 
 /* send pizarrita */
