@@ -22,6 +22,8 @@ var pizarrita = (function () {
     joined = false,
     // Clears the Canvas.
     clearCanvas = function () {
+        saveImage();
+
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.lineJoin = "round";
         paint = false;
@@ -31,10 +33,21 @@ var pizarrita = (function () {
         clickDrag = [];
         clickRadius = [];
     },
-
+    saveImage = function() {
+        var image = context.canvas.toDataURL("image/png");
+        image = image.replace('data:image/png;base64,', '');
+        var data = {
+            data : image
+        };
+        $.post('/courseclass/uploadimage', data).done(function(res){
+            console.log("Image saved");
+        });
+    },
     // Redraws the Canvas.
     redraw = function () {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        context.fillStyle = backgroundColor;
+        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
         context.lineJoin = "round";
 
         for (var i = 0; i < clickX.length; i++) {
@@ -206,7 +219,8 @@ var pizarrita = (function () {
         createUserEvents();
     };
     return {
-        init: init
+        init: init,
+        joinRoom: joinRoom
     };
 }());
 
@@ -249,8 +263,10 @@ var host = "http://192.168.137.1"
 var socketChat = io.connect(host + ":9090/chat"); // Socket Chat
 
 socketChat.on('receive_message', function (message) {
-    console.log(message + " receive");
-    $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message.user + '</span><div class="talktext"><p>' + message.message + '</p></div></div>');
+    for (var i = 0; i < message.length; i++) {
+        console.log(message[i] + " receive");
+        $('.chat-section-messages').append('<div class="talk-bubble tri-right left-top round"><span class="msg-sender">' + message[i].user + '</span><div class="talktext"><p>' + message[i].message + '</p></div></div>');
+    }
 });
 
 /* send pizarrita */

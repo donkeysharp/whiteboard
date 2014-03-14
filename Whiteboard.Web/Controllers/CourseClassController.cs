@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using whiteboard.BusinessLogic.SchoolModule;
+using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 
@@ -18,6 +21,8 @@ namespace Whiteboard.Web.Controllers {
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }
             ViewBag.CourseClassId = courseClass.Id;
+            ViewBag.ClassUserName = CurrentProfile.Name;
+
             if (IsInRole(Role.ROLE_STUDENT)) {
                 if (courseClass.Broadcasting) {
                     ICourseStudentService courseStudentService = CourseStudentService.GetInstance<CourseStudentRepository>();
@@ -58,6 +63,19 @@ namespace Whiteboard.Web.Controllers {
                 courseClass.Broadcasting = false;
                 courseClass.Finished = true;
                 service.Update(courseClass);
+            }
+            return Json(new { status = "ok" });
+        }
+
+        [HttpPost]
+        public ActionResult UploadImage(string data) {
+            byte[] byteArray = System.Convert.FromBase64String(data);
+
+            using(MemoryStream ms = new MemoryStream(byteArray)) {
+                string filename = Guid.NewGuid().ToString() + ".png";
+                string path = Path.Combine(Server.MapPath(Constants.UPLOADS_PATH), filename);
+
+                FileHelper.CreateFile(path, ms, true);
             }
             return Json(new { status = "ok" });
         }

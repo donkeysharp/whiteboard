@@ -23,6 +23,7 @@ namespace Whiteboard.DataAccess {
         public DbSet<SchoolCourse> SchoolCourses { get; set; }
         public DbSet<WhiteboardNote> Whiteboards { get; set; }
         public DbSet<ClassNote> ClassNotes { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         // Request ... maybe should be done on a faster database, Redis ;)
         public static DataBaseContext Context {
