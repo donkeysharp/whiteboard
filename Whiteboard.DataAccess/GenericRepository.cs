@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -67,6 +70,18 @@ namespace Whiteboard.DataAccess
             {
                 throw new ApplicationException("Null item not alowed");
             }
+
+            // If there is an attached entity, item values will be copied to this
+            // attached entity
+            int itemId = (int)item.GetType().GetProperty("Id").GetValue(item);
+            foreach (var trackedItem in context.ChangeTracker.Entries<T>()) {
+                int id = trackedItem.Property<int>("Id").CurrentValue;
+                if (itemId == id) {
+                    trackedItem.CurrentValues.SetValues(item);
+                    item = trackedItem.Entity;
+                }
+            }
+
             dbSet.Attach(item);
             context.Entry(item).State = System.Data.EntityState.Modified;
             return context.SaveChanges();

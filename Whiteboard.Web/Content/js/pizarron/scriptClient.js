@@ -247,7 +247,7 @@ $('#professorNotesSelector').click(function () {
 });
 
 //my IP
-var host = "http://192.168.137.1"
+var host = "http://192.168.43.8"
 
 //socket board
 var socketBoard = io.connect(host + ":9090/wboard");

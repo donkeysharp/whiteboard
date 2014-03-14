@@ -13,10 +13,11 @@ using Whiteboard.DataAccess.Repositories;
 namespace Whiteboard.Web.Controllers {
     [Authorize]
     public class CourseClassController : BaseController {
+        CourseClass courseClass = null;
         [HttpGet]
         public ActionResult Index(int id) {
             ICourseClassService service = CourseClassService.GetInstance<CourseClassRepository>();
-            CourseClass courseClass = service.Get(id);
+            courseClass = service.Get(id);
             if (courseClass == null || id == 0) {
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }

@@ -38,10 +38,26 @@ namespace Whiteboard.Web.Controllers {
                 bool res = courseService.IsTeacherOfCourse(model.Id, CurrentProfile.Id);
                 ViewBag.IsTeacherOfClass = res;
                 if (res) {
-                    // TODO:
+                    // This gets all students in a given course
                     ICourseStudentService service = CourseStudentService.GetInstance<CourseStudentRepository>();
                     IEnumerable<CourseStudent.Report> students = service.GetCourseStudentsByCourseId(model.Id);
                     ViewBag.CourseStudents = students;
+
+                    // This gets all classes for a given course
+                    ICourseClassService courseClassService = CourseClassService.GetInstance<CourseClassRepository>();
+                    IEnumerable<CourseClass> courseClasses = courseClassService.GetClassesByCourseId(course.Id);
+                    List<CourseClassViewModel> courseClassModels = new List<CourseClassViewModel>();
+                    foreach (CourseClass cc in courseClasses) {
+                        courseClassModels.Add(new CourseClassViewModel() {
+                            Id = cc.Id,
+                            Description = cc.Description,
+                            BeginTime = cc.BeginTime,
+                            EndTime = cc.EndTime,
+                            Finished = cc.Finished,
+                            Broadcasting = cc.Broadcasting
+                        });
+                    }
+                    ViewBag.CourseClasses = courseClassModels;
                 }
             } else {
                 ViewBag.IsTeacherOfClass = false;

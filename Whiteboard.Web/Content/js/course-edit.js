@@ -1,4 +1,3 @@
-//Summernote WYSIWYG Initialization and Custom Height
 $(document).ready(function () {
     var options = {
         height: 200,

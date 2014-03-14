@@ -172,16 +172,92 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    Classes
+                    <input type="hidden" id="courseId" name="id" value="@Model.Id" />
+                        <div class="col-md-4">
+                            Description:<br />
+                            <input type="text" id="class-desc" class="form-control" />
+                        </div>
+                        <div class="col-xs-4">
+                            Date: <br />
+                            <div id="sandbox-container">
+                                <input id="class-date" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Begin Time: <br>
+                            <div class="input-append bootstrap-timepicker input-group">
+                                <input id="timepicker1" class="form-control" type="text" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default add-on" type="button"><i class="fa fa-clock-o"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            End Time: <br>
+                            <div class="input-append bootstrap-timepicker input-group">
+                                <input id="timepicker2" class="form-control" type="text" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default add-on" type="button"><i class="fa fa-clock-o"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-2"><br />
+                            <a href="#" id="add-class"><i class="fa fa-plus fa-2x"></i></a>
+                        </div>
+                    </div>
+                    <hr />
+                <div class="row" style=" max-height: 220px;overflow-y: auto;">
+                    <div class="table-responsive">
+                    <table class="table table-hover" id="classes">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Begin</th>
+                                <th>End</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="classes-tbody">
+                            @foreach (var cc in ViewBag.CourseClasses) {
+                                <tr>
+                                    <td>@cc.Description</td>
+                                    <td class="format-date">@cc.BeginTime</td>
+                                    <td class="format-date">@cc.EndTime</td>
+                                    <td><a href="#" data-class-id="@cc.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 }
+@section StyleSheets {
+    <link href="/Content/css/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <style>
+        /* Bug fix for timepicker on modals */
+        .bootstrap-timepicker-widget {
+            z-index: 100000000;
+        }
+    </style>
+    <link href="/Content/css/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
+    <link href="/Content/css/plugins/messenger/messenger.css" rel="stylesheet">
+    <link href="/Content/css/plugins/messenger/messenger-theme-flat.css" rel="stylesheet">
+}
 @section Scripts {
      @if (ViewBag.IsTeacherOfClass) {
          <script src="@Url.Content("~/Content/vendor/jquery.autocomplete.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/messenger/messenger.min.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/messenger/messenger-theme-flat.js")"></script>
          <script src="/Content/js/course-detail.js"></script>
      }
 }
