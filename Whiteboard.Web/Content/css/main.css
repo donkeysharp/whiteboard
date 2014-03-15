@@ -349,3 +349,6 @@ transform:scale(1)}
 transform:scale(.3)}
 
 }
+#basicInformation .form-control {
+    max-width: 300px
+}

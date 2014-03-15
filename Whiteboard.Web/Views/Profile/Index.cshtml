@@ -5,7 +5,7 @@
 @using Whiteboard.Common
 @using Whiteboard.DataAccess.Models
 @model Whiteboard.Web.Models.ProfileViewModel
-<div class="col-lg-12">
+<div class="col-md-8 col-md-offset-2">
     <div class="portlet portlet-default">
         <div class="portlet-body">
             <div class="row">
@@ -89,7 +89,7 @@
                         <div>
                             <h4 class="page-header">Current Picture</h4>
                             <div class="profile-picture">
-                                <img class="img-responsive" src="@Url.Content(Path.Combine(Constants.UPLOADS_PATH, Model.PictureUrl))" />
+                                <img class="img-responsive" style="width: 150px; height: 150px;" src="@Url.Content(Model.PictureUrl)" />
                             </div>
                             @using (Html.BeginForm("Upload", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
@@ -111,9 +111,6 @@
     </div>
 </div>
 
-<div class="container profile-container">
-
-</div>
 @section scripts {
     <script>
         noSideBar();
