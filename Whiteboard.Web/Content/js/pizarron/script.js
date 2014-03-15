@@ -269,7 +269,7 @@ $('#professorNotesSelector').click(function () {
 
 
 //my IP
-var host = "http://192.168.43.8"
+var host = "http://test1-ubuntu.cloudapp.net";
 
 /* Call socket chat */
 var socketChat = io.connect(host + ":9090/chat"); // Socket Chat

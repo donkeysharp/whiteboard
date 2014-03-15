@@ -74,6 +74,10 @@
     font-family: Source Sans Pro, sans-serif;
     display: block;
 }
+.title {
+    font-family: Source Sans Pro, sans-serif;
+    display: block;
+}
 .title.title-big { font-size: 34px; font-weight: bold; }
 .title.title-small { font-size: 18px; font-weight: normal; }
 .register-container .info tr td:nth-child(1) {

@@ -244,7 +244,7 @@ $('#professorNotesSelector').click(function () {
 });
 
 //my IP
-var host = "http://192.168.43.8"
+var host = "http://test1-ubuntu.cloudapp.net";
 
 //socket board
 var socketBoard = io.connect(host + ":9090/wboard");
