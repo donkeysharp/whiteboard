@@ -110,12 +110,17 @@
         </div>
     </div>
 @section StyleSheets {
+    <link href="/Content/css/plugins/messenger/messenger.css" rel="stylesheet">
+    <link href="/Content/css/plugins/messenger/messenger-theme-flat.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="/Content/css/pizarron/style.css">
 }
 @section Scripts {
     <script>
         noSideBar();
     </script>
+    <script src="@Url.Content("~/Content/js/plugins/messenger/messenger.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/plugins/messenger/messenger-theme-flat.js")"></script>
     <script src="/Content/js/pizarron/socket.io.js"></script>
     <script src="/Content/js/pizarron/script.js"></script>
     <script>

@@ -42,6 +42,19 @@ var pizarrita = (function () {
         };
         $.post('/courseclass/uploadimage', data).done(function(res){
             console.log("Image saved");
+            Messenger.options = {
+                extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+                theme: 'flat'
+            };
+            var msg = Messenger().post({
+                message: 'Teacher Note saved successfully!',
+                id: "Only-one-message",
+                type: 'info',
+                showCloseButton: true
+            });
+            setTimeout(function () {
+                msg.hide();
+            }, 1700);
         });
     },
     // Redraws the Canvas.

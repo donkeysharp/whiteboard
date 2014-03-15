@@ -88,7 +88,7 @@
                                     <a href="/course/courseclass/@cc.Id">
                                         <i style="color: #ff6a00;" 
                                             class="fa fa-adjust fa-spin"></i> @cc.Description
-                                         (Broadcasting)
+                                         (Broadcasting ENTER NOW!)
                                     </a>
                                 } else {
                                     <i class="fa fa-video-camera"></i> @cc.Description
@@ -227,7 +227,11 @@
                                     <td>@cc.Description</td>
                                     <td class="format-date">@cc.BeginTime</td>
                                     <td class="format-date">@cc.EndTime</td>
-                                    <td><a href="#" data-class-id="@cc.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                    <td>
+                                        @if(!cc.Finished) {
+                                            <a href="#" data-class-id="@cc.Id"><i class="fa fa-trash-o fa-lg"></i></a>
+                                        }
+                                    </td>
                                 </tr>
                             }
                         </tbody>

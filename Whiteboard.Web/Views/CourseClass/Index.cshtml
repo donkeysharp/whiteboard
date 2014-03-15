@@ -11,9 +11,48 @@
         @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
     }
 }
-<h2>Course Class</h2>
-<ul>
-@foreach (var note in ViewBag.WhiteboardNotes) {
-    <li>@note.PictureUrl</li>
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="course-manager">
+    <div class="portlet portlet-red">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h3 style="float:left">Class Notes</h3>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <a href="/course/@ViewBag.CourseId"><i class="fa fa-hand-o-left"></i>Return</a>
+            <div class="parent-container">
+            <ul style="list-style: none">
+                @foreach (var note in ViewBag.WhiteboardNotes) {
+                    <li style="display: inline; margin-left: 10px;">
+                    <a href="/content/uploads/@note.PictureUrl" class="image-link">
+                        <img src="/content/uploads/@note.PictureUrl" width="100" height="100" />
+                    </a>
+                    </li>
+                }
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+@section StyleSheets {
+    <link href="/Content/css/magnific-popup.css" rel="stylesheet" />
 }
-</ul>
+@section Scripts {
+    <script src="/Content/vendor/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.parent-container').magnificPopup({
+                delegate: 'a', // child items selector, by clicking on it popup will open
+                type: 'image'
+                // other options
+            });
+        });
+    </script>
+}

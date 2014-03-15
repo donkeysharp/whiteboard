@@ -172,7 +172,7 @@ namespace Whiteboard.DataAccess {
             // id 2
             Profile studentProfile = new Profile();
             studentProfile.Name = "Juan Perez";
-            studentProfile.Email = "juan@gmail.com";
+            studentProfile.Email = "juan@hotmail.com";
             studentProfile.Password = "8cb2237d0679ca88db6464eac60da96345513964";
             studentProfile.Country = "BO";
             studentProfile.PictureUrl = "user.png";
@@ -180,7 +180,7 @@ namespace Whiteboard.DataAccess {
             // id 3
             Profile teacherProfile = new Profile();
             teacherProfile.Name = "Simon Cruz";
-            teacherProfile.Email = "simon@gmail.com";
+            teacherProfile.Email = "simon@hotmail.com";
             teacherProfile.Password = "8cb2237d0679ca88db6464eac60da96345513964";
             teacherProfile.Country = "BO";
             teacherProfile.PictureUrl = "user.png";
@@ -188,7 +188,7 @@ namespace Whiteboard.DataAccess {
             // id 4
             Profile teacherProfile2 = new Profile();
             teacherProfile2.Name = "Rosa Flores";
-            teacherProfile2.Email = "rosa@gmail.com";
+            teacherProfile2.Email = "rosa@hotmail.com";
             teacherProfile2.Password = "8cb2237d0679ca88db6464eac60da96345513964";
             teacherProfile2.Country = "BO";
             teacherProfile2.PictureUrl = "user.png";
@@ -196,7 +196,7 @@ namespace Whiteboard.DataAccess {
             // id 5
             Profile studentProfile2 = new Profile();
             studentProfile2.Name = "Pepe";
-            studentProfile2.Email = "pepe@gmail.com";
+            studentProfile2.Email = "pepe@hotmail.com";
             studentProfile2.Password = "8cb2237d0679ca88db6464eac60da96345513964";
             studentProfile2.Country = "BO";
             studentProfile2.PictureUrl = "user.png";
@@ -212,7 +212,7 @@ namespace Whiteboard.DataAccess {
             // id 7
             Profile studentProfile3 = new Profile();
             studentProfile3.Name = "Maria";
-            studentProfile3.Email = "maria@gmail.com";
+            studentProfile3.Email = "maria@hotmail.com";
             studentProfile3.Password = "8cb2237d0679ca88db6464eac60da96345513964";
             studentProfile3.Country = "BO";
             studentProfile3.PictureUrl = "user.png";

@@ -21,6 +21,7 @@ namespace Whiteboard.Web.Controllers {
             if (courseClass == null || id == 0) {
                 return RedirectToHash("Dashboard", "Index", "dashboard");
             }
+            ViewBag.CourseId = courseClass.CourseId;
             ViewBag.CourseClassId = courseClass.Id;
             ViewBag.ClassUserName = CurrentProfile.Name;
 
