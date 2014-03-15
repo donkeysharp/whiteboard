@@ -236,6 +236,8 @@
     <Content Include="Content\icons\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\img\blackboard.jpg" />
     <Content Include="Content\img\checkmark.png" />
+    <Content Include="Content\img\clases1.jpg" />
+    <Content Include="Content\img\clases2.jpg" />
     <Content Include="Content\img\datatables\sort_asc.png" />
     <Content Include="Content\img\datatables\sort_asc_disabled.png" />
     <Content Include="Content\img\datatables\sort_both.png" />
@@ -245,6 +247,8 @@
     <Content Include="Content\img\profile-full.jpg" />
     <Content Include="Content\img\profile-pic-small.jpg" />
     <Content Include="Content\img\profile-pic.jpg" />
+    <Content Include="Content\img\slide1.jpg" />
+    <Content Include="Content\img\slider.png" />
     <Content Include="Content\img\user-profile-1.jpg" />
     <Content Include="Content\img\user-profile-2.jpg" />
     <Content Include="Content\img\user-profile-3.jpg" />
