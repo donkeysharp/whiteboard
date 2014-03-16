@@ -52,5 +52,17 @@ namespace whiteboard.BusinessLogic.ProfileModule {
         public IEnumerable<Profile> FilterStudents(int schoolId, string query) {
             return daProfile.FilterStudents(schoolId, query);
         }
+
+        public IEnumerable<Profile> GetStudentsBySchoolId(int schoolId) {
+            return daProfile.GetStudentsBySchoolId(schoolId);
+        }
+
+        public IEnumerable<Profile> GetTeachersBySchoolId(int schoolId) {
+            return daProfile.GetTeachersBySchoolId(schoolId);
+        }
+
+        public IEnumerable<Profile> FilterTeachers(int schoolId, string query) {
+            return daProfile.FilterTeachers(schoolId, query);
+        }
     }
 }

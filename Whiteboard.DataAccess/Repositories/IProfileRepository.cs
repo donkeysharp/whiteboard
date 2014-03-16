@@ -11,5 +11,8 @@ namespace Whiteboard.DataAccess.Repositories {
         Profile GetByEmail(string username);
 
         IEnumerable<Profile> FilterStudents(int schoolId, string query);
+        IEnumerable<Profile> GetStudentsBySchoolId(int schoolId);
+        IEnumerable<Profile> GetTeachersBySchoolId(int schoolId);
+        IEnumerable<Profile> FilterTeachers(int schoolId, string query);
     }
 }

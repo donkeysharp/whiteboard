@@ -32,8 +32,46 @@ where id not in (
 )
 ) as t1
 inner join roleprofile rp on (rp.ProfileId = t1.Id)
-where rp.RoleId = 3";
+where rp.RoleId = 3 and (t1.name like '%{1}%' or t1.email like '%{1}%')";
+            sql = string.Format(sql, schoolId, query);
+
+            return context.Profiles.SqlQuery(sql);
+        }
+
+        public IEnumerable<Profile> GetStudentsBySchoolId(int schoolId) {
+            string sql = @"select p.*
+from profile p
+inner join schoolstudent ss on (ss.studentid = p.id)
+where ss.SchoolId = {0}";
             sql = string.Format(sql, schoolId);
+
+            return context.Profiles.SqlQuery(sql).ToList();
+        }
+
+        public IEnumerable<Profile> GetTeachersBySchoolId(int schoolId) {
+            string sql = @"select p.*
+from profile p
+inner join schoolteacher ss on (ss.teacherid = p.id)
+where ss.SchoolId = {0}";
+            sql = string.Format(sql, schoolId);
+
+            return context.Profiles.SqlQuery(sql).ToList();
+        }
+
+        public IEnumerable<Profile> FilterTeachers(int schoolId, string query) {
+            string sql = @"select t1.*
+from (
+select *
+from profile as p
+where id not in (
+	select teacherid
+	from schoolteacher ss
+	where ss.SchoolId = {0}
+)
+) as t1
+inner join roleprofile rp on (rp.ProfileId = t1.Id)
+where rp.RoleId = 3 and (t1.name like '%{1}%' or t1.email like '%{1}%')";
+            sql = string.Format(sql, schoolId, query);
 
             return context.Profiles.SqlQuery(sql);
         }

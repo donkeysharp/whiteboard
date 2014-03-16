@@ -46,12 +46,12 @@
                         </tr>
                     </thead>
                     <tbody id="students-tbody">
-                        @*@foreach (var s in ViewBag.CourseStudents) {
+                        @foreach (var s in ViewBag.Students) {
                             <tr>
-                                <td>@s.StudentName</td>
+                                <td>@s.Name</td>
                                 <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
                             </tr>
-                        }*@
+                        }
                     </tbody>
                 </table>
                 </div>
@@ -93,12 +93,12 @@
                         </tr>
                     </thead>
                     <tbody id="teachers-tbody">
-                        @*@foreach (var s in ViewBag.CourseStudents) {
+                        @foreach (var s in ViewBag.Teachers) {
                             <tr>
-                                <td>@s.StudentName</td>
+                                <td>@s.Name</td>
                                 <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
                             </tr>
-                        }*@
+                        }
                     </tbody>
                 </table>
                 </div>
