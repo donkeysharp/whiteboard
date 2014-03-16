@@ -505,6 +505,7 @@
     <Content Include="Views\CourseClass\TeacherWhiteboard.cshtml" />
     <Content Include="Views\CourseClass\StudentWhiteboard.cshtml" />
     <Content Include="Views\SchoolManager\Index.cshtml" />
+    <Content Include="Views\Profile\Details.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
