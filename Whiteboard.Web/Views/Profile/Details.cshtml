@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 @model Whiteboard.Web.Models.ProfileViewModel
+@using Whiteboard.Common
 @section SideBar {
     @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
         @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
@@ -12,4 +13,36 @@
         @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
     }
 }
-<h2>@Model.Name</h2>
+<div class="row">
+<div class="col-lg-6 col-md-offset-3">
+    <div class="course-manager">
+    <div class="portlet portlet-red">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h4 style="float:left">Profile Information</h4>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-circle"
+                            style="width: 150px; height: 150px;"
+                             src="@Url.Content(Path.Combine(Constants.UPLOADS_PATH, (string)ViewBag.ProfileData.PictureUrl))"
+                             alt="">
+                </div>
+                <div class="col-md-6">
+                    <strong>Name: </strong> <br />
+                    <span>@Model.Name</span> <br /><br />
+                    <strong>Email: </strong> <br />
+                    <span>@Model.Email</span> <br /><br />
+                    <strong>Country: </strong> <br />
+                    <span>@Model.Country</span> <br /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
