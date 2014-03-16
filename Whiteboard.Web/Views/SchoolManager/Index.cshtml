@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "School Manager";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+@using Whiteboard.Web.Models
+@section SideBar {
+    @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
+        @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
+        @Html.Partial("../Dashboard/SideBars/Teacher", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
+        @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    }
+}
+<div class="row">
+<div class="col-lg-6">
+    <div class="course-manager">
+    <div class="portlet portlet-blue">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h4 style="float:left">Manage Students</h4>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-10">
+                    Add Students:
+                    <input class="form-control" type="text" 
+                        id="student-name" placeholder="Type student name or email" />
+                    <input type="hidden" id="studentId" name="studentId" value="" />
+                </div>
+                <div class="col-md-2">
+                    <br />
+                    <a href="." id="add-student"><i class="fa fa-plus fa-2x" style="margin-top: 6px"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                <table class="table table-hover" id="students">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-tbody">
+                        @*@foreach (var s in ViewBag.CourseStudents) {
+                            <tr>
+                                <td>@s.StudentName</td>
+                                <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                            </tr>
+                        }*@
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="course-manager">
+    <div class="portlet portlet-orange">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h4 style="float:left">Manage Teachers</h4>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-10">
+                    Add Teachers:
+                    <input class="form-control" type="text" 
+                        id="teacher-name" placeholder="Type student name or email" />
+                    <input type="hidden" id="teacherId" name="studentId" value="" />
+                </div>
+                <div class="col-md-2">
+                    <br />
+                    <a href="." id="add-teacher"><i class="fa fa-plus fa-2x" style="margin-top: 6px"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                <table class="table table-hover" id="teachers">
+                    <thead>
+                        <tr>
+                            <th>Teacher Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="teachers-tbody">
+                        @*@foreach (var s in ViewBag.CourseStudents) {
+                            <tr>
+                                <td>@s.StudentName</td>
+                                <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                            </tr>
+                        }*@
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+@section Scripts {
+    <script src="@Url.Content("~/Content/vendor/jquery.autocomplete.js")"></script>
+    <script src="/Content/js/school-manager.js"></script>
+}

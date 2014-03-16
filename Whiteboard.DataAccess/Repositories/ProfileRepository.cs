@@ -19,5 +19,23 @@ namespace Whiteboard.DataAccess.Repositories {
             }
             return null;
         }
+
+        public IEnumerable<Profile> FilterStudents(int schoolId, string query) {
+            string sql = @"select t1.*
+from (
+select *
+from profile as p
+where id not in (
+	select StudentId
+	from schoolstudent ss
+	where ss.SchoolId = {0}
+)
+) as t1
+inner join roleprofile rp on (rp.ProfileId = t1.Id)
+where rp.RoleId = 3";
+            sql = string.Format(sql, schoolId);
+
+            return context.Profiles.SqlQuery(sql);
+        }
     }
 }

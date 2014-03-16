@@ -242,5 +242,11 @@ namespace Whiteboard.Web.Controllers {
             }
             return Json(new { status = "ok" });
         }
+
+        #region "School Manager"
+        public ActionResult SchoolManager() {
+            return View();
+        }
+        #endregion
     }
 }

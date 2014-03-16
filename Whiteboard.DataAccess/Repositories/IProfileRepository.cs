@@ -9,5 +9,7 @@ using Whiteboard.DataAccess.Reports;
 namespace Whiteboard.DataAccess.Repositories {
     public interface IProfileRepository : IRepository<Profile> {
         Profile GetByEmail(string username);
-     }
+
+        IEnumerable<Profile> FilterStudents(int schoolId, string query);
+    }
 }

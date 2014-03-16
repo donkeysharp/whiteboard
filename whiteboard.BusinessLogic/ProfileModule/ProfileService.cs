@@ -11,6 +11,7 @@ namespace whiteboard.BusinessLogic.ProfileModule {
     public class ProfileService :GenericService<Profile>, IProfileService {
         private IProfileRepository daProfile;
 
+
         private ProfileService(IProfileRepository da):base(da) {
             this.daProfile = da;
         }
@@ -46,6 +47,10 @@ namespace whiteboard.BusinessLogic.ProfileModule {
         {
             return daProfile.Filter((x) => (x.Name.Contains(data) || x.Email.Contains(data)),
                 (x) => x.OrderBy((y) => y.Id));
+        }
+
+        public IEnumerable<Profile> FilterStudents(int schoolId, string query) {
+            return daProfile.FilterStudents(schoolId, query);
         }
     }
 }
