@@ -35,7 +35,23 @@ namespace Whiteboard.Web.Controllers {
         public JsonResult Students(string query) {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
             IEnumerable<Profile> students = service.FilterStudents(CurrentProfile.Id, query);
-            return Json(null, JsonRequestBehavior.AllowGet);
+            List<object> models = new List<object>();
+            foreach (Profile profile in students) {
+                models.Add(new {
+                    data = profile.Id,
+                    value = profile.Name
+                });
+            }
+            var obj = new {
+                suggestions = models
+            };
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddStudent(int studentId) {
+            
+            return null;
         }
     }
 }
