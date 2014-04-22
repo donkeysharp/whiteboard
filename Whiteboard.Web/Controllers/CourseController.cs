@@ -127,9 +127,9 @@ namespace Whiteboard.Web.Controllers {
             course.Syllabus = model.Syllabus;
             course.Lectures = model.Lectures;
             course.IsPublic = model.IsPublic;
-            if (course.SchoolId == 0) {
-                course.SchoolId = CurrentProfile.Id;
-            }
+            //if (course.SchoolId == 0) {
+            //    course.SchoolId = CurrentProfile.Id;
+            //}
 
             string filename;
             if (file != null && file.ContentLength > 0) {
@@ -207,17 +207,17 @@ namespace Whiteboard.Web.Controllers {
             Course course = courseService.Get((int)Session["CurrentCourseId"]);
 
             ISchoolStudentService service = SchoolStudentService.GetInstance<SchoolStudentRepository>();
-            IEnumerable<Profile> students = service.GetStudentsBySchoolIdNotInCourse(course.SchoolId, course.Id, query);
+            //IEnumerable<Profile> students = service.GetStudentsBySchoolIdNotInCourse(course.SchoolId, course.Id, query);
 
-            List<object> res = new List<object>();
-            foreach (Profile profile in students) {
-                res.Add(new {
-                    data = profile.Id,
-                    value = profile.Name
-                });
-            }
+            //List<object> res = new List<object>();
+            //foreach (Profile profile in students) {
+            //    res.Add(new {
+            //        data = profile.Id,
+            //        value = profile.Name
+            //    });
+            //}
             var obj = new {
-                suggestions = res
+                suggestions = 0
             };
             return Json(obj, JsonRequestBehavior.AllowGet);
         }

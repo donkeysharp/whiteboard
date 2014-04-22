@@ -23,7 +23,7 @@ namespace Whiteboard.DataAccess.Models {
         [ForeignKey("OwnerId")]
         public virtual Profile Owner { get; set; }
 
-        public int OrganizationId { get; set; }
+        public int? OrganizationId { get; set; }
         [ForeignKey("OrganizationId")]
         public virtual Organization Organization { get; set; }
     }
