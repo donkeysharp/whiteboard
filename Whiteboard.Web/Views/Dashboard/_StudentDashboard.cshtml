@@ -1,1 +1,53 @@
-﻿<h1>Student Dashboard</h1>
+﻿<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <div class="circle-tile">
+            <a>
+                <div class="circle-tile-heading red">
+                    <i class="fa fa-comments fa-fw fa-3x"></i>
+                </div>
+            </a>
+            <div class="circle-tile-content red">
+                <div class="circle-tile-description text-faded">
+                    You've joined to
+                </div>
+                <div class="circle-tile-number text-faded">
+                    @ViewBag.MyCourses.Count courses
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="dashboard">
+        <div class="portlet portlet-red">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-comments fa-fw"></i> Your Courses</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#ourCourses"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="ourCourses" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <div class="row">
+                @foreach (var x in ViewBag.MyCourses) {
+                    <a href="/course/@x.Id">
+                    <div class="col-md-5 course-item">
+                        <img src="@Url.Content(x.PictureUrl)" />
+                        <div class="course-body">
+                            <h4>@x.Title</h4>
+                            <span>@x.TeacherName</span>
+                        </div>
+                    </div>
+                    </a>
+                }
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

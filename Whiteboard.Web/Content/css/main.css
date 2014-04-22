@@ -1,4 +1,9 @@
-﻿/* For login on the navbar*/
+﻿/* For autocomplete */
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+/* For login on the navbar*/
 .navbar-login {
     width: 300px;
     margin-top: -8px;
@@ -69,6 +74,10 @@
     font-family: Source Sans Pro, sans-serif;
     display: block;
 }
+.title {
+    font-family: Source Sans Pro, sans-serif;
+    display: block;
+}
 .title.title-big { font-size: 34px; font-weight: bold; }
 .title.title-small { font-size: 18px; font-weight: normal; }
 .register-container .info tr td:nth-child(1) {
@@ -136,4 +145,210 @@
 .dashboard-container {
     margin-top: 50px;
     width: 100%;
+}
+/* COURSE STYLES */
+/*.course-item {
+    background-color: #fff;
+    padding: 5px 0 5px 5px;
+    margin-bottom: 20px;
+}
+.course-item:hover {
+    background-color: #f39c12;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+.course-item img {
+    float: left; width: 100px; height: 60px;
+    margin-right: 10px;
+}*/
+.course-detail {
+    margin: 15px auto 15px auto; 
+    background-color: #fff; 
+    border: 1px solid #000;
+    padding: 10px;
+}
+#join-course {
+    width: 100%;
+}
+.course-manager {
+    margin: 15px auto 15px auto; 
+    padding: 10px;
+}
+.course-manager .table-hover tbody tr:hover {
+}
+.red-circle {
+    margin-left: 10px;
+    width:10px; height:10px; border-radius:15px; background: #f00
+}
+.green-circle {
+    margin-left: 10px;
+    width:10px; height:10px; border-radius:15px; background: #0f0
+}
+
+/* SPINNER!!!! */
+#circularG{
+position:relative;
+width:28px;
+height:28px}
+
+.circularG{
+position:absolute;
+background-color:#FF0055;
+width:6px;
+height:6px;
+-moz-border-radius:4px;
+-moz-animation-name:bounce_circularG;
+-moz-animation-duration:0.24s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-webkit-border-radius:4px;
+-webkit-animation-name:bounce_circularG;
+-webkit-animation-duration:0.24s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-ms-border-radius:4px;
+-ms-animation-name:bounce_circularG;
+-ms-animation-duration:0.24s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-o-border-radius:4px;
+-o-animation-name:bounce_circularG;
+-o-animation-duration:0.24s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+border-radius:4px;
+animation-name:bounce_circularG;
+animation-duration:0.24s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+}
+
+#circularG_1{
+left:0;
+top:11px;
+-moz-animation-delay:0.09s;
+-webkit-animation-delay:0.09s;
+-ms-animation-delay:0.09s;
+-o-animation-delay:0.09s;
+animation-delay:0.09s;
+}
+
+#circularG_2{
+left:3px;
+top:3px;
+-moz-animation-delay:0.12s;
+-webkit-animation-delay:0.12s;
+-ms-animation-delay:0.12s;
+-o-animation-delay:0.12s;
+animation-delay:0.12s;
+}
+
+#circularG_3{
+top:0;
+left:11px;
+-moz-animation-delay:0.15s;
+-webkit-animation-delay:0.15s;
+-ms-animation-delay:0.15s;
+-o-animation-delay:0.15s;
+animation-delay:0.15s;
+}
+
+#circularG_4{
+right:3px;
+top:3px;
+-moz-animation-delay:0.18s;
+-webkit-animation-delay:0.18s;
+-ms-animation-delay:0.18s;
+-o-animation-delay:0.18s;
+animation-delay:0.18s;
+}
+
+#circularG_5{
+right:0;
+top:11px;
+-moz-animation-delay:0.21s;
+-webkit-animation-delay:0.21s;
+-ms-animation-delay:0.21s;
+-o-animation-delay:0.21s;
+animation-delay:0.21s;
+}
+
+#circularG_6{
+right:3px;
+bottom:3px;
+-moz-animation-delay:0.24s;
+-webkit-animation-delay:0.24s;
+-ms-animation-delay:0.24s;
+-o-animation-delay:0.24s;
+animation-delay:0.24s;
+}
+
+#circularG_7{
+left:11px;
+bottom:0;
+-moz-animation-delay:0.27s;
+-webkit-animation-delay:0.27s;
+-ms-animation-delay:0.27s;
+-o-animation-delay:0.27s;
+animation-delay:0.27s;
+}
+
+#circularG_8{
+left:3px;
+bottom:3px;
+-moz-animation-delay:0.3s;
+-webkit-animation-delay:0.3s;
+-ms-animation-delay:0.3s;
+-o-animation-delay:0.3s;
+animation-delay:0.3s;
+}
+
+@-moz-keyframes bounce_circularG{
+0%{
+-moz-transform:scale(1)}
+
+100%{
+-moz-transform:scale(.3)}
+
+}
+
+@-webkit-keyframes bounce_circularG{
+0%{
+-webkit-transform:scale(1)}
+
+100%{
+-webkit-transform:scale(.3)}
+
+}
+
+@-ms-keyframes bounce_circularG{
+0%{
+-ms-transform:scale(1)}
+
+100%{
+-ms-transform:scale(.3)}
+
+}
+
+@-o-keyframes bounce_circularG{
+0%{
+-o-transform:scale(1)}
+
+100%{
+-o-transform:scale(.3)}
+
+}
+
+@keyframes bounce_circularG{
+0%{
+transform:scale(1)}
+
+100%{
+transform:scale(.3)}
+
+}
+#basicInformation .form-control {
+    max-width: 300px
 }

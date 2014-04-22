@@ -12,5 +12,10 @@ namespace whiteboard.BusinessLogic.ProfileModule
         Profile Get(string email);
         bool Validate(string email, string password);
         IEnumerable<Profile> Search(string data);
+
+        IEnumerable<Profile> FilterStudents(int schoolId, string query);
+        IEnumerable<Profile> GetStudentsBySchoolId(int schoolId);
+        IEnumerable<Profile> GetTeachersBySchoolId(int schoolId);
+        IEnumerable<Profile> FilterTeachers(int schoolId, string query);
     }
 }

@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whiteboard.Web", "Whiteboard.Web\Whiteboard.Web.csproj", "{49E57BF3-4E38-48C4-B266-30B2E0D33FEA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B629831F-F402-43DB-8C46-3112DC4CE16F} = {B629831F-F402-43DB-8C46-3112DC4CE16F}
@@ -22,8 +20,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whiteboard.BusinessLogic", 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whiteboard.Common", "Whiteboard.Common\Whiteboard.Common.csproj", "{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteBoard.Test", "WhiteBoard.Test\WhiteBoard.Test.csproj", "{993CF3E1-3628-4044-9E31-FAF5A29249EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +43,6 @@ Global
 		{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2F6004C-D767-4A4B-95FD-D15AF8910CDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{993CF3E1-3628-4044-9E31-FAF5A29249EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

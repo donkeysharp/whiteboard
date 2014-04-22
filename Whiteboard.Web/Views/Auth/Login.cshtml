@@ -1,33 +1,61 @@
-﻿
-<div class="login-container">
-    @if (ViewBag.Errors != null) { 
-        <div class="alert alert-danger alert-dismissable">
-            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">x</button>
-            @ViewBag.Errors
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-banner">
+                @if (ViewBag.Errors != null)
+                {
+                    <div class="alert alert-danger alert-dismissable">
+                        <button class="close" aria-hidden="true" data-dismiss="alert" type="button">x</button>
+                        @ViewBag.Errors
+                    </div>
+                }
+            </div>
+            <div class="portlet portlet-blue">
+                <div class="portlet-heading login-heading">
+                    <div class="portlet-title">
+                        <h4>
+                            <strong>Login to Pizarrón</strong>
+                        </h4>
+                    </div>
+                    <div class="portlet-widgets">
+                        <form action="/Auth/Register">
+                            <button class="btn btn-green" type="submit">Register</button>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="portlet-body">
+                    @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+                    {
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.Label("Email: ", new { @class = "col-sm-2 control-label", @for = "email" })
+                                @Html.TextBox("email", (string)ViewBag.Email, new
+                                    {
+                                        autocomplete = "off",
+                                        placeholder = "ejemplo@ejemplo.com",
+                                        @class = "form-control"
+                                    })
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Password:", new { @class = "col-sm-2 control-label", @for = "password" })
+                                @Html.Password("password", null, new
+                                    {
+                                        autocomplete = "off",
+                                        placeholder = "Type your password ...",
+                                        @class = "form-control"
+                                    })
+                            </div>
+                            <input type="submit" value="Log In" class="btn btn-default" />
+                        </fieldset>
+                    }
+                </div>
+            </div>
         </div>
-    }
-
-    @using (Html.BeginForm("Login", "Auth", FormMethod.Post)) {
-        <table>
-            <tr><td>@Html.Label("Email:")</td></tr>
-            <tr>
-                <td>
-                @Html.TextBox("email", (string)ViewBag.Email, new { autocomplete = "off", 
-                    placeholder = "john@example.com", @class="form-control"
-                })
-                </td>
-            </tr>
-            <tr><td>@Html.Label("Password:")</td></tr>
-            <tr>
-                <td>
-                @Html.Password("password", null, new { autocomplete = "off",
-                    placeholder="Type your password ...", @class="form-control"
-                })
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Log In" class="btn btn-success" /></td>
-            </tr>
-        </table>
-    }
+    </div>
 </div>
+@section Scripts {
+    <script>
+        noSideBar();
+    </script>
+}

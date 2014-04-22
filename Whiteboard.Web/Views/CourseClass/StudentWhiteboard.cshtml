@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+<div id="whiteboard">
+    <div id="canvasDiv"></div>
+    <div id="whiteboardTools">
+
+        <div class="whiteboard-tool">
+            <input type="hidden" id="room" value="@ViewBag.CourseClassId" />
+            <button id="leaveRoom" type="button" class="btn btn-blue">
+                Leave class
+            </button>
+            <input type="hidden" id="chatUserName" value="@ViewBag.ClassUserName" />
+        </div>
+    </div>
+</div>
+
+<div id="class-options">
+    <div class="class-options-selectors">
+        <div id="chatSelector" class="section-selector chat-selector">
+            CHAT
+        </div>
+        <div id="myNotesSelector" class="section-selector my-notes-selector">
+            MY NOTES
+        </div>
+        <div id="bestNotesSelector" class="section-selector best-notes-selector">
+            BEST NOTES
+        </div>
+        <div id="professorNotesSelector" class="section-selector professor-notes-selector">
+            PROFESSOR NOTES
+        </div>
+    </div>
+    <div id="chatSection" class="section-container chat-section">
+        <!-- Chat section messages -->
+        <div class="chat-section-messages">
+
+        </div>
+        <textarea id="chat-textarea" class="form-control" rows="3"></textarea>
+    </div>
+    <div id="myNotesSection" class="section-container my-notes-section">
+        <div class="box-notes box-my-notes">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+        <textarea class="form-control textarea-notes textarea-my-notes" rows="3"></textarea>
+    </div>
+    <div id="bestNotesSection" class="section-container best-notes-section">
+        <div class="box-notes box-best-notes">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</div>
+        <textarea class="form-control textarea-notes textarea-best-notes" rows="3"></textarea>
+    </div>
+    <div id="professorNotesSection" class="section-container professor-notes-section">
+        <div class="box-notes box-professor-notes">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</div>
+        <textarea class="form-control textarea-notes textarea-professor-notes" rows="3"></textarea>
+    </div>
+</div>
+@section StyleSheets {
+    <link rel="stylesheet" type="text/css" href="/Content/css/pizarron/style.css">
+}
+@section Scripts {
+    <script>
+        noSideBar();
+    </script>
+    <script src="/Content/js/pizarron/socket.io.js"></script>
+    <script src="/Content/js/pizarron/scriptClient.js"></script>
+    <script>
+        pizarrita.joinRoom();
+    </script>
+}

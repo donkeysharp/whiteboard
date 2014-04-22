@@ -48,20 +48,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GenericService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="SchoolModule\CourseClassService.cs" />
     <Compile Include="SchoolModule\CourseService.cs" />
     <Compile Include="SchoolModule\CourseStudentService.cs" />
+    <Compile Include="SchoolModule\CourseTeacherService.cs" />
+    <Compile Include="SchoolModule\ICourseClassService.cs" />
     <Compile Include="SchoolModule\ICourseService.cs" />
     <Compile Include="SchoolModule\ICourseStudentService.cs" />
-    <Compile Include="SchoolModule\IMemberService.cs" />
-    <Compile Include="SchoolModule\IRequestCourseStudentService.cs" />
-    <Compile Include="SchoolModule\IRequestSchoolMemberService.cs" />
-    <Compile Include="SchoolModule\ISchoolMemberService.cs" />
-    <Compile Include="SchoolModule\ISchoolService.cs" />
-    <Compile Include="SchoolModule\MemberService.cs" />
-    <Compile Include="SchoolModule\RequestCourseStudentService.cs" />
-    <Compile Include="SchoolModule\RequestSchoolMemberService.cs" />
-    <Compile Include="SchoolModule\SchoolMemberService.cs" />
-    <Compile Include="SchoolModule\SchoolService.cs" />
+    <Compile Include="SchoolModule\ICourseTeacherService.cs" />
+    <Compile Include="SchoolModule\IMessageService.cs" />
+    <Compile Include="SchoolModule\ISchoolCourseService.cs" />
+    <Compile Include="SchoolModule\ISchoolStudentService.cs" />
+    <Compile Include="SchoolModule\ISchoolTeacherService.cs" />
+    <Compile Include="SchoolModule\IWhiteboardService.cs" />
+    <Compile Include="SchoolModule\MessageService.cs" />
+    <Compile Include="SchoolModule\SchoolCourseService.cs" />
+    <Compile Include="SchoolModule\SchoolStudentService.cs" />
+    <Compile Include="SchoolModule\SchoolTeacherService.cs" />
+    <Compile Include="SchoolModule\WhiteboardService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Whiteboard.Common\Whiteboard.Common.csproj">

@@ -11,29 +11,47 @@ namespace Whiteboard.DataAccess {
     public class DataBaseContext : DbContext, IDisposable {
         private static DataBaseContext context = new DataBaseContext();
 
-        public DbSet<Profile> Profiles { get; set; }        
-        public DbSet<School> Schools { get; set; }
-        public DbSet<Member> Members { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<RoleProfile> RoleProfiles { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<SchoolMember> SchoolMembers { get; set; }
+        public DbSet<SchoolStudent> SchoolStudents { get; set; }
+        public DbSet<CourseClass> CourseClasses { get; set; }
         public DbSet<CourseStudent> CourseStudents { get; set; }
-        // Request ... maybe should be done on a faster database, Redis ;)
-        public DbSet<RequestCourseStudent> CourseStudentRequests { get; set; }
-        public DbSet<RequestSchoolMember> SchoolMemberRequests { get; set; }
+        public DbSet<CourseTeacher> CourseTeachers { get; set; }
+        public DbSet<SchoolTeacher> SchoolTeachers { get; set; }
+        public DbSet<SchoolCourse> SchoolCourses { get; set; }
+        public DbSet<WhiteboardNote> Whiteboards { get; set; }
+        public DbSet<ClassNote> ClassNotes { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
+        // Request ... maybe should be done on a faster database, Redis ;)
         public static DataBaseContext Context {
-               get { return context; }
+            get { return context; }
         }
 
-        private DataBaseContext() 
-        {
-
+        private DataBaseContext() {
         }
         static DataBaseContext() {
-            context.Database.CreateIfNotExists();
+            CheckDatabase();
+        }
+        public static void CheckDatabase() {
+            if (!context.Database.Exists()) {
+                context.Database.CreateIfNotExists();
+                context.Seed();
+            } else if (!context.Database.CompatibleWithModel(false)) {
+                context.Database.Delete();
+                context.Database.CreateIfNotExists();
+                context.Seed();
+            }
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        public void Seed() {
+            DbGenerator generator = new DbGenerator(this);
+            generator.GenerateSeedData();
         }
     }
 }

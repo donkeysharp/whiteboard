@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Web;
+using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
 
 namespace Whiteboard.Web.Models {
@@ -31,30 +33,7 @@ namespace Whiteboard.Web.Models {
             this.Name = profile.Name;
             this.Email = profile.Email;
             this.Country = profile.Country;
-            this.PictureUrl = profile.PictureUrl;
-            this.Role = profile.Role;
-        }
-
-        public ProfileViewModel(Profile profile, Member member) {
-            this.Id = profile.Id;
-            this.Name = profile.Name;
-            this.Email = profile.Email;
-            this.Country = profile.Country;
-            this.PictureUrl = profile.PictureUrl;
-            this.Role = profile.Role;
-            // Information from member
-            this.LastName = member.LastName;
-        }
-
-        public ProfileViewModel(Profile profile, School school) {
-            this.Id = profile.Id;
-            this.Name = profile.Name;
-            this.Email = profile.Email;
-            this.Country = profile.Country;
-            this.PictureUrl = profile.PictureUrl;
-            this.Role = profile.Role;
-            // Information from school
-            this.Description= school.Description;
+            this.PictureUrl = Path.Combine(Constants.UPLOADS_PATH, profile.PictureUrl);
         }
     }
 }

@@ -53,41 +53,51 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseContext.cs" />
+    <Compile Include="DbGenerator.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseClass.cs" />
     <Compile Include="Models\CourseStudent.cs" />
+    <Compile Include="Models\CourseTeacher.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Profile.cs" />
-    <Compile Include="Models\RequestCourseStudent.cs" />
-    <Compile Include="Models\RequestSchoolMember.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RoleProfile.cs" />
-    <Compile Include="Models\School.cs" />
-    <Compile Include="Models\Member.cs" />
-    <Compile Include="Models\SchoolMember.cs" />
+    <Compile Include="Models\SchoolCourse.cs" />
+    <Compile Include="Models\SchoolStudent.cs" />
+    <Compile Include="Models\SchoolTeacher.cs" />
+    <Compile Include="Models\WhiteboardNote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Reports\CourseReport.cs" />
+    <Compile Include="Repositories\CourseClassRepository.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
     <Compile Include="Repositories\CourseStudentRepository.cs" />
+    <Compile Include="Repositories\CourseTeacherRepository.cs" />
+    <Compile Include="Repositories\ICourseClassRepository.cs" />
     <Compile Include="Repositories\ICourseRepository.cs" />
     <Compile Include="Repositories\ICourseStudentRepository.cs" />
-    <Compile Include="Repositories\IMemberRepository.cs" />
+    <Compile Include="Repositories\ICourseTeacherRepository.cs" />
+    <Compile Include="Repositories\IMessageRepository.cs" />
     <Compile Include="Repositories\IProfileRepository.cs" />
-    <Compile Include="Repositories\IRequestCourseStudentRepository.cs" />
-    <Compile Include="Repositories\IRequestSchoolMemberRepository.cs" />
     <Compile Include="Repositories\IRoleProfileRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Repositories\ISchoolMemberRepository.cs" />
-    <Compile Include="Repositories\ISchoolRepository.cs" />
-    <Compile Include="Repositories\MemberRepository.cs" />
+    <Compile Include="Repositories\ISchoolCourseRepository.cs" />
+    <Compile Include="Repositories\ISchoolStudentRepository.cs" />
+    <Compile Include="Repositories\ISchoolTeacherRepository.cs" />
+    <Compile Include="Repositories\IWhiteboardRepository.cs" />
+    <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
-    <Compile Include="Repositories\RequestCourseStudentRepository.cs" />
-    <Compile Include="Repositories\RequestSchoolMemberRepository.cs" />
     <Compile Include="Repositories\RoleProfileRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
-    <Compile Include="Repositories\SchoolMemberRepository.cs" />
-    <Compile Include="Repositories\SchoolRepository.cs" />
+    <Compile Include="Repositories\SchoolCourseRepository.cs" />
+    <Compile Include="Repositories\SchoolStudentRepository.cs" />
+    <Compile Include="Repositories\SchoolTeacherRepository.cs" />
+    <Compile Include="Repositories\WhiteboardRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Models\ClassNote.cs" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Whiteboard.Common\Whiteboard.Common.csproj">
       <Project>{d2f6004c-d767-4a4b-95fd-d15af8910cde}</Project>

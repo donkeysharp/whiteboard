@@ -2,12 +2,12 @@
 <ul class="nav navbar-right">
     @if (Request.IsAuthenticated) {
         <!-- begin ALERTS DROPDOWN -->
-        <li class="dropdown">
+        @*<li class="dropdown">
             <a href="index.html#" class="alerts-link dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-bell"></i> 
                 <span class="number">9</span><i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-scroll dropdown-alerts">
+            </a>*@
+           @* <ul class="dropdown-menu dropdown-scroll dropdown-alerts">
                 <!-- Alerts Dropdown Heading -->
                 <li class="dropdown-header">
                     <i class="fa fa-bell"></i> 9 New Alerts
@@ -118,9 +118,9 @@
                 <li class="dropdown-footer">
                     <a href="index.html#">View All Alerts</a>
                 </li>
-            </ul>
+            </ul>*@
             <!-- /.dropdown-menu -->
-        </li>
+        @*</li>*@
         <!-- /.dropdown -->
         <!-- end ALERTS DROPDOWN -->
 
@@ -135,7 +135,7 @@
                         <i class="fa fa-user"></i> My Profile
                     </a>
                 </li>
-                <li>
+                @*<li>
                     <a href="mailbox.html">
                         <i class="fa fa-envelope"></i> My Messages
                         <span class="badge green pull-right">4</span>
@@ -163,14 +163,20 @@
                     <a href="index.html#">
                         <i class="fa fa-gear"></i> Settings
                     </a>
-                </li>
-                <li>
+                </li>*@
+                @*<li>
                     <a class="logout_open" href="index.html#logout">
                         <i class="fa fa-sign-out"></i> Logout
                         <strong>John Smith</strong>
                     </a>
+                </li>*@
+                <li>
+                    <a class="logout_open" href="javascript:document.getElementById('logoutForm').submit()">
+                        <i class="fa fa-sign-out"></i>
+                        Log Out &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
                 </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
     @using (Html.BeginForm("LogOut", "Auth", FormMethod.Post, new { id = "logoutForm" })) {
     @Html.AntiForgeryToken()
     }

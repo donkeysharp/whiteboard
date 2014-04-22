@@ -1,0 +1,62 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Strait);
+.cover {
+    width:100%; height: 500px; 
+    background:#fff url(/Content/img/blackboard.jpg) no-repeat; 
+    background-size: 100% 500px;
+    position: relative;
+}
+@media(min-width:768px) {
+    #page-wrapper {
+        margin: 50px 0 0 225px;
+        padding: 0;
+        /*min-height: 1300px;*/
+        border-left: 1px solid #2c3e50;
+    }
+}
+.center {
+    margin: 0 auto;
+}
+.content {
+    margin: 0 auto;
+    width: 960px;
+}
+.clear {
+    clear: both;
+}
+#slide1, #slide2{ width: 100%; }
+
+#slide1 {
+    background:url('../img/blackboard.jpg') 50% 0 no-repeat;
+    background-size: 100% 680px;
+    color: #fff;
+    height: 610px;
+    margin: 0;
+}
+#slide2 {
+    background-color: #527DA9/*59B5C2*/;
+    color: #fff;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#slide3 {
+    background:url('../img/clases2.jpg') 50% 0 no-repeat fixed;
+    color: #fff;
+    height: 200px;
+     margin: 0 auto;
+    overflow: hidden;
+    /*padding: 40px 0 0 0;*/
+    background-size: cover;
+}
+#slide3 span {
+    font-size: 60px;
+    font-family: 'Strait', sans-serif;
+}
+#slide4 {
+    background-color: #3C4342;
+    color: #fff;
+    height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 50px 0;
+}

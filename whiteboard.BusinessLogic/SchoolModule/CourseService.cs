@@ -4,65 +4,72 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
+using Whiteboard.DataAccess.Reports;
 using Whiteboard.DataAccess.Repositories;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public class CourseService:GenericService<Course>,ICourseService
+    public class CourseService : GenericService<Course>, ICourseService
     {
-        private CourseService(ICourseRepository da):base(da)
-        {
+        private ICourseRepository Da {
+            get {
+                return (ICourseRepository)da;
+            }
         }
+        
+        private CourseService(ICourseRepository da)
+            : base(da)
+        {
 
-        public static ICourseService GetInstance<T>() where T:ISchoolRepository
+        }
+        public static ICourseService GetInstance<T>() where T : ICourseRepository
         {
             ICourseRepository da = (ICourseRepository)Activator.CreateInstance<T>();
             return new CourseService(da);
         }
 
-        public IEnumerable<Course> GetSortedBy(CourseTypes type)
-        {
-            switch (type)
-            {
-                case CourseTypes.Id:
-                    return da.Filter(null, (x) => x.OrderBy(y => y.Id));
-                case CourseTypes.Title:
-                    return da.Filter(null, (x) => x.OrderBy(y => y.Title));
-                case CourseTypes.OnAir:
-                    return da.Filter(null, (x) => x.OrderBy(y => y.OnAir));
-                case CourseTypes.Public:
-                    return da.Filter(null, (x) => x.OrderBy(y => y.Public));
-                case CourseTypes.SchoolName:
-                    return da.Filter(null, (x) => x.OrderBy(y => y.School.Profile.Name));
-                case CourseTypes.SchoolEmail:
-                    return da.Filter(null, (x) => x.OrderBy(y => y.School.Profile.Email));
-                default:
-                    break;
-            }
-            return new List<Course>();
-        }
-
         public IEnumerable<Course> Search(string data)
         {
+            //add more search parameters ???
             return da.Filter(
-                (x) => (
-                x.School.Profile.Name.Contains(data) ||
-                x.School.Profile.Email.Contains(data))
+                x => (x.Description.Contains(data) ||
+                x.Title.Contains(data) ||
+                x.Syllabus.Contains(data))
                 );
         }
 
-        public IEnumerable<Course> GetBySchoolId(int id)
-        {
-            return da.Filter((x) => x.SchoolId == id, null);
+        public IEnumerable<CourseReport> GetPublicCourses() {
+            return Da.GetPublicCourses();
         }
 
-        public IEnumerable<Course> GetByTeacherId(int id)
-        {
-            return da.Filter((x) => x.TeacherId == id, null);
+
+        public IEnumerable<CourseReport> GetCoursesBySchoolId(int schoolId) {
+            //return da.GetCoursesBySchoolId(schoolId);
+            return Da.GetCoursesBySchoolId(schoolId);
         }
-    }
-    public enum CourseTypes
-    {
-        Id, Title, OnAir, Public, SchoolName, SchoolEmail
+
+
+        public CourseReport GetCourseReport(int id) {
+            return Da.GetCourseReport(id);
+        }
+
+
+        public IEnumerable<CourseReport> GetCoursesByTeacherId(int id) {
+            return Da.GetCoursesByTeacherId(id);
+        }
+
+
+        public IEnumerable<CourseReport> GetCoursesByStudent(int id) {
+            return Da.GetCoursesByStudentId(id);
+        }
+
+
+        public IEnumerable<CourseReport> SearchPublic(string keyword) {
+            return Da.SearchPublic(keyword);
+        }
+
+        public bool IsTeacherOfCourse(int courseId, int teacherId) {
+            return Da.IsTeacherOfCourse(courseId, teacherId);
+        }
     }
 }

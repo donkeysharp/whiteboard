@@ -1,11 +1,14 @@
 ﻿@{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Master.cshtml";
 }
 
 <div class="register-container">
     @Html.Partial("_RegisterWidget")
 </div>
 @section scripts {
+    <script>
+        noSideBar();
+    </script>
     <script src="@Url.Content("~/Content/js/register.js")"></script>
 }

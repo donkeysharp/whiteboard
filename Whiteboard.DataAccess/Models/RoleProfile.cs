@@ -5,18 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Whiteboard.DataAccess.Models
-{
-    public class RoleProfile
-    {
+namespace Whiteboard.DataAccess.Models {
+    public class RoleProfile {
         public int Id { get; set; }
 
-        public int RoleID { get; set; }
-        [ForeignKey("RoleID")]
-        public Role Role { get; set; }
+        public int RoleId { get; set; }
+        [ForeignKey("RoleId")]
+        public virtual Role Role { get; set; }
 
-        public int ProfileID { get; set; }
-        [ForeignKey("ProfileID")]
-        public Profile Profile { get; set; }
+        public int ProfileId { get; set; }
+        [ForeignKey("ProfileId")]
+        public virtual Profile Profile { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace whiteboard.BusinessLogic.ProfileModule {
     public class ProfileService :GenericService<Profile>, IProfileService {
         private IProfileRepository daProfile;
 
+
         private ProfileService(IProfileRepository da):base(da) {
             this.daProfile = da;
         }
@@ -28,7 +29,6 @@ namespace whiteboard.BusinessLogic.ProfileModule {
         {
             // Replaces current password with a hashed password
             item.Password = HashSumUtil.GetHashSum(item.Password, HashSumType.SHA1);
-
             return daProfile.Insert(item);
         }
 
@@ -47,6 +47,22 @@ namespace whiteboard.BusinessLogic.ProfileModule {
         {
             return daProfile.Filter((x) => (x.Name.Contains(data) || x.Email.Contains(data)),
                 (x) => x.OrderBy((y) => y.Id));
+        }
+
+        public IEnumerable<Profile> FilterStudents(int schoolId, string query) {
+            return daProfile.FilterStudents(schoolId, query);
+        }
+
+        public IEnumerable<Profile> GetStudentsBySchoolId(int schoolId) {
+            return daProfile.GetStudentsBySchoolId(schoolId);
+        }
+
+        public IEnumerable<Profile> GetTeachersBySchoolId(int schoolId) {
+            return daProfile.GetTeachersBySchoolId(schoolId);
+        }
+
+        public IEnumerable<Profile> FilterTeachers(int schoolId, string query) {
+            return daProfile.FilterTeachers(schoolId, query);
         }
     }
 }

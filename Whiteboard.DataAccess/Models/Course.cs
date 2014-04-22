@@ -9,18 +9,17 @@ namespace Whiteboard.DataAccess.Models {
     public class Course {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
+        public string AboutCourse { get; set; }
+        public string Syllabus { get; set; }
+        public string Lectures { get; set; }
         public string Schedule { get; set; }
-        public bool OnAir { get; set; }
-        public bool Public { get; set; }
+        public string PictureUrl { get; set; }
+        public string VideoUrl { get; set; }
+        public bool IsPublic { get; set; }
 
         public int SchoolId { get; set; }
         [ForeignKey("SchoolId")]
-        public virtual School School { get; set; }
-
-        public int TeacherId { get; set; }
-        [ForeignKey("TeacherId")]
-        public virtual Member Teacher { get; set; }
-
-        public virtual IEnumerable<Member> Students { get; set; }
+        public virtual Profile School { get; set; }
     }
 }

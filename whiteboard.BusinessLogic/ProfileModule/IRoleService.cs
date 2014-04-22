@@ -9,5 +9,6 @@ namespace whiteboard.BusinessLogic.ProfileModule
 {
     public interface IRoleService:IService<Role>
     {
+        Role GetByName(string name);
     }
 }

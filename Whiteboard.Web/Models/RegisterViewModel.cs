@@ -23,17 +23,13 @@ namespace Whiteboard.Web.Models {
         [Required(ErrorMessage = "Country is required.")]
         public string Country { get; set; }
 
-        [Required(ErrorMessage = "Role is required.")]
-        public string Role { get; set; }
-
         public Profile Profile {
             get {
                 return new Profile() {
                     Name = Name,
                     Email = Email,
                     Password = Password,
-                    Country = Country,
-                    Role = Role
+                    Country = Country
                 };
             }
         }

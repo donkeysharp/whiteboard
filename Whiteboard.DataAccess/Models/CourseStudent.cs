@@ -9,12 +9,16 @@ namespace Whiteboard.DataAccess.Models {
     public class CourseStudent {
         public int Id { get; set; }
 
-        public int StudentId { get; set; }
-        [ForeignKey("StudentId")]
-        public virtual Member Student { get; set; }
-
         public int CourseId { get; set; }
         [ForeignKey("CourseId")]
         public virtual Course Course { get; set; }
+
+        public int StudentId { get; set; }
+        [ForeignKey("StudentId")]
+        public virtual Profile Student { get; set; }
+
+        public class Report : CourseStudent {
+            public string StudentName { get; set; }
+        }
     }
 }

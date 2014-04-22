@@ -4,14 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Whiteboard.DataAccess.Models;
+using Whiteboard.DataAccess.Reports;
 
 namespace whiteboard.BusinessLogic.SchoolModule
 {
-    public interface ICourseService : IService<Course>
+    public interface ICourseService:IService<Course>
     {
-        IEnumerable<Course> GetSortedBy(CourseTypes type);
         IEnumerable<Course> Search(string data);
-        IEnumerable<Course> GetBySchoolId(int id);
-        IEnumerable<Course> GetByTeacherId(int id);
+
+        IEnumerable<CourseReport> GetPublicCourses();
+
+        IEnumerable<CourseReport> GetCoursesBySchoolId(int schoolId);
+
+        CourseReport GetCourseReport(int id);
+
+        IEnumerable<CourseReport> GetCoursesByTeacherId(int id);
+
+        IEnumerable<CourseReport> GetCoursesByStudent(int id);
+
+        IEnumerable<CourseReport> SearchPublic(string keyword);
+
+        bool IsTeacherOfCourse(int courseId, int teacherId);
     }
 }

@@ -30,6 +30,10 @@ namespace whiteboard.BusinessLogic
             return da.Update(item);
         }
 
+        public virtual int Delete(T item) {
+            return da.Delete(item);
+        }
+
         public IEnumerable<T> GetAll()
         {
             return da.Filter(null, null);

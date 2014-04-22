@@ -170,33 +170,46 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\WebAPI\Controllers\FooController.cs" />
+    <Compile Include="Areas\WebAPI\Controllers\MessageController.cs" />
     <Compile Include="Areas\WebAPI\WebAPIAreaRegistration.cs" />
     <Compile Include="Auth\AuthParser.cs" />
     <Compile Include="Auth\GeneralMembershipProvider.cs" />
     <Compile Include="Auth\GeneralMembershipUser.cs" />
     <Compile Include="Auth\GeneralRoleProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CourseClassController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SchoolManagerController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CourseClassViewModel.cs" />
+    <Compile Include="Models\CourseViewModel.cs" />
+    <Compile Include="Models\DashboardModels\CourseItemViewModel.cs" />
+    <Compile Include="Models\DashboardModels\StudentItemViewModel.cs" />
+    <Compile Include="Models\DashboardModels\TeacherItemViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\RedirectViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\dashboard.css" />
     <Content Include="Content\css\demo.css" />
+    <Content Include="Content\css\home.css" />
+    <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\pizarron\style.css" />
     <Content Include="Content\css\plugins.css" />
     <Content Include="Content\css\plugins\bootstrap-datepicker\datepicker3.css" />
     <Content Include="Content\css\plugins\bootstrap-multiselect\bootstrap-multiselect.css" />
@@ -220,21 +233,63 @@
     <Content Include="Content\css\plugins\pace\pace.css" />
     <Content Include="Content\css\plugins\summernote\summernote-bs3.css" />
     <Content Include="Content\css\plugins\summernote\summernote.css" />
-    <Content Include="Content\css\sb-admin.css" />
+    <Content Include="Content\css\prettyPhoto.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\icons\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\icons\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\img\blackboard.jpg" />
     <Content Include="Content\img\checkmark.png" />
+    <Content Include="Content\img\clases1.jpg" />
+    <Content Include="Content\img\clases2.jpg" />
     <Content Include="Content\img\datatables\sort_asc.png" />
     <Content Include="Content\img\datatables\sort_asc_disabled.png" />
     <Content Include="Content\img\datatables\sort_both.png" />
     <Content Include="Content\img\datatables\sort_desc.png" />
     <Content Include="Content\img\datatables\sort_desc_disabled.png" />
     <Content Include="Content\img\flex-admin-logo.png" />
+    <Content Include="Content\img\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="Content\img\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="Content\img\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="Content\img\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="Content\img\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="Content\img\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="Content\img\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="Content\img\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="Content\img\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="Content\img\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="Content\img\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="Content\img\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="Content\img\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Content\img\prettyPhoto\default\loader.gif" />
+    <Content Include="Content\img\prettyPhoto\default\sprite.png" />
+    <Content Include="Content\img\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Content\img\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Content\img\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Content\img\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Content\img\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="Content\img\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="Content\img\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="Content\img\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="Content\img\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="Content\img\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="Content\img\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="Content\img\prettyPhoto\facebook\loader.gif" />
+    <Content Include="Content\img\prettyPhoto\facebook\sprite.png" />
+    <Content Include="Content\img\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="Content\img\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="Content\img\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="Content\img\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="Content\img\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="Content\img\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="Content\img\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="Content\img\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="Content\img\prettyPhoto\light_square\loader.gif" />
+    <Content Include="Content\img\prettyPhoto\light_square\sprite.png" />
     <Content Include="Content\img\profile-full.jpg" />
     <Content Include="Content\img\profile-pic-small.jpg" />
     <Content Include="Content\img\profile-pic.jpg" />
+    <Content Include="Content\img\slide1.jpg" />
+    <Content Include="Content\img\slider.png" />
     <Content Include="Content\img\user-profile-1.jpg" />
     <Content Include="Content\img\user-profile-2.jpg" />
     <Content Include="Content\img\user-profile-3.jpg" />
@@ -243,6 +298,23 @@
     <Content Include="Content\img\widget-bg-evening.jpg" />
     <Content Include="Content\img\widget-bg-midnight.jpg" />
     <Content Include="Content\img\widget-bg-morning.jpg" />
+    <Content Include="Content\js\course-detail.js" />
+    <Content Include="Content\js\dashboard\dashboard.js" />
+    <Content Include="Content\js\dashboard\models\course-dashboard-models.js" />
+    <Content Include="Content\js\dashboard\models\dashboard-models.js" />
+    <Content Include="Content\js\dashboard\models\school-dashboard-models.js" />
+    <Content Include="Content\js\dashboard\models\student-dashboard-models.js" />
+    <Content Include="Content\js\dashboard\models\teacher-dashboard-models.js" />
+    <Content Include="Content\js\dashboard\school-dashboard-router.js" />
+    <Content Include="Content\js\dashboard\sidebar.js" />
+    <Content Include="Content\js\dashboard\student-dashboard-router.js" />
+    <Content Include="Content\js\dashboard\teacher-dashboard-router.js" />
+    <Content Include="Content\js\dashboard\views\course-dashboard-views.js" />
+    <Content Include="Content\js\dashboard\views\dashboard-view.js" />
+    <Content Include="Content\js\dashboard\views\school-dashboard-view.js" />
+    <Content Include="Content\js\dashboard\views\sidebar-views.js" />
+    <Content Include="Content\js\dashboard\views\student-dashboard-view.js" />
+    <Content Include="Content\js\dashboard\views\teacher-dashboard-view.js" />
     <Content Include="Content\js\demo\advanced-form-demo.js" />
     <Content Include="Content\js\demo\advanced-tables-demo.js" />
     <Content Include="Content\js\demo\buttons-demo.js" />
@@ -253,9 +325,16 @@
     <Content Include="Content\js\demo\notifications-demo.js" />
     <Content Include="Content\js\demo\sliders-demo.js" />
     <Content Include="Content\js\demo\validation-demo.js" />
-    <Content Include="Content\js\demo\wysiwyg-demo.js" />
+    <Content Include="Content\js\course-edit.js" />
     <Content Include="Content\js\flex.js" />
     <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\pizarron\chat.js" />
+    <Content Include="Content\js\pizarron\script.js" />
+    <Content Include="Content\js\pizarron\scriptClient.js" />
+    <Content Include="Content\js\pizarron\socket.io.js" />
+    <Content Include="Content\js\pizarron\socket.io.min.js" />
+    <Content Include="Content\js\pizarron\WebSocketMain.swf" />
+    <Content Include="Content\js\pizarron\WebSocketMainInsecure.swf" />
     <Content Include="Content\js\plugins\bootstrap-datepicker\bootstrap-datepicker.js" />
     <Content Include="Content\js\plugins\bootstrap-maxlength\bootstrap-maxlength.js" />
     <Content Include="Content\js\plugins\bootstrap-multiselect\bootstrap-multiselect.js" />
@@ -298,10 +377,19 @@
     <Content Include="Content\js\plugins\summernote\summernote.min.js" />
     <Content Include="Content\js\plugins\validate\jquery.validate.min.js" />
     <Content Include="Content\js\register.js" />
+    <Content Include="Content\js\school-manager.js" />
+    <Content Include="Content\uploads\class_default.jpg" />
+    <Content Include="Content\uploads\user.png" />
+    <Content Include="Content\vendor\backbone-min.js" />
     <Content Include="Content\vendor\bootstrap.js" />
     <Content Include="Content\vendor\bootstrap.min.js" />
+    <Content Include="Content\vendor\jquery.autocomplete.js" />
+    <Content Include="Content\vendor\jquery.autocomplete.min.js" />
     <Content Include="Content\vendor\jquery.js" />
+    <Content Include="Content\vendor\jquery.magnific-popup.min.js" />
     <Content Include="Content\vendor\jquery.min.js" />
+    <Content Include="Content\vendor\jquery.prettyPhoto.js" />
+    <Content Include="Content\vendor\underscore-min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\WebAPI\Views\Web.config" />
@@ -326,10 +414,7 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Auth\Login.cshtml" />
   </ItemGroup>
@@ -337,7 +422,6 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Areas\WebAPI\Models\" />
     <Folder Include="Areas\WebAPI\Views\Shared\" />
-    <Folder Include="Content\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -366,12 +450,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Header.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\_LoginProfile.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -381,9 +459,6 @@
     <Content Include="Views\Shared\_RegisterWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\Index1.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Dashboard\_SchoolDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -391,9 +466,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Dashboard\_StudentDashboard.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Dashboard\_SchoolDashboard2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Dashboard\Index.cshtml" />
@@ -416,7 +488,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\pizarron_profile.pubxml" />
+    <Content Include="Views\Shared\_Master.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\NavigationBar\NavBar.cshtml" />
+    <Content Include="Views\Dashboard\SideBars\School.cshtml" />
+    <Content Include="Views\Dashboard\SideBars\Student.cshtml" />
+    <Content Include="Views\Dashboard\SideBars\Teacher.cshtml" />
+    <Content Include="Views\Dashboard\_BaseDashboard.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\List.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Dashboard\Public.cshtml" />
+    <Content Include="Views\CourseClass\Index.cshtml" />
+    <Content Include="Views\CourseClass\TeacherWhiteboard.cshtml" />
+    <Content Include="Views\CourseClass\StudentWhiteboard.cshtml" />
+    <Content Include="Views\SchoolManager\Index.cshtml" />
+    <Content Include="Views\Profile\Details.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -439,8 +528,7 @@
           <IISUrl>http://localhost:4188/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://pizarrona.test</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

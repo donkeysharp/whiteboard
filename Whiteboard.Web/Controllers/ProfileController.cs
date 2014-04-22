@@ -24,7 +24,7 @@ namespace Whiteboard.Web.Controllers {
             ViewData["Errors"] = TempData["Errors"] ?? new List<ModelError>();
 
             ProfileViewModel model = GetProfileViewModel(profile);
-
+            
             return View(model);
         }
 
@@ -38,7 +38,7 @@ namespace Whiteboard.Web.Controllers {
                 return RedirectToAction("Index", "Profile");
             }
             Profile profile = GetProfile();
-            UpdateOrCreateMemberSchool(profile, profileVM);
+            //UpdateOrCreateMemberSchool(profile, profileVM);
 
             profile.Name = profileVM.Name;
             profile.Country = profile.Country;
@@ -74,7 +74,6 @@ namespace Whiteboard.Web.Controllers {
         public ActionResult Upload(HttpPostedFileBase file) {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
             Profile profile = service.Get(User.Identity.Name);
-            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
             if (file != null && file.ContentLength > 0) {
                 string filename = Path.GetFileName(file.FileName);
@@ -87,55 +86,21 @@ namespace Whiteboard.Web.Controllers {
             return RedirectToAction("Index", "Profile");
         }
 
-        #region "Private Methods"
-        private void UpdateOrCreateMemberSchool(Profile profile, ProfileViewModel profileVM) {
-            if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT) || profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) {
-                IMemberService memberService = MemberService.GetInstance<MemberRepository>();
-                Member member = memberService.GetByProfile(profile.Id);
-                if (member == null) {
-                    member = new Member();
-                    member.ProfileId = profile.Id;
-                    member.LastName = profileVM.LastName;
-
-                    memberService.Insert(member);
-                } else {
-                    member.LastName = profileVM.LastName;
-
-                    memberService.Update(member);
-                }
-            } else if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)) {
-                ISchoolService schoolService = SchoolService.GetInstance<SchoolRepository>();
-                School school = schoolService.GetByProfile(profile.Id);
-                if (school == null) {
-                    school = new School();
-                    school.ProfileId = profile.Id;
-                    school.Description = profileVM.Description;
-
-                    schoolService.Insert(school);
-                } else {
-                    school.Description = profileVM.Description;
-
-                    schoolService.Update(school);
-                }
+        [HttpGet]
+        public ActionResult Details(int id) {
+            IProfileService service = ProfileService.GetInstance<ProfileRepository>();
+            Profile profile = service.Get(id);
+            if (profile == null || id == 0) {
+                return RedirectToAction("Index", "Dashboard");
             }
+            ProfileViewModel model = new ProfileViewModel(profile);
+
+            return View(model);
         }
 
+        #region "Private Methods"
         private ProfileViewModel GetProfileViewModel(Profile profile) {
             ProfileViewModel model = new ProfileViewModel(profile);
-            if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_STUDENT) || profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_TEACHER)) {
-                IMemberService memberService = MemberService.GetInstance<MemberRepository>();
-                Member member = memberService.GetByProfile(profile.Id);
-                if (member != null) {
-                    model.LastName = member.LastName;
-                }
-            } else if (profile.Role.Equals(Whiteboard.DataAccess.Models.Profile.ROLE_SCHOOL)) {
-                ISchoolService schoolService = SchoolService.GetInstance<SchoolRepository>();
-                School school = schoolService.GetByProfile(profile.Id);
-                if (school != null) {
-                    model.Description = school.Description;
-                }
-            }
-
             return model;
         }
         #endregion

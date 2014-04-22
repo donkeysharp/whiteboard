@@ -14,6 +14,19 @@ namespace whiteboard.BusinessLogic.ProfileModule
         {
 
         }       
+        public static IRoleProfileService GetInstance<T>() where T  : IRoleProfileRepository
+        {
+            IRoleProfileRepository da = (IRoleProfileRepository)Activator.CreateInstance<T>();
+            return new RoleProfileService(da);
+        }
 
+        public IEnumerable<RoleProfile> GetRolesByProfile(int profileId) {
+            return da.Filter(x => x.ProfileId == profileId);
+        }
+
+        public bool IsUserInRole(int profileId, int roleId) {
+            List<RoleProfile> roleProfiles = da.Filter(x => x.RoleId == roleId && x.ProfileId == profileId).ToList();
+            return roleProfiles.Count > 0;
+        }
     }
 }

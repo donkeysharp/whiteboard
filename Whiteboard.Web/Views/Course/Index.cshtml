@@ -1,0 +1,267 @@
+﻿@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+@model Whiteboard.Web.Models.CourseViewModel
+@section SideBar {
+    @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
+        @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
+        @Html.Partial("../Dashboard/SideBars/Teacher", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
+        @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
+    }
+}
+
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="course-detail">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>@Model.Title</h1>
+                @if (Model.IsPublic) {
+                    <span class="label label-success">Public Course</span>
+                }
+                <br>
+                @Html.Raw(Model.Description)
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content(Model.PictureUrl)" style="width: 100%; height: 200px" />
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <input type="hidden" id="hiddenCourseId" value="@Model.Id" />
+            <div class="col-md-6">
+                <h3>About this course</h3>
+                <div>
+                    @Html.Raw(Model.AboutCourse)
+                </div>
+                <h3>Course Syllabus</h3>
+                <div>
+                    @Html.Raw(Model.Syllabus)
+                </div>
+                <h3>Lectures</h3>
+                <div>
+                    @Html.Raw(Model.Lectures)
+                </div>
+            </div>
+            <div class="col-md-6">
+                @if (Model.IsPublic) {
+                    <a class="btn btn-green" id="join-course" href="invoice.html#">Join Course</a>
+                }
+                @if (ViewBag.IsTeacherOfClass) {
+                    <button class="btn btn-green" style="width: 100%" id="manage-students"
+                        data-toggle="modal" data-target="#standardModal">Manage Students</button>
+                    <br /><br />
+                    <button class="btn btn-green" style="width: 100%" id="manage-classes"
+                        data-toggle="modal" data-target="#standardModalClasses">Manage Classes</button>
+                    <br /><br />
+                   
+                    bool isSomeClassBroadcasting = false;
+                    int count = 0;
+                    foreach (var cc in ViewBag.Classes) {
+                        if (cc.Broadcasting) {
+                            isSomeClassBroadcasting = true;
+                            break;
+                        } else {
+                            if (!cc.Finished) {
+                                count++;
+                            }
+                        }
+                    }
+                    if (!isSomeClassBroadcasting && count > 0) {
+                        <button class="btn btn-blue" style="width: 100%" id="start-class">Start Class</button>
+                    }
+                }
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Comming Classes</h3>
+                <ul class="fa-ul">
+                    @foreach (var cc in ViewBag.Classes) {
+                        if (!cc.Finished) {
+                            <li>
+                                @if (@cc.Broadcasting) {
+                                    <a href="/course/courseclass/@cc.Id">
+                                        <i style="color: #ff6a00;" 
+                                            class="fa fa-adjust fa-spin"></i> @cc.Description
+                                         (Broadcasting ENTER NOW!)
+                                    </a>
+                                } else {
+                                    <i class="fa fa-video-camera"></i> @cc.Description
+                                }
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Previous Classes</h3>
+                <ul class="fa-ul">
+                    @foreach (var cc in ViewBag.Classes) {
+                        if (cc.Finished) {
+                            <li><i class="fa fa-video-camera">
+                                </i> <a href="/course/courseclass/@cc.Id">@cc.Description (Check Notes)</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@if (ViewBag.IsTeacherOfClass) {
+<!-- Standard Modal -->
+<div class="modal fade" id="standardModal" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="standardModalLabel">Manage Students</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        Add Students:
+                        <input class="form-control" type="text" 
+                            id="student-name" placeholder="Type student name or email" />
+                        <input type="hidden" id="studentId" name="studentId" value="" />
+                    </div>
+                    <div class="col-md-2">
+                        <br />
+                        <a href="." id="add-student"><i class="fa fa-plus fa-2x" style="margin-top: 6px"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="table-responsive">
+                    <table class="table table-hover" id="students">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-tbody">
+                            @foreach (var s in ViewBag.CourseStudents) {
+                                <tr>
+                                    <td>@s.StudentName</td>
+                                    <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Standard Modal Classes -->
+<div class="modal fade" id="standardModalClasses" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="standardModalLabelClasses">Manage Classes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <input type="hidden" id="courseId" name="id" value="@Model.Id" />
+                        <div class="col-md-4">
+                            Description:<br />
+                            <input type="text" id="class-desc" class="form-control" />
+                        </div>
+                        <div class="col-xs-4">
+                            Date: <br />
+                            <div id="sandbox-container">
+                                <input id="class-date" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Begin Time: <br>
+                            <div class="input-append bootstrap-timepicker input-group">
+                                <input id="timepicker1" class="form-control" type="text" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default add-on" type="button"><i class="fa fa-clock-o"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            End Time: <br>
+                            <div class="input-append bootstrap-timepicker input-group">
+                                <input id="timepicker2" class="form-control" type="text" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default add-on" type="button"><i class="fa fa-clock-o"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-2"><br />
+                            <a href="#" id="add-class"><i class="fa fa-plus fa-2x"></i></a>
+                        </div>
+                    </div>
+                    <hr />
+                <div class="row" style=" max-height: 220px;overflow-y: auto;">
+                    <div class="table-responsive">
+                    <table class="table table-hover" id="classes">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Begin</th>
+                                <th>End</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="classes-tbody">
+                            @foreach (var cc in ViewBag.CourseClasses) {
+                                <tr>
+                                    <td>@cc.Description</td>
+                                    <td class="format-date">@cc.BeginTime</td>
+                                    <td class="format-date">@cc.EndTime</td>
+                                    <td>
+                                        @if(!cc.Finished) {
+                                            <a href="#" data-class-id="@cc.Id"><i class="fa fa-trash-o fa-lg"></i></a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+@section StyleSheets {
+    <link href="/Content/css/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <style>
+        /* Bug fix for timepicker on modals */
+        .bootstrap-timepicker-widget {
+            z-index: 100000000;
+        }
+    </style>
+    <link href="/Content/css/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
+    <link href="/Content/css/plugins/messenger/messenger.css" rel="stylesheet">
+    <link href="/Content/css/plugins/messenger/messenger-theme-flat.css" rel="stylesheet">
+}
+@section Scripts {
+     @if (ViewBag.IsTeacherOfClass) {
+         <script src="@Url.Content("~/Content/vendor/jquery.autocomplete.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/messenger/messenger.min.js")"></script>
+         <script src="@Url.Content("~/Content/js/plugins/messenger/messenger-theme-flat.js")"></script>
+         <script src="/Content/js/course-detail.js"></script>
+     }
+}
