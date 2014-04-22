@@ -21,6 +21,12 @@ namespace Whiteboard.Common {
         /// </summary>
         public static Dictionary<int, TimeZoneInfo> timeZones;
 
+        public static long Now {
+            get {
+                return DateTimeToUnixTime(DateTime.Now, UnixTimeType.Milliseconds);
+            }
+        }
+
         /// <summary>
         /// According to unix time, the starting date is 1970-1-1
         /// </summary>

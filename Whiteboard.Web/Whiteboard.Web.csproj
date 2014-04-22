@@ -241,6 +241,7 @@
     <Content Include="Content\img\checkmark.png" />
     <Content Include="Content\img\clases1.jpg" />
     <Content Include="Content\img\clases2.jpg" />
+    <Content Include="Content\img\course.png" />
     <Content Include="Content\img\datatables\sort_asc.png" />
     <Content Include="Content\img\datatables\sort_asc_disabled.png" />
     <Content Include="Content\img\datatables\sort_both.png" />
@@ -294,6 +295,7 @@
     <Content Include="Content\img\user-profile-2.jpg" />
     <Content Include="Content\img\user-profile-3.jpg" />
     <Content Include="Content\img\user-profile-4.jpg" />
+    <Content Include="Content\img\user.png" />
     <Content Include="Content\img\widget-bg-afternoon.jpg" />
     <Content Include="Content\img\widget-bg-evening.jpg" />
     <Content Include="Content\img\widget-bg-midnight.jpg" />

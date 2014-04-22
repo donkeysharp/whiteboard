@@ -11,21 +11,19 @@ namespace Whiteboard.DataAccess {
     public class DataBaseContext : DbContext, IDisposable {
         private static DataBaseContext context = new DataBaseContext();
 
+        public DbSet<Plan> Plans { get; set; }
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<RoleProfile> RoleProfiles { get; set; }
+        public DbSet<Organization> Organizations { get; set; }
+        public DbSet<OrganizationAdmin> OrganizationAdmins { get; set; }
+        public DbSet<OrganizationTeacher> OrganizationTeachers { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<SchoolStudent> SchoolStudents { get; set; }
+        public DbSet<CourseAttendee> CourseAttendees { get; set; }
         public DbSet<CourseClass> CourseClasses { get; set; }
-        public DbSet<CourseStudent> CourseStudents { get; set; }
-        public DbSet<CourseTeacher> CourseTeachers { get; set; }
-        public DbSet<SchoolTeacher> SchoolTeachers { get; set; }
-        public DbSet<SchoolCourse> SchoolCourses { get; set; }
-        public DbSet<WhiteboardNote> Whiteboards { get; set; }
         public DbSet<ClassNote> ClassNotes { get; set; }
+        public DbSet<WhiteboardNote> WhiteboardNotes { get; set; }
         public DbSet<Message> Messages { get; set; }
 
-        // Request ... maybe should be done on a faster database, Redis ;)
+
         public static DataBaseContext Context {
             get { return context; }
         }

@@ -13,13 +13,18 @@ namespace Whiteboard.DataAccess.Models {
         public string AboutCourse { get; set; }
         public string Syllabus { get; set; }
         public string Lectures { get; set; }
+        public string Language { get; set; }
         public string Schedule { get; set; }
         public string PictureUrl { get; set; }
         public string VideoUrl { get; set; }
         public bool IsPublic { get; set; }
 
-        public int SchoolId { get; set; }
-        [ForeignKey("SchoolId")]
-        public virtual Profile School { get; set; }
+        public int OwnerId { get; set; }
+        [ForeignKey("OwnerId")]
+        public virtual Profile Owner { get; set; }
+
+        public int OrganizationId { get; set; }
+        [ForeignKey("OrganizationId")]
+        public virtual Organization Organization { get; set; }
     }
 }
