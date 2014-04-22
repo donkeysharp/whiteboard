@@ -1,6 +1,5 @@
 ﻿@using Whiteboard.Common
-@model Whiteboard.Web.Models.RedirectViewModel
-<nav class="navbar-side" role="navigation" id="student-sidebar">
+<nav class="navbar-side" role="navigation" id="school-sidebar">
     <div class="navbar-collapse sidebar-collapse collapse">
         <ul id="side" class="nav navbar-nav side-nav">
             <!-- begin SIDE NAV USER PANEL -->
@@ -18,13 +17,18 @@
                 <div class="clearfix"></div>
             </li>
             <li>
-                <a class="active command single" href="/dashboard" id="default-select">
+                <a href="/dashboard" id="default-select">
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
             </li>
             <li>
-                <a class="active command single" href="/dashboard/public">
-                    <i class="fa fa-globe"></i> Public Courses
+                <a href="/course/search">
+                    <i class="fa fa-comments"></i> Browse Courses
+                </a>
+            </li>
+            <li>
+                <a href="/organization/search" >
+                    <i class="fa fa-tasks"></i> Browse Organizations
                 </a>
             </li>
         </ul>

@@ -47,14 +47,7 @@ namespace Whiteboard.Web.Auth {
                 return new string[0];
             }
 
-            IRoleProfileService roleProfileService = RoleProfileService.GetInstance<RoleProfileRepository>();
-            IEnumerable<RoleProfile> roleProfiles = roleProfileService.GetRolesByProfile(profile.Id);
-
-            List<string> res = new List<string>();
-            foreach (RoleProfile rp in roleProfiles) {
-                res.Add(rp.Role.Name);
-            }
-            return res.ToArray();
+            return new string[] { profile.Role };
         }
 
         public override string[] GetUsersInRole(string roleName) {
@@ -63,16 +56,12 @@ namespace Whiteboard.Web.Auth {
 
         public override bool IsUserInRole(string username, string roleName) {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
-            IRoleService roleService = RoleService.GetInstance<RoleRepository>();
 
             Profile profile = service.Get(username);
-            Role role = roleService.GetByName(roleName);
-            if (profile == null || role == null) {
+            if (profile == null) {
                 return false;
             }
-
-            IRoleProfileService roleProfileService = RoleProfileService.GetInstance<RoleProfileRepository>();
-            return roleProfileService.IsUserInRole(profile.Id, role.Id);
+            return profile.Role.Equals(roleName);
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames) {

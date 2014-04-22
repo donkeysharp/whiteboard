@@ -12,6 +12,7 @@ using Whiteboard.DataAccess.Repositories;
 namespace Whiteboard.Web.Controllers {
     public class BaseController : Controller {
         private Profile currentProfile = null;
+
         protected Profile CurrentProfile {
             get {
                 if (currentProfile == null) {
@@ -35,12 +36,8 @@ namespace Whiteboard.Web.Controllers {
             base.OnActionExecuted(filterContext);
         }
 
-        private string[] userRoles = null;
         protected bool IsInRole(string roleName) {
-            if (userRoles == null) {
-                userRoles = Roles.GetRolesForUser(User.Identity.Name);
-            }
-            return userRoles.Where(x => x.Equals(roleName)).Count() > 0;
+            return CurrentProfile.Role.Equals(roleName);
         }
         #region "Protected Methods"
         protected List<SelectListItem> GetCountries(string selectedCountry = null) {

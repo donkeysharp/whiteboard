@@ -180,7 +180,6 @@
     <Compile Include="Controllers\CourseClassController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -405,15 +404,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -461,16 +451,16 @@
     <Content Include="Views\Shared\_RegisterWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\_SchoolDashboard.cshtml" />
+    <Content Include="Views\Dashboardbk\_SchoolDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\_TeacherDashboard.cshtml" />
+    <Content Include="Views\Dashboardbk\_TeacherDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\_StudentDashboard.cshtml" />
+    <Content Include="Views\Dashboardbk\_StudentDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboardbk\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\plugins\bootstrap\css\bootstrap.min.css.orig" />
@@ -493,21 +483,21 @@
     <Content Include="Views\Shared\_Master.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\NavigationBar\NavBar.cshtml" />
-    <Content Include="Views\Dashboard\SideBars\School.cshtml" />
-    <Content Include="Views\Dashboard\SideBars\Student.cshtml" />
-    <Content Include="Views\Dashboard\SideBars\Teacher.cshtml" />
-    <Content Include="Views\Dashboard\_BaseDashboard.cshtml" />
+    <Content Include="Views\Shared\SideBars\SideBarAdmin.cshtml" />
+    <Content Include="Views\Dashboardbk\_BaseDashboard.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Course\List.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
-    <Content Include="Views\Dashboard\Public.cshtml" />
+    <Content Include="Views\Dashboardbk\Public.cshtml" />
     <Content Include="Views\CourseClass\Index.cshtml" />
     <Content Include="Views\CourseClass\TeacherWhiteboard.cshtml" />
     <Content Include="Views\CourseClass\StudentWhiteboard.cshtml" />
     <Content Include="Views\SchoolManager\Index.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\SideBars\SideBarCommon.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

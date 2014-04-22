@@ -19,16 +19,16 @@ namespace Whiteboard.Web.Controllers {
     public class DashboardController : BaseController {
         [HttpGet]
         public ActionResult Index() {
-            if (IsInRole(Role.ROLE_SCHOOL)) {
-                // Profile will always have a school role, so no problem when calling this method
-                ViewBag.OurCourses = GetCoursesBySchool(CurrentProfile);
-                ViewBag.OurTeachers = GetTeachersBySchool(CurrentProfile);
-                ViewBag.OurStudents = GetStudentsBySchool(CurrentProfile);
-            } else if (IsInRole(Role.ROLE_TEACHER)) {
-                ViewBag.MyCourses = GetCoursesByTeacher(CurrentProfile);
-            } else if (IsInRole(Role.ROLE_STUDENT)) {
-                ViewBag.MyCourses = GetCoursesByStudent(CurrentProfile);
-            }
+            //if (IsInRole(Role.ROLE_SCHOOL)) {
+            //    // Profile will always have a school role, so no problem when calling this method
+            //    ViewBag.OurCourses = GetCoursesBySchool(CurrentProfile);
+            //    ViewBag.OurTeachers = GetTeachersBySchool(CurrentProfile);
+            //    ViewBag.OurStudents = GetStudentsBySchool(CurrentProfile);
+            //} else if (IsInRole(Role.ROLE_TEACHER)) {
+            //    ViewBag.MyCourses = GetCoursesByTeacher(CurrentProfile);
+            //} else if (IsInRole(Role.ROLE_STUDENT)) {
+            //    ViewBag.MyCourses = GetCoursesByStudent(CurrentProfile);
+            //}
             return View();
         }
 
@@ -119,7 +119,5 @@ namespace Whiteboard.Web.Controllers {
             return models;
         }
         #endregion
-
-        
     }
 }
