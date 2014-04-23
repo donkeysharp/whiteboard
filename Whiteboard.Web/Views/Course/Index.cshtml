@@ -1,17 +1,8 @@
 ﻿@{
     ViewBag.Title = "Course";
-    Layout = "~/Views/Shared/_Master.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model Whiteboard.Web.Models.CourseViewModel
-@section SideBar {
-    @if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_SCHOOL)) {
-        @Html.Partial("../Dashboard/SideBars/School", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
-    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_TEACHER)) {
-        @Html.Partial("../Dashboard/SideBars/Teacher", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
-    } else if (User.IsInRole(Whiteboard.DataAccess.Models.Role.ROLE_STUDENT)) {
-        @Html.Partial("../Dashboard/SideBars/Student", new Whiteboard.Web.Models.RedirectViewModel { Redirect = true,  RedirectTo = "/Dashboard" })
-    }
-}
 
 <div class="row">
 <div class="col-lg-8 col-md-offset-2">

@@ -71,5 +71,15 @@ namespace whiteboard.BusinessLogic.SchoolModule
         public bool IsTeacherOfCourse(int courseId, int teacherId) {
             return Da.IsTeacherOfCourse(courseId, teacherId);
         }
+
+
+        public IEnumerable<Course.Report> GetAttendingCourses(int userId) {
+            return Da.GetAttendingCourses(userId);
+        }
+
+
+        public IEnumerable<Course.Report> GetTeachingCourses(int userId) {
+            return Da.GetTeachingCourses(userId);
+        }
     }
 }

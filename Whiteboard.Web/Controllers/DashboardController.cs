@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using whiteboard.BusinessLogic.OrganizationModule;
 using whiteboard.BusinessLogic.ProfileModule;
 using whiteboard.BusinessLogic.SchoolModule;
 using Whiteboard.Common;
@@ -19,16 +20,12 @@ namespace Whiteboard.Web.Controllers {
     public class DashboardController : BaseController {
         [HttpGet]
         public ActionResult Index() {
-            //if (IsInRole(Role.ROLE_SCHOOL)) {
-            //    // Profile will always have a school role, so no problem when calling this method
-            //    ViewBag.OurCourses = GetCoursesBySchool(CurrentProfile);
-            //    ViewBag.OurTeachers = GetTeachersBySchool(CurrentProfile);
-            //    ViewBag.OurStudents = GetStudentsBySchool(CurrentProfile);
-            //} else if (IsInRole(Role.ROLE_TEACHER)) {
-            //    ViewBag.MyCourses = GetCoursesByTeacher(CurrentProfile);
-            //} else if (IsInRole(Role.ROLE_STUDENT)) {
-            //    ViewBag.MyCourses = GetCoursesByStudent(CurrentProfile);
-            //}
+            if (IsInRole(Whiteboard.DataAccess.Models.Profile.ROLE_COMMON)) {
+                int userId = CurrentProfile.Id;
+                ViewBag.Attending= GetAttendingCourses(userId);
+                ViewBag.Teaching = GetTeachingCourses(userId);
+                ViewBag.Organizations = GetOrganizations(userId);
+            }
             return View();
         }
 
@@ -85,38 +82,24 @@ namespace Whiteboard.Web.Controllers {
         }
         #endregion
 
-        #region "Private Methods for School Dashboard"
-        private IEnumerable<ProfileViewModel> GetStudentsBySchool(Profile profile) {
-            ISchoolStudentService service = SchoolStudentService.GetInstance<SchoolStudentRepository>();
-            IEnumerable<Profile> res = service.GetStudentsBySchoolID(profile.Id);
-
-            List<ProfileViewModel> models = new List<ProfileViewModel>();
-            foreach (Profile p in res) {
-                models.Add(new ProfileViewModel(p));
-            }
-            return models;
+        #region "Private Methods for Dashboard"
+        private List<Course.Report> GetAttendingCourses(int userId) {
+            ICourseService service = CourseService.GetInstance<CourseRepository>();
+            
+            IEnumerable<Course.Report> res = service.GetAttendingCourses(userId);
+            return res as List<Course.Report>;
         }
+        private List<Course.Report> GetTeachingCourses(int userId) {
+            ICourseService service = CourseService.GetInstance<CourseRepository>();
 
-        private IEnumerable<ProfileViewModel> GetTeachersBySchool(Profile profile) {
-            ISchoolTeacherService service = SchoolTeacherService.GetInstance<SchoolTeacherRepository>();
-            IEnumerable<Profile> res = service.GetTeachersBySchoolId(profile.Id, "");
-
-            List<ProfileViewModel> models = new List<ProfileViewModel>();
-            foreach (Profile p in res) {
-                models.Add(new ProfileViewModel(p));
-            }
-            return models;
+            IEnumerable<Course.Report> res = service.GetTeachingCourses(userId);
+            return res as List<Course.Report>;
         }
+        private List<Organization.Report> GetOrganizations(int userId) {
+            IOrganizationService service = OrganizationService.GetInstance<OrganizationRepository>();
 
-        private IEnumerable<CourseViewModel> GetCoursesBySchool(Profile profile) {
-            ICourseService courseService = CourseService.GetInstance<CourseRepository>();
-            IEnumerable<CourseReport> res = courseService.GetCoursesBySchoolId(profile.Id);
-
-            List<CourseViewModel> models = new List<CourseViewModel>();
-            foreach (CourseReport course in  res) {
-                models.Add(new CourseViewModel(course));
-            }
-            return models;
+            IEnumerable<Organization.Report> res = service.GetOrganizations(userId);
+            return res as List<Organization.Report>;
         }
         #endregion
     }

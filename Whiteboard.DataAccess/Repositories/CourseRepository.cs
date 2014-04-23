@@ -97,5 +97,28 @@ where t.id = {0} and c.id = {1}", teacherId, courseId);
             List<CourseReport> result = context.Database.SqlQuery<CourseReport>(sql).ToList();
             return result.Count > 0;                
         }
+
+
+        public IEnumerable<Course.Report> GetAttendingCourses(int userId) {
+            string sql = string.Format(@"select c.*, p.name as teacherName
+from course c 
+inner join courseattendee ca on(ca.CourseId = c.id)
+inner join profile p on(p.id = c.ownerId)
+where ca.AttendeeId = {0}", userId);
+
+            List<Course.Report> result = context.Database.SqlQuery<Course.Report>(sql).ToList();
+            return result;
+        }
+
+
+        public IEnumerable<Course.Report> GetTeachingCourses(int userId) {
+            string sql = string.Format(@"select c.*, p.name as TeacherName
+from course c 
+inner join profile p on(p.Id = c.OwnerId)
+where c.ownerid = {0}", userId);
+
+            List<Course.Report> result = context.Database.SqlQuery<Course.Report>(sql).ToList();
+            return result;
+        }
     }
 }

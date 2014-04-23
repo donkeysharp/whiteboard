@@ -25,5 +25,9 @@ namespace whiteboard.BusinessLogic.SchoolModule
         IEnumerable<CourseReport> SearchPublic(string keyword);
 
         bool IsTeacherOfCourse(int courseId, int teacherId);
+
+        IEnumerable<Course.Report> GetAttendingCourses(int userId);
+
+        IEnumerable<Course.Report> GetTeachingCourses(int userId);
     }
 }

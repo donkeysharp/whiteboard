@@ -26,5 +26,9 @@ namespace Whiteboard.DataAccess.Models {
         public int? OrganizationId { get; set; }
         [ForeignKey("OrganizationId")]
         public virtual Organization Organization { get; set; }
+
+        public class Report : Course {
+            public string TeacherName { get; set; }
+        }
     }
 }

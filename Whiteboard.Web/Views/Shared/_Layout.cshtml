@@ -16,5 +16,5 @@
 @section StyleSheets {
     <link href="/Content/css/dashboard.css" rel="stylesheet" />
 }
-@section Scripts {
-}
+@RenderSection("StyleSheets", required: false)
+@RenderSection("Scripts", required: false)
