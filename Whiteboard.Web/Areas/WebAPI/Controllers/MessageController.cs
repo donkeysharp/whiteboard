@@ -10,7 +10,6 @@ using Whiteboard.DataAccess.Repositories;
 
 namespace Whiteboard.Web.Areas.WebAPI.Controllers {
     public class MessageController : Controller {
-        // GET: /api/Foo/
         [HttpGet]
         public JsonResult GetMessages(int courseClassId) {
             IMessageService ms = MessageService.GetInstance<MessageRepository>();
@@ -27,11 +26,14 @@ namespace Whiteboard.Web.Areas.WebAPI.Controllers {
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public int Insert(int courseClassId, string username, string message)
+        public JsonResult Insert(int courseClassId, string username, string message)
         {
             IMessageService ms = MessageService.GetInstance<MessageRepository>();
             Message item = new Message() { Content = message, UserName = username, CourseClassId = courseClassId };
-            return ms.Insert(item).Id;
+            if (ms.Insert(item) != null)
+                return Json(new { status = "ok" }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { status = "error" }, JsonRequestBehavior.AllowGet);
         }
 
     }
