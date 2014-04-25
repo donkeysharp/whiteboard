@@ -25,5 +25,13 @@ namespace whiteboard.BusinessLogic.OrganizationModule {
         public IEnumerable<Organization.Report> GetOrganizations(int userId) {
             return Da.GetOrganizations(userId);
         }
+
+        public Organization Get(string name) {
+            List<Organization> res = da.Filter(x => x.Name.Equals(name)).ToList();
+            if (res.Count > 0) {
+                return res[0];
+            }
+            return null;
+        }
     }
 }

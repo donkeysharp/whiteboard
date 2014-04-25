@@ -93,6 +93,7 @@ namespace Whiteboard.Web.Controllers {
             ICourseService service = CourseService.GetInstance<CourseRepository>();
 
             IEnumerable<Course.Report> res = service.GetTeachingCourses(userId);
+            List<CourseViewModel> models = new List<CourseViewModel>();
             return res as List<Course.Report>;
         }
         private List<Organization.Report> GetOrganizations(int userId) {

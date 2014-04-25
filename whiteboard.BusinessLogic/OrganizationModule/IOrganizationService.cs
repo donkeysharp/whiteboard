@@ -8,5 +8,7 @@ using Whiteboard.DataAccess.Models;
 namespace whiteboard.BusinessLogic.OrganizationModule {
     public interface IOrganizationService : IService<Organization> {
         IEnumerable<Organization.Report> GetOrganizations(int userId);
+
+        Organization Get(string name);
     }
 }

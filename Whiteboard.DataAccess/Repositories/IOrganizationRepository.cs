@@ -8,5 +8,6 @@ using Whiteboard.DataAccess.Models;
 namespace Whiteboard.DataAccess.Repositories {
     public interface IOrganizationRepository : IRepository<Organization> {
         IEnumerable<Organization.Report> GetOrganizations(int userId);
+
     }
 }

@@ -179,6 +179,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CourseClassController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Models\DashboardModels\StudentItemViewModel.cs" />
     <Compile Include="Models\DashboardModels\TeacherItemViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\OrganizationModels\OrganizationViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\RedirectViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -329,6 +331,7 @@
     <Content Include="Content\js\course-edit.js" />
     <Content Include="Content\js\flex.js" />
     <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\organization-edit.js" />
     <Content Include="Content\js\pizarron\chat.js" />
     <Content Include="Content\js\pizarron\script.js" />
     <Content Include="Content\js\pizarron\scriptClient.js" />
@@ -498,6 +501,8 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\SideBars\SideBarCommon.cshtml" />
+    <Content Include="Views\Organization\Index.cshtml" />
+    <Content Include="Views\Organization\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
