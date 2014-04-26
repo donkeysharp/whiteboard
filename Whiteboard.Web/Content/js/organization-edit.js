@@ -17,7 +17,6 @@
         $('#description').summernote(options);
     };
     formSubmit = function () {
-        alert('submit');
         $('textarea[name="description"]').html($('#description').code());
     };
 }).call(document, jQuery);

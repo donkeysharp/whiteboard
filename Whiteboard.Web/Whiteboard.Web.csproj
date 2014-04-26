@@ -503,6 +503,7 @@
     <Content Include="Views\Shared\SideBars\SideBarCommon.cshtml" />
     <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Views\Organization\Edit.cshtml" />
+    <Content Include="Views\Organization\Detail.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

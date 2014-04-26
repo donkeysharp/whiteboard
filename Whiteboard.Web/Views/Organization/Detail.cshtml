@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Organization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Whiteboard.Common
+@model Whiteboard.Web.Models.OrganizationModels.OrganizationViewModel
+
+<div class="row">
+<div class="col-lg-8 col-md-offset-2">
+    <div class="course-detail">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/organization/edit/@Model.Id" style="float: right;">
+                    <i class="fa fa-pencil fa-1x"></i> Edit
+                </a>
+                <h1>@Model.Name</h1>
+                <br>
+                @Html.Raw(Model.Description)
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content(Path.Combine(Constants.UPLOADS_PATH, Model.PictureUrl))" 
+                    style="width: 100%; height: 200px" />
+                @if (ViewBag.IsOrganizationAdmin) {
+                    <br /><br />
+                    <a class="btn btn-green" id="join-course" href="invoice.html#">Admin Organization</a>
+                }
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Our Courses</h3>
+                        <ul class="fa-ul">
+                            @*@foreach (var cc in ViewBag.Classes) {
+                                if (cc.Finished) {
+                                    <li><i class="fa fa-video-camera">
+                                        </i> <a href="/course/courseclass/@cc.Id">@cc.Description (Check Notes)</a></li>
+                                }
+                            }*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
