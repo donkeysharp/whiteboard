@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Whiteboard.Web.Models.OrganizationModels.OrganizationViewModel
+<div class="row">
+<div class="col-lg-12">
+    <div class="portlet portlet-blue" style="margin-bottom: 0">
+        <div class="portlet-body">
+            <img src="/Content/uploads/@Model.PictureUrl" style="width: 100px; height: 100px;" />
+            <h1><a href="/organization/@Model.Id">@Model.Name</a></h1>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="course-manager">
+    <div class="portlet portlet-blue">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h4 style="float:left">Manage Admins</h4>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-10">
+                    Add Admins:
+                    <input class="form-control" type="text" 
+                        id="admin-name" placeholder="Type name or email" />
+                    <input type="hidden" id="studentId" name="studentId" value="" />
+                </div>
+                <div class="col-md-2">
+                    <br />
+                    <a href="." id="add-admin"><i class="fa fa-plus fa-2x" style="margin-top: 6px"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                <table class="table table-hover" id="students">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-tbody">
+                       @* @foreach (var s in ViewBag.Students) {
+                            <tr>
+                                <td>@s.Name</td>
+                                <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                            </tr>
+                        }*@
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="course-manager">
+    <div class="portlet portlet-orange">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h4 style="float:left">Manage Teachers</h4>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-10">
+                    Add Teachers:
+                    <input class="form-control" type="text" 
+                        id="teacher-name" placeholder="Type name or email" />
+                    <input type="hidden" id="teacherId" name="studentId" value="" />
+                </div>
+                <div class="col-md-2">
+                    <br />
+                    <a href="." id="add-teacher"><i class="fa fa-plus fa-2x" style="margin-top: 6px"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                <table class="table table-hover" id="teachers">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="teachers-tbody">
+                       @* @foreach (var s in ViewBag.Teachers) {
+                            <tr>
+                                <td>@s.Name</td>
+                                <td><a href="#" data-student-id="@s.Id"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                            </tr>
+                        }*@
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+@section StyleSheets {
+    <link href="/content/css/token-input.css" rel="stylesheet" type="text/css" />
+}
+@section Scripts {
+    <script src="/Content/vendor/jquery.tokeninput.js"></script>
+    <script src="/content/js/organization-admin.js"></script>
+}

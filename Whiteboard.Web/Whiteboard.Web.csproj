@@ -177,9 +177,10 @@
     <Compile Include="Auth\GeneralMembershipUser.cs" />
     <Compile Include="Auth\GeneralRoleProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\OrganizationController.Admin.cs" />
     <Compile Include="Controllers\CourseClassController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
-    <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\OrganizationController.Crud.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -381,7 +382,7 @@
     <Content Include="Content\js\plugins\summernote\summernote.min.js" />
     <Content Include="Content\js\plugins\validate\jquery.validate.min.js" />
     <Content Include="Content\js\register.js" />
-    <Content Include="Content\js\school-manager.js" />
+    <Content Include="Content\js\organization-admin.js" />
     <Content Include="Content\uploads\class_default.jpg" />
     <Content Include="Content\uploads\user.png" />
     <Content Include="Content\vendor\backbone-min.js" />
@@ -504,6 +505,7 @@
     <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Views\Organization\Edit.cshtml" />
     <Content Include="Views\Organization\Detail.cshtml" />
+    <Content Include="Views\Organization\Admin.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

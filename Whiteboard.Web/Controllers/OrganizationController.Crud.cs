@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using whiteboard.BusinessLogic.OrganizationModule;
+using whiteboard.BusinessLogic.SchoolModule;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 using Whiteboard.Web.Models.OrganizationModels;
 
 namespace Whiteboard.Web.Controllers {
-    public class OrganizationController : BaseController {
+    public partial class OrganizationController : BaseController {
         [HttpGet]
         public ActionResult Index(int id = 0) {
             if (id == 0) {
@@ -21,6 +22,9 @@ namespace Whiteboard.Web.Controllers {
                     // Check whether or not user is organization's admin
                     IOrganizationAdminService adminService = OrganizationAdminService.GetInstance<OrganizationAdminRepository>();
                     ViewBag.IsOrganizationAdmin = adminService.IsAdmin(CurrentProfile.Id, organization.Id);
+
+                    ICourseService courseService = CourseService.GetInstance<CourseRepository>();
+                    ViewBag.OrganizationCourses = courseService.GetCoursesByOrganization(organization.Id);
 
                     OrganizationViewModel model = new OrganizationViewModel(organization);
                     return View("Detail", model);
@@ -87,7 +91,9 @@ namespace Whiteboard.Web.Controllers {
                 organization.WebSite = model.WebSite;
                 organization.Email = model.Email;
                 organization.Description = model.Description;
-                organization.PictureUrl = UploadFile(file, "course.png");
+                if (file != null) {
+                    organization.PictureUrl = UploadFile(file, "course.png");
+                }
 
                 service.Update(organization);
             } else {

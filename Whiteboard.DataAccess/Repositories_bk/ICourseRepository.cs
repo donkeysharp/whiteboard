@@ -27,5 +27,7 @@ namespace Whiteboard.DataAccess.Repositories
         IEnumerable<Course.Report> GetAttendingCourses(int userId);
 
         IEnumerable<Course.Report> GetTeachingCourses(int userId);
+
+        IEnumerable<Course.Report> GetCoursesByOrganization(int organizationId);
     }
 }

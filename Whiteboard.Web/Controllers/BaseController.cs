@@ -17,12 +17,22 @@ namespace Whiteboard.Web.Controllers {
 
         protected Profile CurrentProfile {
             get {
+                if (Session[Constants.SESSION_USER] != null && Session[Constants.SESSION_USER] is Profile) {
+                    return Session[Constants.SESSION_USER] as Profile;
+                }
                 if (currentProfile == null) {
                     IProfileService service = ProfileService.GetInstance<ProfileRepository>();
-                    currentProfile = service.Get(User.Identity.Name);
+                    CurrentProfile = service.Get(User.Identity.Name);
                 }
                 return currentProfile;
             }
+            set {
+                Session[Constants.SESSION_USER] = value;
+                currentProfile = value;
+            }
+        }
+
+        protected void SetProfileId(int profileId) {
         }
 
         protected ActionResult RedirectToHash(string controllerName, string action, string hash) {

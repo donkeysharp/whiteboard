@@ -120,5 +120,14 @@ where c.ownerid = {0}", userId);
             List<Course.Report> result = context.Database.SqlQuery<Course.Report>(sql).ToList();
             return result;
         }
+
+
+        public IEnumerable<Course.Report> GetCoursesByOrganization(int organizationId) {
+            string sql = string.Format(@"select c.*
+from course c 
+where c.ispublic = 1 and organizationId = {0}", organizationId);
+            List<Course.Report> result = context.Database.SqlQuery<Course.Report>(sql).ToList();
+            return result;
+        }
     }
 }

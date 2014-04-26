@@ -11,6 +11,12 @@ namespace Whiteboard.Web {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "OrganizationAdmin",
+                url: "organization/admin/{id}",
+                defaults: new { controller = "Organization", action = "Admin", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "OrganizationDetail",
                 url: "organization/detail/{id}",
                 defaults: new { controller = "Organization", action = "Index", id = UrlParameter.Optional }
