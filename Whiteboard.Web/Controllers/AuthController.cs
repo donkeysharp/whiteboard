@@ -32,6 +32,9 @@ namespace Whiteboard.Web.Controllers {
             IProfileService service = ProfileService.GetInstance<ProfileRepository>();
             if (Membership.ValidateUser(user.Email, user.Password)) {
                 FormsAuthentication.SetAuthCookie(user.Email, true);
+                Profile profile = service.Get(user.Email);
+                base.CurrentProfile = profile;
+
                 return RedirectToAction("Index", "Home");
             }
             TempData["Errors"] = "Invalid email or password, please verify they are correct.";

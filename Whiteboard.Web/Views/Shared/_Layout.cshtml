@@ -14,7 +14,9 @@
 @RenderBody()
 
 @section StyleSheets {
+    @RenderSection("StyleSheets", required: false)
     <link href="/Content/css/dashboard.css" rel="stylesheet" />
 }
-@RenderSection("StyleSheets", required: false)
-@RenderSection("Scripts", required: false)
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

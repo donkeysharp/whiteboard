@@ -81,5 +81,10 @@ namespace whiteboard.BusinessLogic.SchoolModule
         public IEnumerable<Course.Report> GetTeachingCourses(int userId) {
             return Da.GetTeachingCourses(userId);
         }
+
+
+        public IEnumerable<Course.Report> GetCoursesByOrganization(int organizationId) {
+            return Da.GetCoursesByOrganization(organizationId);
+        }
     }
 }

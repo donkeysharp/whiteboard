@@ -76,7 +76,6 @@ namespace Whiteboard.Web.Controllers {
         }
 
         [HttpGet]
-        [Authorize(Roles = Role.ROLE_SCHOOL + "," + Role.ROLE_TEACHER)]
         public ActionResult Edit(int id = 0) {
             ICourseService courseService = CourseService.GetInstance<CourseRepository>();
             CourseReport course = courseService.GetCourseReport(id);
@@ -127,22 +126,8 @@ namespace Whiteboard.Web.Controllers {
             course.Syllabus = model.Syllabus;
             course.Lectures = model.Lectures;
             course.IsPublic = model.IsPublic;
-            //if (course.SchoolId == 0) {
-            //    course.SchoolId = CurrentProfile.Id;
-            //}
-
-            string filename;
-            if (file != null && file.ContentLength > 0) {
-                filename = Guid.NewGuid().ToString() + "." + Path.GetExtension(file.FileName);
-                string path = Path.Combine(Server.MapPath(Constants.UPLOADS_PATH), filename);
-                FileHelper.CreateFile(path, file.InputStream, true);
-
-
-            } else {
-                filename = "class_default.jpg";
-            }
-
-            course.PictureUrl = filename;
+            
+            course.PictureUrl = UploadFile(file, "course.png");
 
             if (model.Id == 0) {
                 course = courseService.Insert(course);

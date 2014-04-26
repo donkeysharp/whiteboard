@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using whiteboard.BusinessLogic.ProfileModule;
+using Whiteboard.Common;
 using Whiteboard.DataAccess.Models;
 using Whiteboard.DataAccess.Repositories;
 
@@ -15,16 +17,38 @@ namespace Whiteboard.Web.Controllers {
 
         protected Profile CurrentProfile {
             get {
+                if (Session[Constants.SESSION_USER] != null && Session[Constants.SESSION_USER] is Profile) {
+                    return Session[Constants.SESSION_USER] as Profile;
+                }
                 if (currentProfile == null) {
                     IProfileService service = ProfileService.GetInstance<ProfileRepository>();
-                    currentProfile = service.Get(User.Identity.Name);
+                    CurrentProfile = service.Get(User.Identity.Name);
                 }
                 return currentProfile;
             }
+            set {
+                Session[Constants.SESSION_USER] = value;
+                currentProfile = value;
+            }
+        }
+
+        protected void SetProfileId(int profileId) {
         }
 
         protected ActionResult RedirectToHash(string controllerName, string action, string hash) {
             return Redirect(Url.RouteUrl(new { controller = controllerName, action = action }) + "#" + hash);
+        }
+
+        protected string UploadFile(HttpPostedFileBase file, string defaultName) {
+            string filename;
+            if (file != null && file.ContentLength > 0) {
+                filename = Guid.NewGuid().ToString() + "." + Path.GetExtension(file.FileName);
+                string path = Path.Combine(Server.MapPath(Constants.UPLOADS_PATH), filename);
+                FileHelper.CreateFile(path, file.InputStream, true);
+            } else {
+                filename = defaultName;
+            }
+            return filename;
         }
         
         protected override void OnActionExecuted(ActionExecutedContext filterContext) {

@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrganizationModule\IOrganizationAdminService.cs" />
     <Compile Include="OrganizationModule\IOrganizationService.cs" />
+    <Compile Include="OrganizationModule\OrganizationAdminService.cs" />
     <Compile Include="OrganizationModule\OrganizationService.cs" />
     <Compile Include="ProfileModule\IProfileService.cs" />
     <Compile Include="ProfileModule\IRoleProfileService.cs" />
