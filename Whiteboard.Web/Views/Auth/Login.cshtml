@@ -47,14 +47,31 @@
                                     })
                             </div>
                             <input type="submit" value="Log In" class="btn btn-default" />
+                            
                         </fieldset>
                     }
+                    
+                </div>
+                <div id="fb-root"></div> <!-- This initializes the FB controls-->
+                <div class="fb-login-button" autologoutlink="true" scope="user_birthday,email">
+                    Login with Facebook
+                </div> <!-- FB Login Button -->
+                <!-- Details -->
+                <div id="auth-status">
+                    <div id="auth-loggedin" style="display: none">
+                        Hi, <span id="displayname"></span><br />
+                        Your Facebook ID : <span id="FBId"></span><br />
+                        Your Email : <span id="DisplayEmail"></span><br />
+                        Your Sex:, <span id="Gender"></span><br />
+                        Your Date of Birth :, <span id="DOB"></span><br />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @section Scripts {
+    <script src="~/Content/js/login/facebook-login.js"></script>
     <script>
         noSideBar();
     </script>

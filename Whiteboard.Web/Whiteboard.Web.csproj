@@ -331,6 +331,7 @@
     <Content Include="Content\js\demo\validation-demo.js" />
     <Content Include="Content\js\course-edit.js" />
     <Content Include="Content\js\flex.js" />
+    <Content Include="Content\js\login\facebook-login.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\organization-edit.js" />
     <Content Include="Content\js\pizarron\chat.js" />
